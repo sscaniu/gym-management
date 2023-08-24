@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Header from "./header";
 
 export const metadata: Metadata = {
   title: "Dashboard",
-  description: "Manage Gyms, Trainers, Clients and more.",
+  description: "Manage Gyms",
 };
 
 export default function DashboardLayout({
@@ -12,7 +13,10 @@ export default function DashboardLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <div>{children}</div>
+      </body>
     </html>
   );
 }
