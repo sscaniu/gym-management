@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const invoice = {
@@ -87,10 +88,13 @@ export default function Messages() {
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
               <div className="flex items-center gap-x-6">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
                   className="h-16 w-16 flex-none rounded-full ring-1 ring-gray-900/10"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
                 />
                 <h1>
                   <div className="mt-1 text-base font-semibold leading-6 text-gray-900">
@@ -122,10 +126,13 @@ export default function Messages() {
                     </div>
                     {activityItem.type === "commented" ? (
                       <>
-                        <img
+                        <Image
                           src={activityItem.person.imageUrl}
                           alt=""
                           className="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50"
+                          width={0}
+                          height={0}
+                          sizes="100vw"
                         />
                         <div className="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                           <div className="flex justify-between gap-x-4">
@@ -179,10 +186,13 @@ export default function Messages() {
 
               {/* New comment form */}
               <div className="mt-6 flex gap-x-3">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
                   className="h-6 w-6 flex-none rounded-full bg-gray-50"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
                 />
                 <form action="#" className="relative flex-auto">
                   <div className="overflow-hidden rounded-lg pb-12 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">

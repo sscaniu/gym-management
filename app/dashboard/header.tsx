@@ -5,6 +5,7 @@ import { Dialog, Listbox, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
   { name: "Login", href: "/login" },
@@ -46,10 +47,13 @@ export default function Header() {
           </button>
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your profile</span>
-            <img
+            <Image
               className="h-8 w-8 rounded-full bg-gray-800"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
+              alt="profile pic"
+              width={0}
+              height={0}
+              sizes="100vw"
             />
           </a>
         </div>
