@@ -49,8 +49,7 @@ const activity = [
     type: "commented",
     person: {
       name: "Chelsea Hagon",
-      imageUrl:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      imageUrl: "/images/dashboard/client.png",
     },
     comment:
       "Called client, they reassured me the invoice would be paid by the 25th.",
@@ -89,7 +88,7 @@ export default function Messages() {
             <div className="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
               <div className="flex items-center gap-x-6">
                 <Image
-                  src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="/images/dashboard/client.png"
                   alt=""
                   className="h-16 w-16 flex-none rounded-full ring-1 ring-gray-900/10"
                   width={0}
@@ -187,7 +186,7 @@ export default function Messages() {
               {/* New comment form */}
               <div className="mt-6 flex gap-x-3">
                 <Image
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="/images/dashboard/user.png"
                   alt=""
                   className="h-6 w-6 flex-none rounded-full bg-gray-50"
                   width={0}
