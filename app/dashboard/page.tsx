@@ -15,7 +15,7 @@ const cards = [
     id: 1,
     name: "Step 1: Add Your Gym",
     description:
-      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
+      '<p class="mb-4">Add your gym&apos;s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
     buttons: [
       {
         id: 1,
@@ -96,7 +96,7 @@ export default function Dashboard() {
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
               <div className="flex items-center justify-between mb-6 mt-6">
                 <h2 className="text-3xl font-semibold leading-7 text-gray-900">
-                  Travis' Dashboard
+                  Travis&apos; Dashboard
                 </h2>
               </div>
               <ul
