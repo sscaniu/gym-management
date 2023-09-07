@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import PrimaryButton from "../components/shared/Button";
+import { Button, ButtonStyles } from "../components/shared/Buttons";
 
 const statuses = {
   Paid: "text-green-700 bg-green-50 ring-green-600/20",
@@ -15,39 +15,66 @@ const cards = [
     id: 1,
     name: "Step 1: Add Your Gym",
     description:
-      '<p class="mb-4">Add trainers to pair up with your clients. Update your roster by adding individuals, or bulk-importing a CSV document with the following details:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
-    button: "Add Your Gym",
-    icon: <FaPlus />,
+      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
+    buttons: [
+      {
+        id: 1,
+        text: "Add your gym",
+        icon: null,
+        style: ButtonStyles.Primary,
+      },
+    ],
   },
   {
     id: 2,
     name: "Step 2: Add Trainers",
     description:
-      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>First and Last Name, Billing Address, Email, Phone Number</li><li>Specialty (HIIT, yoga, strength training, etc.)</li></ul>',
-    button: "Add A Trainers",
-    icon: <FaPlus />,
+      '<p class="mb-4">Add trainers to pair up with your clients. Update your roster by adding individuals, or bulk-importing a CSV document with the following details:<p><ul class="list-disc list-inside"><li>First and Last Name, Billing Address, Email, Phone Number</li><li>Specialty (HIIT, yoga, strength training, etc.)</li></ul>',
+    buttons: [
+      {
+        id: 1,
+        text: "Import Clients",
+        icon: null,
+        style: ButtonStyles.Secondary,
+        disabled: true,
+      },
+      {
+        id: 2,
+        text: "Add Client",
+        icon: <FaPlus />,
+        style: ButtonStyles.Primary,
+        disabled: false,
+      },
+    ],
   },
   {
     id: 3,
-    name: "Step 1: Add Your Gym",
+    name: "Step 3: Add Clients",
     description:
-      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
-    button: "Add Your Gym",
-    icon: <FaPlus />,
+      '<p class="mb-4">Update your client roster by adding clients individually, or bulk-importing a CSV document with the following details:<p><ul class="list-disc list-inside"><li>First and Last Name, Billing Address, Email, Phone Number</li><li>Personal Goal (weight loss, marathon training, etc.)</li></ul>',
+    buttons: [
+      {
+        id: 1,
+        text: "Add Clients",
+        icon: null,
+        style: ButtonStyles.Secondary,
+        disabled: true,
+      },
+    ],
   },
   {
     id: 4,
-    name: "Step 1: Add Your Gym",
+    name: "Step 4: Update your calendar",
     description:
-      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
-    button: "Add Your Gym",
+      '<p class="mb-4">Update your calendar by scheduling appointments, classes, and events<p><ul class="list-disc list-inside"><li>Appointments - individual client sessions</li><li>Classes - sessions for for multiple clients</li><li>Events - holidays, extended hours, parties, etc</li></ul>',
+    button: "Add to Calendar",
     icon: <FaPlus />,
   },
   {
     id: 5,
-    name: "Step 1: Add Your Gym",
+    name: "Resources",
     description:
-      '<p class="mb-4">Add your gym’s details to complete account setup. This should only take a few minutes. To expedite this process, have the following details ready:<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
+      '<p class="mb-4">Check out the following resources to help make your experience with GymBuddies a good one.<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
     button: "Add Your Gym",
     icon: <FaPlus />,
   },
@@ -81,26 +108,29 @@ export default function Dashboard() {
                     key={card.id}
                     className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
                   >
-                    <div className="bg-white shadow sm:rounded-lg">
-                      <div className="px-4 py-5 sm:p-6">
-                        <h3 className="text-2xl leading-6 text-gray-900 border-b border-black-600 pb-5">
-                          {card.name}
-                        </h3>
-                        <div
-                          className="mt-7 mb-7 max-w-xl text-sm"
-                          dangerouslySetInnerHTML={{
-                            __html: card.description ? card.description : "",
-                          }}
-                        />
-                        <div className="mt-5 flex items-center justify-center">
-                          <PrimaryButton>
-                            {card.icon && (
-                              <span className="mr-1">{card.icon}</span>
-                            )}
-                            {card.button}
-                          </PrimaryButton>
+                    <div className="px-4 py-5 sm:p-6">
+                      <h3 className="text-2xl leading-6 text-gray-900 border-b border-black-600 pb-5">
+                        {card.name}
+                      </h3>
+                      <div
+                        className="mt-7 mb-7 max-w-xl text-sm"
+                        dangerouslySetInnerHTML={{
+                          __html: card.description ? card.description : "",
+                        }}
+                      />
+                      {card.buttons && (
+                        <div className="mt-5 flex items-center justify-evenly">
+                          {card.buttons.map((button) => (
+                            <div key={button.id}>
+                              <Button
+                                icon={button.icon}
+                                text={button.text}
+                                style={button.style}
+                              />
+                            </div>
+                          ))}
                         </div>
-                      </div>
+                      )}
                     </div>
                   </li>
                 ))}
