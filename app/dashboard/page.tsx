@@ -90,13 +90,13 @@ export default function Dashboard() {
   return (
     <>
       <main>
-        <div className="space-y-16 py-16 xl:space-y-20">
+        <div className="space-y-16 py-16 xl:space-y-20 bg-vectorcurve">
           {/* Recent client list*/}
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
               <div className="flex items-center justify-between mb-6 mt-6">
                 <h2 className="text-3xl font-semibold leading-7 text-gray-900">
-                  Travis&apos; Dashboard
+                  Gym&apos; Dashboard
                 </h2>
               </div>
               <ul

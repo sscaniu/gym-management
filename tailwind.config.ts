@@ -8,10 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: { rubik: "Rubik", jost: "Jost" },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",
+        vectorcurve: 'url("/images/Vector2.svg")',
       },
     },
   },

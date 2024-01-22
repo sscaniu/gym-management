@@ -8,16 +8,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navigation = [
-  { name: "Login", href: "/login" },
-  { name: "Messages", href: "/dashboard/messages" },
-  { name: "Clients", href: "/dashboard/clients" },
+  { name: "Gym", href: "/login" },
+  { name: "Trainers", href: "/dashboard/messages" },
+  { name: "Clients", href: "/dashboard/messages" },
+  { name: "Classes", href: "/dashboard/messages" },
+  { name: "Billing", href: "/dashboard/clients" },
+  { name: "Admin", href: "/dashboard/messages" },
+  { name: "Support", href: "/dashboard/messages" }
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 flex h-16 border-b border-gray-900/10">
+    <header className="absolute inset-x-0 top-0 z-50 flex h-16 border-b border-gray-900/10 bg-gray-800 p-4 text-white">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center gap-x-6">
           <button
@@ -28,9 +32,9 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-5 w-5 text-gray-900" aria-hidden="true" />
           </button>
-          <h1>Gym Buddies</h1>
+          <h1 className="font-rubik inline-flex w-full items-center text-left text-base font-bold leading-[48px] tracking-wider jost">Gym Buddies</h1>
         </div>
-        <nav className="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-gray-700">
+        <nav className="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-white">
           {navigation.map((item, itemIdx) => (
             <a key={itemIdx} href={item.href}>
               {item.name}
