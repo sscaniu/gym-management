@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'aero': '#42BFDD',
+        'apricot': '#FFCDB2',
+        'delft-blue': '#363E57',
+        'oxford-blue': '#1A2239',
+        'bright-pink-crayola': '#FA5E83',
+      },
       fontFamily: { rubik: "Rubik", jost: "Jost" },
       backgroundImage: {
         rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",
