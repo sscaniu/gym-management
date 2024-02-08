@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "../components/shared/header";
+import Footer from "../components/shared/footer";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -15,8 +15,8 @@ export default function DashboardLayout({
   return (
     <>
       <Header />
-      <div className={`h-96 w-full`}>{children}</div>
-      {/* <Footer /> */}
+      <div className={`h-full w-full`}>{children}</div>
+      <Footer />
     </>
   );
 }
