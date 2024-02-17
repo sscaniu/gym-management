@@ -6,6 +6,7 @@ import { Bars3Icon } from "@heroicons/react/20/solid";
 import { BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import { rubik } from "./font";
 
 const navigation = [
   { name: "Gym", href: "/login" },
@@ -21,7 +22,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 flex h-16 border-b border-gray-900/10 bg-gray-800 p-4 text-white">
+    <header className="flex inset-x-0 top-0 z-50 h-16 border-b border-gray-900/10 bg-gray-800 p-4 text-white">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center gap-x-6">
           <button
@@ -32,7 +33,7 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-5 w-5 text-gray-900" aria-hidden="true" />
           </button>
-          <h1 className="font-rubik inline-flex w-full items-center text-left text-base font-bold leading-[48px] tracking-wider jost">Gym Buddies</h1>
+          <h1 className={`${rubik.className} inline-flex w-full items-center text-left text-base font-bold leading-[48px] tracking-wider`}>Gym Buddies</h1>
         </div>
         <nav className="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-white">
           {navigation.map((item, itemIdx) => (

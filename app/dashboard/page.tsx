@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Button, ButtonStyles } from "../components/shared/Buttons";
+import Image from "next/image";
+import Article from "../components/shared/Article";
 
 const statuses = {
   Paid: "text-green-700 bg-green-50 ring-green-600/20",
@@ -89,56 +91,19 @@ export default function Dashboard() {
 
   return (
     <>
-      <main>
-        <div className="space-y-16 py-16 xl:space-y-20 bg-vectorcurve">
-          {/* Recent client list*/}
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-              <div className="flex items-center justify-between mb-6 mt-6">
-                <h2 className="text-3xl font-semibold leading-7 text-gray-900">
-                  Gym&apos; Dashboard
-                </h2>
-              </div>
-              <ul
-                role="list"
-                className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2"
-              >
-                {cards.map((card) => (
-                  <li
-                    key={card.id}
-                    className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
-                  >
-                    <div className="px-4 py-5 sm:p-6">
-                      <h3 className="text-2xl leading-6 text-gray-900 border-b border-black-600 pb-5">
-                        {card.name}
-                      </h3>
-                      <div
-                        className="mt-7 mb-7 max-w-xl text-sm"
-                        dangerouslySetInnerHTML={{
-                          __html: card.description ? card.description : "",
-                        }}
-                      />
-                      {card.buttons && (
-                        <div className="mt-5 flex items-center justify-evenly">
-                          {card.buttons.map((button) => (
-                            <div key={button.id}>
-                              <Button
-                                icon={button.icon}
-                                text={button.text}
-                                style={button.style}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </main>
+      {/*Authentication check with cause a switch of presentation*/}
+      <Article
+        title={"Gym"}
+        topDiv={
+          < div className="relative flex-1 bg-delft-blue h-1/2" >
+            <Image
+              src="/vector2.svg"
+              fill={true}
+              alt=""
+            />
+          </div >
+        }
+      />
     </>
   );
 }
