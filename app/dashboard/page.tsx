@@ -4,7 +4,8 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Button, ButtonStyles } from "../components/shared/Buttons";
 import Image from "next/image";
-import Article from "../components/shared/Article";
+import { rubik } from "../components/shared/font";
+
 
 const statuses = {
   Paid: "text-green-700 bg-green-50 ring-green-600/20",
@@ -91,19 +92,56 @@ export default function Dashboard() {
 
   return (
     <>
-      {/*Authentication check with cause a switch of presentation*/}
-      <Article
-        title={"Gym"}
-        topDiv={
-          < div className="relative flex-1 bg-delft-blue h-1/2" >
-            <Image
-              src="/vector2.svg"
-              fill={true}
-              alt=""
-            />
-          </div >
-        }
-      />
+
+
+      <article className="flex-1 mx-[56px] z-10 ">
+
+
+
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2"
+        >
+          {cards.map((card) => (
+            <li
+              key={card.id}
+              className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+            >
+              <div className="px-4 py-5 sm:p-6">
+                <h3 className="text-2xl leading-6 text-gray-900 border-b border-black-600 pb-5">
+                  {card.name}
+                </h3>
+                <div
+                  className="mt-7 mb-7 max-w-xl text-sm"
+                  dangerouslySetInnerHTML={{
+                    __html: card.description ? card.description : "",
+                  }}
+                />
+                {card.buttons && (
+                  <div className="mt-5 flex items-center justify-evenly">
+                    {card.buttons.map((button) => (
+                      <div key={button.id}>
+                        <Button
+                          icon={button.icon}
+                          text={button.text}
+                          style={button.style}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+
+        </ul>
+
+      </article>
+
+
+
+
+
     </>
   );
 }
