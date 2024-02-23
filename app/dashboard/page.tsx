@@ -94,21 +94,23 @@ export default function Dashboard() {
     <>
 
 
-      <article className="flex-1 mx-[56px] z-10 ">
 
 
-
+      <article className="flex-1 z-10 bg-gradient-to-b from-oxford-blue from-50% to-delft-blue to-50%">
+        <div className="text-2xl font-roboto font-normal text-left text-white mx-[56px] my-5">
+          Scott&apos;s Dashboard
+        </div>
         <ul
           role="list"
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mx-[56px] my-5"
         >
           {cards.map((card) => (
             <li
               key={card.id}
-              className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+              className={`${rubik.className} col-span-1 divide-y divide-gray-200 rounded-lg bg-card-blue-500 text-white opacity-70 drop-shadow-xl`}
             >
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-2xl leading-6 text-gray-900 border-b border-black-600 pb-5">
+                <h3 className="text-2xl leading-6 border-b border-black-600 pb-5">
                   {card.name}
                 </h3>
                 <div
