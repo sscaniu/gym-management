@@ -10,7 +10,7 @@ export enum ButtonTypes {
 
 export enum ButtonStyles {
   Primary = "primary",
-  Secondary = "secondary",
+  Secondary = "secondary"
 }
 
 export function Button({
@@ -20,6 +20,7 @@ export function Button({
   text,
   icon,
   style,
+  addCSS
 }: {
   type?: ButtonTypes;
   onClick?: React.FC;
@@ -27,6 +28,7 @@ export function Button({
   text: string;
   icon?: React.ReactNode;
   style?: ButtonStyles;
+  addCSS?: string
 }) {
   console.log(style);
   return (
@@ -37,7 +39,7 @@ export function Button({
       className={`${icon ? "inline-flex items-center gap-x-2" : ""
         } rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
       ${style == ButtonStyles.Primary
-          ? "text-white bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
+          ? `text-white bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600 ${addCSS}`
           : ""
         }
       ${style == ButtonStyles.Secondary
