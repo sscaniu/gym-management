@@ -22,7 +22,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="flex inset-x-0 top-0 z-50 h-16 border-b border-gray-900/10 bg-gray-800 p-4 text-white">
+    <header className="flex inset-x-0 top-0 z-50 h-16 border-b border-gray-900/10 bg-oxford-blue p-4 text-white">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center gap-x-6">
           <button
