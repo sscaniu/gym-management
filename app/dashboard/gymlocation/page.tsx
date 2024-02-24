@@ -1,8 +1,34 @@
 /*Interface to add a new Gym to an account*/
-
+"use client";
 import InputNavHeader from "@/app/components/shared/InputNavHeader"
+import { DataInputTable, FieldConfig, InputType } from "@/app/components/shared/DataInputTable"
 
 export default function GymLocation() {
+
+    const inputConfig = [
+        {
+            id: "1",
+            label: "GYM NAME",
+            placeholder: "",
+            type: InputType.Text,
+            name: "gym_name"
+        },
+        {
+            id: 2,
+            label: "GYM PHONE",
+            placeholder: "",
+            type: InputType.Text,
+            name: "gym_phone"
+        },
+        {
+            id: 3,
+            label: "STREET ADDRESS",
+            placeholder: "",
+            type: InputType.Text,
+            name: "street_adddress"
+        }
+    ] as FieldConfig[]
+
 
     return (
 
@@ -14,12 +40,15 @@ export default function GymLocation() {
                     name={"Gym Location"}
                     description={"Complete the fields below to add your gym profile"}
                 />
-                <div className="text-white">
-                    Stuff here
-                </div>
+
+                <DataInputTable
+                    config={inputConfig}
+                />
+
             </div>
 
         </article>
+
     )
 
 
