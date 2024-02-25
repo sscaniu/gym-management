@@ -29,8 +29,10 @@ export type FieldConfig = {
 
 export function DataInputTable(
     {
+        inputTableHeader,
         config
     }: {
+        inputTableHeader: string,
         config: FieldConfig[]
     }
 
@@ -39,7 +41,7 @@ export function DataInputTable(
     return (
         <>
             <div className={`${rubik.className} w-[500px] col-span-1 rounded-lg bg-card-blue-500 text-white opacity-70 drop-shadow-xl opacity-75`}>
-                <div className="border-5 border-white-500 border-solid">New Gym Info</div>
+                <div className="border-5 border-white-500 border-solid">{inputTableHeader}</div>
 
                 {
                     config.map((element) => (

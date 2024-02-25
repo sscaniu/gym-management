@@ -42,6 +42,7 @@ export default function GymLocation() {
                 />
 
                 <DataInputTable
+                    inputTableHeader="New Gym Info"
                     config={inputConfig}
                 />
 
