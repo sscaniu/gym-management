@@ -18,14 +18,14 @@ export default function CreateTrainer() {
             label: "Trainer Specialty",
             placeholder: "",
             type: InputType.Text,
-            name: "trainer_phone"
+            name: "trainer_specialty" /* This should be an autocomplete vs dropdown */
         },
         {
             id: 3,
             label: "Associated Gyms",
             placeholder: "",
             type: InputType.Text,
-            name: "associated_gyms"
+            name: "associated_gyms" /* This should be an autocomplete vs dropdown */
         },
         {
             id: 4,
