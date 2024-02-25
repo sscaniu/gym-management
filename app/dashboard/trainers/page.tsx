@@ -18,14 +18,14 @@ export default function CreateTrainer() {
             label: "Trainer Specialty",
             placeholder: "",
             type: InputType.Text,
-            name: "trainer_specialty" /* This should be an autocomplete vs dropdown */
+            name: "trainer_specialty" /* This should be an autocomplete vs dropdown. Front-end JSON */
         },
         {
             id: 3,
             label: "Associated Gyms",
             placeholder: "",
             type: InputType.Text,
-            name: "associated_gyms" /* This should be an autocomplete vs dropdown */
+            name: "associated_gyms" /* This should be an autocomplete vs dropdown. Pulled from Backend */
         },
         {
             id: 4,
@@ -56,6 +56,7 @@ export default function CreateTrainer() {
                 />
 
                 <DataInputTable
+                    inputTableHeader="New Trainer Info"
                     config={inputConfig}
                 />
 
