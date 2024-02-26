@@ -40,7 +40,7 @@ export function TypeSelections(
                         <div className="flex flex-1 flex-col p-8 text-center rounded-lg drop-shadow-2xl opacity-75  bg-oxford-blue">
 
                             <Image
-                                src={"/UserCircle1.svg"}
+                                src={element.iconPath}
                                 width={120}
                                 height={120}
                                 alt={""}

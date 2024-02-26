@@ -9,19 +9,19 @@ export default function LocationSize() {
             id: "small",
             name: "Small",
             description: "Membership size between 1-20 clients",
-            iconPath: ""
+            iconPath: "/UserCircle1.svg"
         },
         {
             id: "medium",
             name: "Medium",
             description: "Membership size between 21-60 clients",
-            iconPath: ""
+            iconPath: "/UserCircle1.svg"
         },
         {
             id: "large",
             name: "Large",
             description: "Membership size between 61-100+ clients",
-            iconPath: ""
+            iconPath: "/UserCircle1.svg"
         }
     ]
 
