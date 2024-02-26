@@ -40,14 +40,14 @@ export function DataInputTable(
 
     return (
         <>
-            <div className={`${rubik.className} w-[500px] col-span-1 rounded-lg bg-card-blue-500 text-white opacity-70 drop-shadow-xl opacity-75`}>
-                <div className="border-5 border-white-500 border-solid">{inputTableHeader}</div>
+            <div className={`${rubik.className} w-[500px] col-span-1 rounded-lg bg-card-blue-500 text-white drop-shadow-xl opacity-75`}>
+                <div className="border-b-5 border-white-500 border-solid">{inputTableHeader}</div>
 
                 {
                     config.map((element) => (
 
 
-                        <div key={element.id}>
+                        <div key={element.id} className="p-2">
 
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                                 {element.label}
@@ -62,8 +62,6 @@ export function DataInputTable(
                                 />
                             </div>
                         </div>
-
-
 
                     ))
                 }
