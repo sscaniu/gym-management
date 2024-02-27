@@ -7,11 +7,15 @@ import { rubik } from "./font";
 export default function InputNavHeader(
     {
         name,
-        description
+        description,
+        buttonLeftLabel,
+        buttonRightLabel
         /*todo: add onclick*/
     }: {
         name: string,
-        description: string
+        description: string,
+        buttonLeftLabel: string,
+        buttonRightLabel: string
     }
 
 ) {
@@ -25,12 +29,12 @@ export default function InputNavHeader(
 
                 <div className="flex justify-end">
                     <Button
-                        text={"Previous"}
+                        text={buttonLeftLabel}
                         style={ButtonStyles.Primary}
                         addCSS={"w-[100px] mr-5"}
                     />
                     <Button
-                        text={"Next"}
+                        text={buttonRightLabel}
                         style={ButtonStyles.Primary}
                         addCSS={"w-[100px]"}
                     />

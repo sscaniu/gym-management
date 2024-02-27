@@ -34,6 +34,8 @@ export function TypeSelections(
             <InputNavHeader
                 name={pageHeader}
                 description={pageDescription}
+                buttonLeftLabel="Previous"
+                buttonRightLabel="Next"
             />
 
             <div className="grid grid-flow-col  justify-items-center gap-4 auto-cols-min">

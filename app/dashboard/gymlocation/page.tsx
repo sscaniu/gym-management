@@ -53,6 +53,8 @@ export default function GymLocation() {
                 <InputNavHeader
                     name={"Gym Location"}
                     description={"Complete the fields below to add your gym profile"}
+                    buttonLeftLabel="Previous"
+                    buttonRightLabel="Next"
                 />
 
                 <DataInputTable

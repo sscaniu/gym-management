@@ -53,6 +53,8 @@ export default function CreateTrainer() {
                 <InputNavHeader
                     name={"Create Trainer Account"}
                     description={"Complete the fields below to add your trainer's profile"}
+                    buttonLeftLabel="Previous"
+                    buttonRightLabel="Next"
                 />
 
                 <DataInputTable
