@@ -26,6 +26,20 @@ export default function GymLocation() {
             placeholder: "",
             type: InputType.Text,
             name: "street_adddress"
+        },
+        {
+            id: 4,
+            label: "CITY",
+            placeholder: "",
+            type: InputType.Text,
+            name: "city"
+        },
+        {
+            id: 5,
+            label: "ZIP",
+            placeholder: "",
+            type: InputType.Text,
+            name: "zip"
         }
     ] as FieldConfig[]
 
