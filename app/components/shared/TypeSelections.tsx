@@ -2,6 +2,9 @@
 
 "use client"
 import Image from "next/image"
+import { rubik } from "./font"
+import InputNavHeader from "./InputNavHeader"
+
 
 
 
@@ -27,40 +30,44 @@ export function TypeSelections(
 
 
     return (
+        <div className="mx-[56px] my-10 ">
+            <InputNavHeader
+                name={pageHeader}
+                description={pageDescription}
+            />
+
+            <div className="grid grid-flow-col  justify-items-center gap-4 auto-cols-min">
 
 
-        <div className="grid grid-flow-col mx-[56px] my-10 justify-items-center gap-4 auto-cols-min">
+                {
+                    config.map((element) => (
 
 
-            {
-                config.map((element) => (
+                        <div key={element.id} className="w-[266px] h-[304px]">
+                            <div className="flex flex-1 flex-col p-8 text-center rounded-lg drop-shadow-2xl opacity-75  bg-oxford-blue">
+
+                                <Image
+                                    src={element.iconPath}
+                                    width={120}
+                                    height={120}
+                                    alt={""}
+                                    className={"mx-auto flex-shrik-0 rounded-full"}
+                                />
+                                <h3 className="mt-6 text-sm font-medium text-white">{element.name}</h3>
+                                <dl className="mt-1 flex flex-grow flex-col justify-between">
+
+                                    <dd className="text-sm text-white">{element.description}</dd>
 
 
-                    <div key={element.id} className="w-[266px] h-[304px]">
-                        <div className="flex flex-1 flex-col p-8 text-center rounded-lg drop-shadow-2xl opacity-75  bg-oxford-blue">
-
-                            <Image
-                                src={element.iconPath}
-                                width={120}
-                                height={120}
-                                alt={""}
-                                className={"mx-auto flex-shrik-0 rounded-full"}
-                            />
-                            <h3 className="mt-6 text-sm font-medium text-white">{element.name}</h3>
-                            <dl className="mt-1 flex flex-grow flex-col justify-between">
-
-                                <dd className="text-sm text-white">{element.description}</dd>
-
-
-                            </dl>
+                                </dl>
+                            </div>
                         </div>
-                    </div>
-
-                ))
-            }
 
 
+                    ))
+                }
 
+            </div>
         </div>
     )
 
