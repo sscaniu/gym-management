@@ -15,9 +15,9 @@ const config: Config = {
         'oxford-blue': '#1A2239',
         'bright-pink-crayola': '#FA5E83',
         'card-blue-500': '#1A2239',
-        'button-1': '#FFCDB2',
+        'button-1': '#1A2239',
         'button-1-hover': '#FFFFFF',
-        'button-1-bg': '#0F142452'
+        'button-1-bg': '#FFCDB2'
       },
       fontFamily: { rubik: "Rubik", jost: "Jost" },
       backgroundImage: {

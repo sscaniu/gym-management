@@ -30,7 +30,9 @@ export default function LocationSize() {
             <TypeSelections
                 pageHeader={"Location Size"}
                 pageDescription={"Which of the following choices best describes your gym's membership size?"}
-                config={defaultConfig} />
+                config={defaultConfig}
+                leftHref="./gymspecialty"
+                rightHref="./profilereview" />
         </article>
     );
 

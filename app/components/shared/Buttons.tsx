@@ -1,12 +1,7 @@
 "use client";
 
-import React, { ReactNode } from "react";
-
-export enum ButtonTypes {
-  Button = "button",
-  Submit = "submit",
-  React = "reset",
-}
+import Link from "next/link";
+import { rubik } from "./font";
 
 export enum ButtonStyles {
   Primary = "primary",
@@ -14,41 +9,32 @@ export enum ButtonStyles {
 }
 
 export function Button({
-  type,
-  onClick,
-  disabled,
   text,
-  icon,
+  href,
   style,
-  addCSS
+  addCSS,
+  width
 }: {
-  type?: ButtonTypes;
-  onClick?: React.FC;
-  disabled?: boolean;
-  text: string;
-  icon?: React.ReactNode;
-  style?: ButtonStyles;
-  addCSS?: string
+  text: string,
+  href?: string,
+  style: ButtonStyles,
+  addCSS?: string,
+  width: string
+
 }) {
-  console.log(style);
+
   return (
-    <button
-      type={type || "button"}
-      onClick={onClick}
-      disabled={disabled || false}
-      className={`${icon ? "inline-flex items-center gap-x-2" : ""
-        } rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-      ${style == ButtonStyles.Primary
-          ? `text-white bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600 ${addCSS}`
-          : ""
-        }
-      ${style == ButtonStyles.Secondary
-          ? "ring-1 ring-inset ring-gray-300 hover:bg-gray-50 text-gray-900 bg-white"
-          : ""
-        }
-      `}
-    >
-      {text}
-    </button>
+
+    <Link
+      key={text}
+      href={href == undefined ? "" : href}
+      className={`flex ${width} text-button-1 h-[48px] grow items-center justify-center gap-2 rounded-md bg-button-1-bg p-3 text-sm font-medium hover:opacity-100 md:flex-none md:justify-start md:p-2 md:px-3 opacity-50 ${addCSS == undefined ? "" : addCSS}`}>
+
+      <p className={`${rubik.className} hidden md:block flex-1 text-center`}>{text}</p>
+    </Link>
+
+
+
+
   );
 }

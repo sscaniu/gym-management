@@ -55,6 +55,9 @@ export default function GymLocation() {
                     description={"Complete the fields below to add your gym profile"}
                     buttonLeftLabel="Previous"
                     buttonRightLabel="Next"
+                    hrefLeft="/dashboard"
+                    hrefRight="./gymspecialty"
+
                 />
 
                 <DataInputTable

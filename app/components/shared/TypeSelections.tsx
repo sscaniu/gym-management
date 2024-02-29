@@ -19,11 +19,15 @@ export function TypeSelections(
     {
         pageHeader,
         pageDescription,
-        config
+        config,
+        leftHref,
+        rightHref
     }: {
         pageHeader: string,
         pageDescription: string,
-        config: TypeSelectionConfig[]
+        config: TypeSelectionConfig[],
+        leftHref?: string,
+        rightHref?: string
     }
 
 ) {
@@ -36,6 +40,9 @@ export function TypeSelections(
                 description={pageDescription}
                 buttonLeftLabel="Previous"
                 buttonRightLabel="Next"
+                hrefLeft={leftHref}
+                hrefRight={rightHref}
+
             />
 
             <div className="grid grid-flow-col  justify-items-center gap-4 auto-cols-min">

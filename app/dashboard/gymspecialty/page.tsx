@@ -36,7 +36,10 @@ export default function GymSpecialty() {
             <TypeSelections
                 pageHeader={"Gym Specialty"}
                 pageDescription={"Which of the following best describes this gym's fitness program?"}
-                config={defaultConfig} />
+                config={defaultConfig}
+                leftHref="./gymlocation"
+                rightHref="./locationsize"
+            />
         </article>
     );
 

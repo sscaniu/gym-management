@@ -23,8 +23,8 @@ const cards = [
       {
         id: 1,
         text: "Add your gym",
-        icon: null,
         style: ButtonStyles.Primary,
+        href: "./dashboard/gymlocation"
       },
     ],
   },
@@ -40,6 +40,7 @@ const cards = [
         icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
+        href: ""
       },
       {
         id: 2,
@@ -47,6 +48,7 @@ const cards = [
         icon: <FaPlus />,
         style: ButtonStyles.Primary,
         disabled: false,
+        href: ""
       },
     ],
   },
@@ -62,6 +64,7 @@ const cards = [
         icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
+        href: ""
       },
     ],
   },
@@ -72,6 +75,7 @@ const cards = [
       '<p class="mb-4">Update your calendar by scheduling appointments, classes, and events<p><ul class="list-disc list-inside"><li>Appointments - individual client sessions</li><li>Classes - sessions for for multiple clients</li><li>Events - holidays, extended hours, parties, etc</li></ul>',
     button: "Add to Calendar",
     icon: <FaPlus />,
+    href: ""
   },
   {
     id: 5,
@@ -80,6 +84,7 @@ const cards = [
       '<p class="mb-4">Check out the following resources to help make your experience with GymBuddies a good one.<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
     button: "Add Your Gym",
     icon: <FaPlus />,
+    href: ""
   },
 ];
 
@@ -121,9 +126,10 @@ export default function Dashboard() {
                     {card.buttons.map((button) => (
                       <div key={button.id}>
                         <Button
-                          icon={button.icon}
                           text={button.text}
                           style={button.style}
+                          href={button.href}
+                          width={"w-[200px]"}
                         />
                       </div>
                     ))}

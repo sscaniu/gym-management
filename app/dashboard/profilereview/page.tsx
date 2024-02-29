@@ -15,7 +15,10 @@ export default function ProfileReview() {
                     name={"Gym Profile Review"}
                     description={"Review the gym profile info below. If this is correct, click \"Finish\""}
                     buttonLeftLabel={"Previous"}
-                    buttonRightLabel={"Finish"} />
+                    buttonRightLabel={"Finish"}
+                    hrefLeft="./locationsize"
+                    hrefRight=""
+                />
 
 
                 <div className="w-[580px] h-[342px] bg-oxford-blue dropshadow-2xl grid grid-cols-1 text-white p-5">

@@ -9,13 +9,16 @@ export default function InputNavHeader(
         name,
         description,
         buttonLeftLabel,
-        buttonRightLabel
-        /*todo: add onclick*/
+        buttonRightLabel,
+        hrefLeft,
+        hrefRight
     }: {
         name: string,
         description: string,
         buttonLeftLabel: string,
-        buttonRightLabel: string
+        buttonRightLabel: string,
+        hrefLeft?: string,
+        hrefRight?: string
     }
 
 ) {
@@ -31,12 +34,15 @@ export default function InputNavHeader(
                     <Button
                         text={buttonLeftLabel}
                         style={ButtonStyles.Primary}
-                        addCSS={"w-[100px] mr-5"}
+                        width={"w-[100px]"}
+                        href={hrefLeft}
+                        addCSS={"mr-5"}
                     />
                     <Button
                         text={buttonRightLabel}
                         style={ButtonStyles.Primary}
-                        addCSS={"w-[100px]"}
+                        width={"w-[100px]"}
+                        href={hrefRight}
                     />
 
                 </div>
