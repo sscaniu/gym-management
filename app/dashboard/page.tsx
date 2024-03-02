@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Button, ButtonStyles } from "../components/shared/Buttons";
 import Image from "next/image";
-import { rubik } from "../components/shared/font";
+import { rubik, jost } from "../components/shared/font";
 
 
 const statuses = {
@@ -22,7 +22,7 @@ const cards = [
     buttons: [
       {
         id: 1,
-        text: "Add your gym",
+        text: "+ Add your gym",
         style: ButtonStyles.Primary,
         href: "./dashboard/gymlocation"
       },
@@ -36,7 +36,7 @@ const cards = [
     buttons: [
       {
         id: 1,
-        text: "Import Clients",
+        text: "Import Trainers",
         icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
@@ -44,7 +44,7 @@ const cards = [
       },
       {
         id: 2,
-        text: "Add Client",
+        text: "+ Add Trainers",
         icon: <FaPlus />,
         style: ButtonStyles.Primary,
         disabled: false,
@@ -59,13 +59,21 @@ const cards = [
       '<p class="mb-4">Update your client roster by adding clients individually, or bulk-importing a CSV document with the following details:<p><ul class="list-disc list-inside"><li>First and Last Name, Billing Address, Email, Phone Number</li><li>Personal Goal (weight loss, marathon training, etc.)</li></ul>',
     buttons: [
       {
+        id: 2,
+        text: "Import Clients",
+        icon: <FaPlus />,
+        style: ButtonStyles.Primary,
+        disabled: false,
+        href: ""
+      },
+      {
         id: 1,
-        text: "Add Clients",
+        text: "+ Add Clients",
         icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
         href: ""
-      },
+      }
     ],
   },
   {
@@ -98,8 +106,8 @@ export default function Dashboard() {
   return (
     <>
 
-      <article className="flex-1 z-10 bg-gradient-to-b from-oxford-blue from-50% to-delft-blue to-50%">
-        <div className="text-2xl font-roboto font-normal text-left text-white mx-[56px] my-5">
+      <article className="flex-1 z-10 bg-delft-blue">
+        <div className={`${rubik.className} text-[40px] font-roboto font-normal text-left text-white mx-[56px] my-5`}>
           Scott&apos;s Dashboard
         </div>
         <ul
@@ -109,14 +117,14 @@ export default function Dashboard() {
           {cards.map((card) => (
             <li
               key={card.id}
-              className={`${rubik.className} col-span-1 divide-y divide-gray-200 rounded-lg bg-card-blue-500 text-white opacity-65 drop-shadow-2xl`}
+              className={`${jost.className} col-span-1 divide-y divide-gray-200 rounded-lg bg-card-blue-500 text-white drop-shadow-2xl opacity-1`}
             >
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-2xl leading-6 border-b border-black-600 pb-5">
+                <h3 className={`${rubik.className} text-[24px] leading-6 border-b border-black-600 pb-5`}>
                   {card.name}
                 </h3>
                 <div
-                  className="mt-7 mb-7 max-w-xl text-sm"
+                  className={`${jost.className} mt-7 mb-7 max-w-xl text-sm`}
                   dangerouslySetInnerHTML={{
                     __html: card.description ? card.description : "",
                   }}
@@ -141,7 +149,7 @@ export default function Dashboard() {
 
         </ul>
 
-      </article>
+      </article >
 
 
 

@@ -33,15 +33,15 @@ export default function InputNavHeader(
                 <div className="flex justify-end">
                     <Button
                         text={buttonLeftLabel}
-                        style={ButtonStyles.Primary}
-                        width={"w-[100px]"}
+                        style={ButtonStyles.Secondary}
+                        width={"w-[200px]"}
                         href={hrefLeft}
                         addCSS={"mr-5"}
                     />
                     <Button
                         text={buttonRightLabel}
                         style={ButtonStyles.Primary}
-                        width={"w-[100px]"}
+                        width={"w-[200px]"}
                         href={hrefRight}
                     />
 

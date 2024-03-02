@@ -17,7 +17,10 @@ const config: Config = {
         'card-blue-500': '#1A2239',
         'button-1': '#1A2239',
         'button-1-hover': '#FFFFFF',
-        'button-1-bg': '#FFCDB2'
+        'button-1-bg': '#FFCDB2',
+        'button-2': "#FFCDB2",
+        'button-2-bg': '#1A2239',
+        'button-2-border': "#FFCDB2"
       },
       fontFamily: { rubik: "Rubik", jost: "Jost" },
       backgroundImage: {
