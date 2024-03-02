@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import { Button, ButtonStyles } from "../components/shared/Buttons";
 import Image from "next/image";
 import { rubik, jost } from "../components/shared/font";
+import Card, { CardConfig } from "../components/shared/Card";
 
 
 const statuses = {
@@ -13,7 +14,7 @@ const statuses = {
   Overdue: "text-red-700 bg-red-50 ring-red-600/10",
 };
 
-const cards = [
+const cards: CardConfig[] = [
   {
     id: 1,
     name: "Step 1: Add Your Gym",
@@ -22,7 +23,7 @@ const cards = [
     buttons: [
       {
         id: 1,
-        text: "+ Add your gym",
+        text: "+ Add Your Gym",
         style: ButtonStyles.Primary,
         href: "./dashboard/gymlocation"
       },
@@ -37,7 +38,6 @@ const cards = [
       {
         id: 1,
         text: "Import Trainers",
-        icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
         href: ""
@@ -45,7 +45,6 @@ const cards = [
       {
         id: 2,
         text: "+ Add Trainers",
-        icon: <FaPlus />,
         style: ButtonStyles.Primary,
         disabled: false,
         href: ""
@@ -61,7 +60,6 @@ const cards = [
       {
         id: 2,
         text: "Import Clients",
-        icon: <FaPlus />,
         style: ButtonStyles.Primary,
         disabled: false,
         href: ""
@@ -69,7 +67,6 @@ const cards = [
       {
         id: 1,
         text: "+ Add Clients",
-        icon: null,
         style: ButtonStyles.Secondary,
         disabled: true,
         href: ""
@@ -81,18 +78,37 @@ const cards = [
     name: "Step 4: Update your calendar",
     description:
       '<p class="mb-4">Update your calendar by scheduling appointments, classes, and events<p><ul class="list-disc list-inside"><li>Appointments - individual client sessions</li><li>Classes - sessions for for multiple clients</li><li>Events - holidays, extended hours, parties, etc</li></ul>',
-    button: "Add to Calendar",
-    icon: <FaPlus />,
-    href: ""
+
+    buttons: [
+      {
+        id: 1,
+        text: "+ Add to Calendar",
+        style: ButtonStyles.Primary,
+        disabled: false,
+        href: ""
+      }
+    ]
   },
   {
     id: 5,
     name: "Resources",
     description:
       '<p class="mb-4">Check out the following resources to help make your experience with GymBuddies a good one.<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
-    button: "Add Your Gym",
-    icon: <FaPlus />,
-    href: ""
+    links: [
+      {
+        text: "Video Tutorial - Getting Started",
+        href: "http://google.com"
+      },
+      {
+        text: "FAQ & Resource Center",
+        href: "http://google.com"
+      },
+      {
+        text: "Contact Customer Support",
+        href: "http://google.com"
+      }
+    ],
+
   },
 ];
 
@@ -110,44 +126,23 @@ export default function Dashboard() {
         <div className={`${rubik.className} text-[40px] font-roboto font-normal text-left text-white mx-[56px] my-5`}>
           Scott&apos;s Dashboard
         </div>
-        <ul
-          role="list"
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 mx-[56px] my-5"
-        >
-          {cards.map((card) => (
-            <li
-              key={card.id}
-              className={`${jost.className} col-span-1 divide-y divide-gray-200 rounded-lg bg-card-blue-500 text-white drop-shadow-2xl opacity-1`}
-            >
-              <div className="px-4 py-5 sm:p-6">
-                <h3 className={`${rubik.className} text-[24px] leading-6 border-b border-black-600 pb-5`}>
-                  {card.name}
-                </h3>
-                <div
-                  className={`${jost.className} mt-7 mb-7 max-w-xl text-sm`}
-                  dangerouslySetInnerHTML={{
-                    __html: card.description ? card.description : "",
-                  }}
-                />
-                {card.buttons && (
-                  <div className="mt-5 flex items-center justify-evenly">
-                    {card.buttons.map((button) => (
-                      <div key={button.id}>
-                        <Button
-                          text={button.text}
-                          style={button.style}
-                          href={button.href}
-                          width={"w-[200px]"}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </li>
-          ))}
 
-        </ul>
+        <div className="grid justify-items-center gap-4 grid-cols-2 mx-[56px] my-5 ">
+
+          {cards.map((card) => (
+
+            <div key={card.id} className="h-full w-full">
+
+              <Card
+                cardConfig={card}
+              />
+
+            </div>
+
+          ))
+          }
+
+        </div>
 
       </article >
 
