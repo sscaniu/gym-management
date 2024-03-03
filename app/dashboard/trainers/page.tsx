@@ -15,31 +15,52 @@ export default function CreateTrainer() {
         },
         {
             id: 2,
-            label: "Trainer Specialty",
-            placeholder: "",
-            type: InputType.Text,
-            name: "trainer_specialty" /* This should be an autocomplete vs dropdown. Front-end JSON */
-        },
-        {
-            id: 3,
             label: "Associated Gyms",
             placeholder: "",
             type: InputType.Text,
             name: "associated_gyms" /* This should be an autocomplete vs dropdown. Pulled from Backend */
         },
         {
-            id: 4,
+            id: 3,
             label: "Email Address",
             placeholder: "",
             type: InputType.Text,
             name: "email_address"
         },
         {
-            id: 5,
+            id: 4,
             label: "Trainer's Phone",
             placeholder: "",
             type: InputType.Text,
             name: "phone_number"
+        },
+        {
+            id: 5,
+            label: "Trainer's Street Address",
+            placeholder: "",
+            type: InputType.Text,
+            name: "street_address"
+        },
+        {
+            id: 6,
+            label: "Trainer's City",
+            placeholder: "",
+            type: InputType.Text,
+            name: "trainer_city"
+        },
+        {
+            id: 7,
+            label: "Trainer's State",
+            placeholder: "",
+            type: InputType.Text,
+            name: "trainer_state"
+        },
+        {
+            id: 8,
+            label: "Trainer's Zipcode",
+            placeholder: "",
+            type: InputType.Text,
+            name: "trainer_zipcode"
         }
     ] as FieldConfig[]
 
@@ -55,6 +76,9 @@ export default function CreateTrainer() {
                     description={"Complete the fields below to add your trainer's profile"}
                     buttonLeftLabel="Previous"
                     buttonRightLabel="Next"
+                    hrefLeft="/dashboard"
+                    hrefRight="./trainerspecialty"
+
                 />
 
                 <DataInputTable
@@ -67,6 +91,5 @@ export default function CreateTrainer() {
         </article>
 
     )
-
 
 }
