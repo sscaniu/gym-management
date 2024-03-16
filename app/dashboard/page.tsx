@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import { Button, ButtonStyles } from "../components/shared/Buttons";
-import Image from "next/image";
-import { rubik, jost } from "../components/shared/font";
+import { ButtonStyles } from "../components/shared/Buttons";
+import { rubik } from "../components/shared/font";
 import Card, { CardConfig } from "../components/shared/Card";
 
 
@@ -69,7 +67,7 @@ const cards: CardConfig[] = [
         text: "+ Add Clients",
         style: ButtonStyles.Secondary,
         disabled: true,
-        href: ""
+        href: "./dashboard/clients"
       }
     ],
   },
