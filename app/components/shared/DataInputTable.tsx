@@ -40,7 +40,7 @@ export function DataInputTable(
 
     return (
         <>
-            <div className={`${rubik.className} w-[500px] col-span-1 rounded-lg bg-card-blue-500 text-white drop-shadow-xl opacity-75`}>
+            <div className={`${rubik.className} w-[500px] col-span-1 rounded-lg bg-card-blue-500 text-white drop-shadow-xl opacity-75 py-5 px-5`}>
                 <div className="border-b-5 border-white-500 border-solid">{inputTableHeader}</div>
 
                 {

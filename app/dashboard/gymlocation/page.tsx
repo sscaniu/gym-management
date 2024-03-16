@@ -46,7 +46,7 @@ export default function GymLocation() {
 
     return (
 
-        <article className="flex-1 z-10 bg-gradient-to-b from-oxford-blue from-50% to-delft-blue to-50%">
+        <article className="flex-1 z-10 bg-delft-blue">
 
             <div className="mx-[56px] my-10">
 

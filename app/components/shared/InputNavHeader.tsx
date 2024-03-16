@@ -27,7 +27,7 @@ export default function InputNavHeader(
     return (
         <>
 
-            <div className={`${rubik.className} text-white grid grid-cols-2 grid-rows-2 bg-card-blue-500`}>
+            <div className={`${rubik.className} text-white grid grid-cols-2 grid-rows-2 bg-delft-blue`}>
                 <div className="text-2xl">{name}</div>
 
                 <div className="flex justify-end">

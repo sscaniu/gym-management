@@ -32,7 +32,7 @@ export default function GymSpecialty() {
     ]
 
     return (
-        <article className="flex-1 z-10 bg-gradient-to-b from-oxford-blue from-50% to-delft-blue to-50%">
+        <article className="flex-1 z-10 bg-gradient-to-b bg-delft-blue">
             <TypeSelections
                 pageHeader={"Gym Specialty"}
                 pageDescription={"Which of the following best describes this gym's fitness program?"}
