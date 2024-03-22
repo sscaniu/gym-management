@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { rubik } from './font';
+import { Button, ButtonStyles } from './Buttons';
+import Image from 'next/image';
 
 interface Person {
     name: string;
@@ -26,8 +28,16 @@ const people = [
         location: 'Kings Gym',
         trainer: 'Jimmy Smitz',
         lastSession: '11-02-2023 11:43 AM'
+    },
+    {
+        name: 'Adam Smith',
+        email: 'a.s@example.com',
+        phone: '555-123-3234',
+        location: 'UES Gym',
+        trainer: 'Jimmy Smitz',
+        lastSession: '1-10-2024 8:00 AM'
     }
-    // More people...
+
 ]
 
 function classNames(...classes: string[]) {
@@ -57,19 +67,32 @@ export default function Table() {
     }
 
     return (
-        <div className="px-4 sm:px-6 lg:px-8 bg-delft-blue py-5">
-            <div className="sm:flex sm:items-center">
-                <div className="sm:flex-auto">
+        <div className="px-4 bg-delft-blue py-5">
+            <div className="flex items-baseline">
+                <div className="flex-auto">
                     <h1 className={`${rubik.className} font-semibold leading-6 text-white text-[40px]/[48px]`}>Clients</h1>
 
                 </div>
-                <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <button
-                        type="button"
-                        className="block rounded-md bg-indigo-600 px-3 py-1.5 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                        Add user
-                    </button>
+                <div className='flex-auto'>
+                    delete
+                </div>
+                <div className='flex-auto'>
+                    Send Message
+                </div>
+                <div className='flex-auto'>
+                    Filter
+                </div>
+                <div className='flex-auto'>
+                    <div className='border-2 w-[223px] h-[48px]'>
+                        <Image src={'/images/icons/SearchGlass.png'} alt={'Search'} width={20} height={20} />
+                    </div>
+
+                </div>
+                <div className="flex-auto">
+                    <div className='flex justify-end'>
+                        <Button text={'+ Add Clients'} style={ButtonStyles.Primary} width={'w-[172px]'}
+                        />
+                    </div>
                 </div>
             </div>
             <div className="mt-8 flow-root">
