@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "../components/shared/footer";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -10,5 +11,10 @@ export default function LoginLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div className={'flex flex-col w-full h-screen'}>
+      {children}
+      <Footer />
+    </div>
+  )
 }
