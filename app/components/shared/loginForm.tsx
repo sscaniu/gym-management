@@ -1,3 +1,7 @@
+/*
+* I actually don't think this needs to be in a component.
+*/
+'use client';
 
 import { jost, rubik } from "./font"
 import { Button, ButtonStyles } from "./Buttons"
@@ -60,7 +64,7 @@ export default function LoginForm() {
 
                             <Button text={"Sign In"} style={ButtonStyles.Secondary} width={"172"} addCSS="mt-[27px]" />
 
-                            <div className="flex items-center justify-center text-white text-sm mt-[27px]">Don't have an account yet?</div>
+                            <div className="flex items-center justify-center text-white text-sm mt-[27px]">Don&apos;t have an account yet?</div>
 
                             <button className={` bg-delft-blue/45 w-11/12 text-white h-14 flex items-center mb-[27px] justify-center rounded font-semibold leading-6`}>
                                 Create an account
@@ -68,9 +72,6 @@ export default function LoginForm() {
 
 
                         </div>
-
-
-
 
 
                     </div>
