@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-db": "node -r dotenv/config ./scripts/schema.js",
+    "seed": "node -r dotenv/config ./scripts/seed.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -16,12 +18,15 @@
     "@types/node": "20.5.3",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "@vercel/postgres": "^0.8.0",
     "autoprefixer": "10.4.15",
+    "bcrypt": "^5.1.1",
     "clsx": "^2.1.0",
+    "dotenv": "^16.4.5",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "next": "^13.5.6",
-    "postcss": "8.4.28",
+    "postcss": "^8.4.38",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
