@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Footer from "../components/shared/footer";
+import Footer from "../shared/footer";
+
 
 export const metadata: Metadata = {
   title: "Login",
