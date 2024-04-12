@@ -1,6 +1,4 @@
-"use client";
 
-import Footer from "../components/shared/footer";
 import LoginForm from "../components/shared/loginForm";
 
 export default function Login() {
