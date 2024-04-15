@@ -17,8 +17,5 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [], // Add providers with an empty array for now
-  /*Move this secret to an environment variable*/
-
-  secret: ["UyU0wJGLjtoROcJ+1HwJ2RXbLT9v0xjjtc5LHmQpl64="]
+  providers: [],
 } satisfies NextAuthConfig;
