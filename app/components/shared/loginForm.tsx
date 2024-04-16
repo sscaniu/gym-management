@@ -14,18 +14,18 @@ export default function LoginForm() {
 
     return (
         <>
-            <div className="flex-1 bg-delft-blue">
+            <div className="flex-1 bg-delft-blue/0">
 
                 <div className="grid w-full h-full justify-items-center">
 
                     <div className={`${rubik.className} mb-[25px] text-white text-xl font-bold`}>Welcome to Gymbuddies</div>
 
 
-                    <div className={`${jost.className} flex flex-col items-center content-center w-[456px] h-[569px] bg-card-blue-500/45`}>
+                    <div className={`${jost.className} flex flex-col items-center content-center w-[456px] h-[569px] bg-card-blue-500/45 drop-shadow-md `}>
 
 
                         {/*Google Login*/}
-                        <button className={` bg-delft-blue/45 w-11/12 my-[27px] text-white h-14 flex items-center justify-center rounded font-semibold leading-6`}>
+                        <button type="button" className={`bg-delft-blue/45 w-11/12 my-[27px] text-white px-3.5 py-2.5 rounded font-semibold leading-6`}>
                             Quick Sign In With Google
                         </button>
 
@@ -68,9 +68,7 @@ export default function LoginForm() {
                                 <div className="mt-[27px] text-white underline"><a href="">Forgot your password</a></div>
 
 
-
-                                {/* <Button text={"Sign In"} style={ButtonStyles.Secondary} width={"172"} addCSS="mt-[27px]" /> */}
-                                <button type="submit" className="mt-[27px] h-[48px] gap-2 rounded-md p-3 text-sm font-medium hover:opacity-100 md:flex-none md:justify-start md:p-2 md:px-3 opacity-50 text-button-1 bg-button-1-bg">Submit</button>
+                                <button type="submit" className="mt-[27px] h-[48px] 2-[172px] gap-2 rounded-md p-3 text-sm font-medium hover:opacity-100 md:flex-none md:justify-start md:p-2 md:px-3 opacity-50 text-button-1 bg-button-1-bg">Submit</button>
 
                                 <div
                                     className="flex h-8 items-end space-x-1"
@@ -88,9 +86,9 @@ export default function LoginForm() {
                             </form>
                         </div>
 
-                        <div className="flex items-center justify-center text-white text-sm mt-[27px]">Don&apos;t have an account yet?</div>
+                        <div className="flex items-center justify-center text-white text-sm mb-[5px]">Don&apos;t have an account yet?</div>
 
-                        <button className={` bg-delft-blue/45 w-11/12 text-white h-14 flex items-center mb-[27px] justify-center rounded font-semibold leading-6`}>
+                        <button className={` bg-delft-blue/45 w-11/12 text-white px-3.5 py-2.5 mb-[27px] rounded font-semibold leading-6`}>
                             Create an account
                         </button>
 

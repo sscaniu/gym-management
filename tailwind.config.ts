@@ -25,7 +25,7 @@ const config: Config = {
       fontFamily: { rubik: "Rubik", jost: "Jost" },
       backgroundImage: {
         rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",
-        vectorcurve: 'url("/Vector2.svg")',
+        vectorcurve: 'url("/images/swoosh/swoosh_1282_473.svg")',
       },
     },
   },
