@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "create-db": "node -r dotenv/config ./scripts/schema.js",
-    "seed": "node -r dotenv/config ./scripts/seed.js"
+    "seed": "node -r dotenv/config ./scripts/seed.js",
+    "prisma": "npx prisma generate && npx prisma migrate deploy"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^5.13.0",
     "@tailwindcss/forms": "^0.5.5",
     "@types/dompurify": "^3.0.2",
     "@types/node": "20.5.3",
@@ -20,7 +21,9 @@
     "@types/react-dom": "^18.2.24",
     "@vercel/postgres": "^0.8.0",
     "autoprefixer": "10.4.15",
+    "bcrypt": "^5.1.1",
     "bcrypt-ts": "^5.0.2",
+    "brcypt": "^1.0.1",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
     "eslint": "8.47.0",
@@ -30,6 +33,7 @@
     "node-gyp": "^10.1.0",
     "nodemailer": "^6.9.13",
     "postcss": "^8.4.38",
+    "prisma": "^5.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
