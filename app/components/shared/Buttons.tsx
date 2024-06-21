@@ -1,52 +1,59 @@
 "use client";
 
-import React, { ReactNode } from "react";
-
-export enum ButtonTypes {
-  Button = "button",
-  Submit = "submit",
-  React = "reset",
-}
+import Link from "next/link";
+import { rubik } from "./font";
+import clsx from 'clsx';
 
 export enum ButtonStyles {
   Primary = "primary",
-  Secondary = "secondary",
+  Secondary = "secondary"
 }
 
 export function Button({
-  type,
-  onClick,
-  disabled,
   text,
-  icon,
+  href,
   style,
+  addCSS,
+  width
 }: {
-  type?: ButtonTypes;
-  onClick?: React.FC;
-  disabled?: boolean;
-  text: string;
-  icon?: React.ReactNode;
-  style?: ButtonStyles;
+  text: string,
+  href?: string,
+  style: ButtonStyles,
+  addCSS?: string,
+  width: string
+
 }) {
-  console.log(style);
+
+  const calcCSS = addCSS == undefined ? "" : addCSS;
+
   return (
-    <button
-      type={type || "button"}
-      onClick={onClick}
-      disabled={disabled || false}
-      className={`${icon ? "inline-flex items-center gap-x-2" : ""
-        } rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-      ${style == ButtonStyles.Primary
-          ? "text-white bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600"
-          : ""
-        }
-      ${style == ButtonStyles.Secondary
-          ? "ring-1 ring-inset ring-gray-300 hover:bg-gray-50 text-gray-900 bg-white"
-          : ""
-        }
-      `}
-    >
-      {text}
-    </button>
+
+    <Link
+      key={text}
+      href={href == undefined ? "" : href}
+
+      className={
+        clsx(
+          `flex  ',
+        'h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:opacity-100 md:flex-none md:justify-start md:p-2 md:px-3 opacity-50`,
+          {
+            [rubik.className]: true,
+            [width]: true,
+            [calcCSS]: true,
+            'text-button-1': style === ButtonStyles.Primary,
+            'bg-button-1-bg': style === ButtonStyles.Primary,
+            'text-button-2': style === ButtonStyles.Secondary,
+            'bg-button-2-bg border-solid border-button-2-border border-2': style === ButtonStyles.Secondary
+
+          }
+
+        )}>
+
+      <p className={`${rubik.className} text-[16px] hidden md:block flex-1 text-center`}>{text}</p>
+    </Link>
+
+
+
+
   );
 }

@@ -1,10 +1,8 @@
 "use client";
 
-import { jost, rubik } from "../components/shared/font";
-import Footer from "../components/shared/footer";
-import LoginForm from "../components/shared/loginForm";
+import { jost, rubik } from "../shared/font";
 
-export default function Register() {
+export default function RegistrationConfirm() {
   return (
     <article className="flex-1 z-10 bg-delft-blue">
 

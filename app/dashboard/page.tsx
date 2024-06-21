@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import { Button, ButtonStyles } from "../components/shared/Buttons";
-import Image from "next/image";
-import Article from "../components/shared/Article";
+import { ButtonStyles } from "../components/shared/Buttons";
+import { rubik } from "../components/shared/font";
+import Card, { CardConfig } from "../components/shared/Card";
+
 
 const statuses = {
   Paid: "text-green-700 bg-green-50 ring-green-600/20",
@@ -12,7 +12,7 @@ const statuses = {
   Overdue: "text-red-700 bg-red-50 ring-red-600/10",
 };
 
-const cards = [
+const cards: CardConfig[] = [
   {
     id: 1,
     name: "Step 1: Add Your Gym",
@@ -21,9 +21,9 @@ const cards = [
     buttons: [
       {
         id: 1,
-        text: "Add your gym",
-        icon: null,
+        text: "+ Add Your Gym",
         style: ButtonStyles.Primary,
+        href: "./dashboard/gymlocation"
       },
     ],
   },
@@ -35,17 +35,17 @@ const cards = [
     buttons: [
       {
         id: 1,
-        text: "Import Clients",
-        icon: null,
+        text: "Import Trainers",
         style: ButtonStyles.Secondary,
         disabled: true,
+        href: ""
       },
       {
         id: 2,
-        text: "Add Client",
-        icon: <FaPlus />,
+        text: "+ Add Trainers",
         style: ButtonStyles.Primary,
         disabled: false,
+        href: "./dashboard/trainers"
       },
     ],
   },
@@ -56,12 +56,19 @@ const cards = [
       '<p class="mb-4">Update your client roster by adding clients individually, or bulk-importing a CSV document with the following details:<p><ul class="list-disc list-inside"><li>First and Last Name, Billing Address, Email, Phone Number</li><li>Personal Goal (weight loss, marathon training, etc.)</li></ul>',
     buttons: [
       {
+        id: 2,
+        text: "Import Clients",
+        style: ButtonStyles.Primary,
+        disabled: false,
+        href: ""
+      },
+      {
         id: 1,
-        text: "Add Clients",
-        icon: null,
+        text: "+ Add Clients",
         style: ButtonStyles.Secondary,
         disabled: true,
-      },
+        href: "./dashboard/clients"
+      }
     ],
   },
   {
@@ -69,16 +76,37 @@ const cards = [
     name: "Step 4: Update your calendar",
     description:
       '<p class="mb-4">Update your calendar by scheduling appointments, classes, and events<p><ul class="list-disc list-inside"><li>Appointments - individual client sessions</li><li>Classes - sessions for for multiple clients</li><li>Events - holidays, extended hours, parties, etc</li></ul>',
-    button: "Add to Calendar",
-    icon: <FaPlus />,
+
+    buttons: [
+      {
+        id: 1,
+        text: "+ Add to Calendar",
+        style: ButtonStyles.Primary,
+        disabled: false,
+        href: ""
+      }
+    ]
   },
   {
     id: 5,
     name: "Resources",
     description:
       '<p class="mb-4">Check out the following resources to help make your experience with GymBuddies a good one.<p><ul class="list-disc list-inside"><li>Gym Name, Address, Contact Info</li><li>Trainer Roster (optional)</li><li>Client Roster (optional)</li></ul>',
-    button: "Add Your Gym",
-    icon: <FaPlus />,
+    links: [
+      {
+        text: "Video Tutorial - Getting Started",
+        href: "http://google.com"
+      },
+      {
+        text: "FAQ & Resource Center",
+        href: "http://google.com"
+      },
+      {
+        text: "Contact Customer Support",
+        href: "http://google.com"
+      }
+    ],
+
   },
 ];
 
@@ -91,19 +119,35 @@ export default function Dashboard() {
 
   return (
     <>
-      {/*Authentication check with cause a switch of presentation*/}
-      <Article
-        title={"Gym"}
-        topDiv={
-          < div className="relative flex-1 bg-delft-blue h-1/2" >
-            <Image
-              src="/vector2.svg"
-              fill={true}
-              alt=""
-            />
-          </div >
-        }
-      />
+
+      <article className="flex-1 z-10 bg-delft-blue">
+        <div className={`${rubik.className} text-[40px] font-roboto font-normal text-left text-white mx-[56px] my-5`}>
+          Scott&apos;s Dashboard
+        </div>
+
+        <div className="grid justify-items-center gap-4 grid-cols-2 mx-[56px] my-5 ">
+
+          {cards.map((card) => (
+
+            <div key={card.id} className="h-full w-full">
+
+              <Card
+                cardConfig={card}
+              />
+
+            </div>
+
+          ))
+          }
+
+        </div>
+
+      </article >
+
+
+
+
+
     </>
   );
 }
