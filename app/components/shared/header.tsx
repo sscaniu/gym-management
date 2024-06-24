@@ -11,7 +11,7 @@ import { rubik } from "./font";
 const navigation = [
   { name: "Gym", href: "/login" },
   { name: "Trainers", href: "/dashboard/messages" },
-  { name: "Clients", href: "/dashboard/messages" },
+  { name: "Clients", href: "/dashboard/clients" },
   { name: "Classes", href: "/dashboard/messages" },
   { name: "Billing", href: "/dashboard/clients" },
   { name: "Admin", href: "/dashboard/messages" },

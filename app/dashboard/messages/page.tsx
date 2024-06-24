@@ -4,6 +4,7 @@ import { sendMessage } from "@/app/lib/actions";
 import Image from 'next/image';
 import { useState } from 'react';
 import { ChatMessage, Message, ChatStyle } from '@/app/components/shared/ChatMessage'
+import { useSearchParams } from "next/navigation";
 
 interface Tab {
   name: string,
@@ -28,6 +29,8 @@ function classNames(...classes: string[]) {
 export default function Messages() {
   //State for messages
   const [messages, setMessages] = useState<Message[]>([]);
+  //Search params
+  const searchParams = useSearchParams()
 
   //Wrapper that calls the sendMessage function and then updates the state of the UI
   async function sendWithUpdate(formData: FormData) {
@@ -55,7 +58,7 @@ export default function Messages() {
       <div className="bg-oxford-blue">
         <div className="mx-[56px] mt-5 ">
           <div className={`${rubik.className} text-white `}>
-            <div className="text-[48px] font-bold">Alexander Wittenhaus</div>
+            <div className="text-[48px] font-bold">{searchParams.get('name')}</div>
             <div className="text-base">Member Since: 19 February 2023</div>
             <div className="text-base">Customer Value: $12,674</div>
           </div>
@@ -165,7 +168,8 @@ export default function Messages() {
                 type="text"
                 name="to"
                 placeholder="+1123456789"
-                className="bg-black  focus:outline-none text-white"
+                className="hidden bg-black  focus:outline-none text-white"
+                value={searchParams.get('phone')!}
               />
             </div>
 
