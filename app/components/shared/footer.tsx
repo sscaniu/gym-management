@@ -1,17 +1,10 @@
-import { jost } from "./font";
-
 export default function Footer() {
   return (
-    <footer className={`${jost.className} flex z-50 h-24 text-xs font-medium leading-[relaxed] tracking-[0px] text-white`} >
-      <div className="flex h-24 flex-grow flex-col items-center justify-between self-stretch bg-slate-900 px-6 pb-8 pt-6" >
-        <div className="flex items-center">
-          <span className="text-center">
-            {"©2021 GymBuddies, LLC. | All Rights Reserved. | Privacy Policy"}
-            <br />
-            {'Version 2024.1'}
-          </span>
-        </div>
-      </div>
+    <footer className="flex flex-col gap-[5px] items-center font-jost font-medium text-xs bg-black pt-6 px-14 pb-[30px]">
+      <span className="text-center">
+        ©2024 GymBuddies, LLC. | All Rights Reserved. | Privacy Policy
+      </span>
+      <span>Version 2022.1</span>
     </footer>
   );
 }

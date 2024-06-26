@@ -9,6 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#42BFDD",
+        success: "#B1FECB",
+        danger: "#FA5E83",
+        warning: "#FFCDB2",
+        black: "#1A2239",
+        white: "#FFFFFF",
+        dark: "#434D6C",
+        grey: "#363E57",
+        
+
+        // old
         'aero': '#42BFDD',
         'apricot': '#FFCDB2',
         'delft-blue': '#363E57',
@@ -22,7 +33,10 @@ const config: Config = {
         'button-2-bg': '#1A2239',
         'button-2-border': "#FFCDB2"
       },
-      fontFamily: { rubik: "Rubik", jost: "Jost" },
+      fontFamily: {
+        rubik: "Rubik",
+        jost: "Jost",
+      },
       backgroundImage: {
         rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",
         vectorcurve: 'url("/images/swoosh/swoosh_1282_473.svg")',
