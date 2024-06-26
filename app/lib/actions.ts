@@ -32,6 +32,10 @@ export async function register(
   prevState: string | undefined,
   formData: FormData
 ) {
+  const email = formData.get("email");
+  if (email === "user@nextmail.com") {
+    return "error";
+  }
   return "success";
 }
 
