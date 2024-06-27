@@ -15,6 +15,7 @@ interface TextFieldProps {
   fullWidth?: boolean;
   startAdornment?: string | React.ReactNode;
   endAdornment?: string | React.ReactNode;
+  error?: boolean;
 }
 
 const TextField: FC<TextFieldProps> = ({
@@ -31,6 +32,7 @@ const TextField: FC<TextFieldProps> = ({
   fullWidth = false,
   startAdornment,
   endAdornment,
+  error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const sizeStyles = {
@@ -41,11 +43,20 @@ const TextField: FC<TextFieldProps> = ({
   return (
     <div className="w-full grid gap-2">
       {label && (
-        <label htmlFor={id} className="font-jost font-semibold text-xs uppercase">
+        <label
+          htmlFor={id}
+          className={`font-jost font-semibold text-xs uppercase ${
+            error ? `text-danger` : `text-white`
+          }`}
+        >
           {label}
         </label>
       )}
-      <div className="flex border-2 border-white rounded-sm shadow">
+      <div
+        className={`flex border-2 ${
+          error ? `border-danger` : `border-white`
+        } rounded-sm shadow`}
+      >
         {startAdornment && (
           <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">
             {startAdornment}
@@ -60,9 +71,11 @@ const TextField: FC<TextFieldProps> = ({
           onChange={onChange}
           className={`${fullWidth ? `w-full` : ``} ${
             sizeStyles[size]
-          } font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${className} ${
-            startAdornment ? `pl-0` : `pl-[22px]`
-          } ${endAdornment ? `pr-0` : `pr-[22px]`}`}
+          } font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
+            error ? `text-danger` : `text-white`
+          } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
+            endAdornment ? `pr-0` : `pr-[22px]`
+          }`}
           placeholder={placeholder}
           required={required}
         />
