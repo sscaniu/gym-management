@@ -10,25 +10,25 @@ const GymSpecialty = () => {
       id: "fitness",
       name: "General Fitness",
       description: "Traditional gym with weights, and exercise machines.",
-      iconPath: "/fitness.png",
+      iconPath: "/images/dashboard/fitness.png",
     },
     {
       id: "crossfit",
       name: "Crossfit",
       description: "High intensity workouts like, HIIT, tabata, and boxing. ",
-      iconPath: "/crossfit.png",
+      iconPath: "/images/dashboard/crossfit.png",
     },
     {
       id: "yoga",
       name: "Yoga",
       description: "Exercises that balance the mind and body. ",
-      iconPath: "/yoga.png",
+      iconPath: "/images/dashboard/yoga.png",
     },
     {
       id: "other",
       name: "Other",
       description: "Your gym provides another kind of fitness program.",
-      iconPath: "/other.png",
+      iconPath: "/images/dashboard/other.png",
     },
   ];
 

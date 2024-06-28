@@ -11,28 +11,28 @@ const StaffSize = () => {
       name: "Just me",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.",
-      iconPath: "/circle.png",
+      iconPath: "/images/dashboard/circle.png",
     },
     {
       id: 2,
       name: "Up to 5 trainers",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.",
-      iconPath: "/circle.png",
+      iconPath: "/images/dashboard/circle.png",
     },
     {
       id: 3,
       name: "6 to 12 trainers",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.",
-      iconPath: "/circle.png",
+      iconPath: "/images/dashboard/circle.png",
     },
     {
       id: 4,
       name: "Custom",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.",
-      iconPath: "/circle.png",
+      iconPath: "/images/dashboard/circle.png",
     },
   ];
 

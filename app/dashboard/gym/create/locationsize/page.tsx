@@ -10,19 +10,19 @@ const LocationSize = () => {
       id: "small",
       name: "Small",
       description: "Membership size between 1-20 clients",
-      iconPath: "/small.png",
+      iconPath: "/images/dashboard/small.png",
     },
     {
       id: "medium",
       name: "Medium",
       description: "Membership size between 21-60 clients",
-      iconPath: "/medium.png",
+      iconPath: "/images/dashboard/medium.png",
     },
     {
       id: "large",
       name: "Large",
       description: "Membership size between 61-100+ clients",
-      iconPath: "/large.png",
+      iconPath: "/images/dashboard/large.png",
     },
   ];
 

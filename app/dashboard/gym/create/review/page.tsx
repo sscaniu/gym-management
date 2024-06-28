@@ -19,7 +19,7 @@ const ProfileReview = () => {
           <h2 className="font-rubik font-bold text-2xl">Gym Profile Info</h2>
           <Link href="./address">
             <Image
-              src="/pen.png"
+              src="/images/dashboard/pen.png"
               width={16}
               height={16}
               alt=""
