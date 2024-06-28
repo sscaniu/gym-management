@@ -1,5 +1,5 @@
 "use client";
-import InputNavHeader from "@/app/components/shared/InputNavHeader"
+import WizardHeader from "@/app/components/shared/WizardHeader"
 import { rubik } from "@/app/components/shared/font";
 
 export default function ProfileReview() {
@@ -11,7 +11,7 @@ export default function ProfileReview() {
 
             <div className="mx-[56px] my-10 opacity-75">
 
-                <InputNavHeader
+                <WizardHeader
                     name={"Trainer Profile Review"}
                     description={"Review the Trainer profile info below. If this is correct, click \"Finish\""}
                     buttonLeftLabel={"Previous"}

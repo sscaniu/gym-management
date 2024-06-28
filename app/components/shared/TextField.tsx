@@ -53,7 +53,7 @@ const TextField: FC<TextFieldProps> = ({
         </label>
       )}
       <div
-        className={`flex border-2 ${
+        className={`${sizeStyles[size]} flex border-2 ${
           error ? `border-danger` : `border-white`
         } rounded-sm shadow`}
       >
@@ -69,9 +69,9 @@ const TextField: FC<TextFieldProps> = ({
           autoComplete={name}
           value={value}
           onChange={onChange}
-          className={`${fullWidth ? `w-full` : ``} ${
-            sizeStyles[size]
-          } font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
+          className={`${
+            fullWidth ? `w-full` : ``
+          } h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
             error ? `text-danger` : `text-white`
           } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
             endAdornment ? `pr-0` : `pr-[22px]`

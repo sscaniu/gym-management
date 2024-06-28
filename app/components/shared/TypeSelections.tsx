@@ -3,7 +3,7 @@
 "use client"
 import Image from "next/image"
 import { rubik } from "./font"
-import InputNavHeader from "./InputNavHeader"
+import WizardHeader from "./WizardHeader"
 
 
 
@@ -35,7 +35,7 @@ export function TypeSelections(
 
     return (
         <div className="mx-[56px] my-10 ">
-            <InputNavHeader
+            <WizardHeader
                 name={pageHeader}
                 description={pageDescription}
                 buttonLeftLabel="Previous"

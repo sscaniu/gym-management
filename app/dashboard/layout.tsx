@@ -15,9 +15,11 @@ export default function DashboardLayout({
   return (
     <>
       {/*Main Container Grid*/}
-      <div className={'flex flex-col w-full h-screen'}>
+      <div className={"flex flex-col w-full h-screen"}>
         <Header />
-        {children}
+        <div className="flex-1 bg-grey text-white">
+          <div className="w-full max-w-7xl mx-auto pt-8 pb-7 px-16">{children}</div>
+        </div>
         <Footer />
       </div>
     </>
