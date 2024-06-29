@@ -31,11 +31,11 @@ const Button: FC<ButtonProps> = ({
   const router = useRouter();
   const variantStyles = {
     filled: {
-      primary: "bg-primary text-white",
-      danger: "bg-danger text-white",
-      warning: "bg-warning text-white",
-      success: "bg-success text-white",
-      dark: "bg-dark text-white",
+      primary: "bg-primary text-dark",
+      danger: "bg-danger text-dark",
+      warning: "bg-warning text-dark",
+      success: "bg-success text-dark",
+      dark: "bg-dark text-dark",
     },
     outlined: {
       primary:
@@ -74,7 +74,7 @@ const Button: FC<ButtonProps> = ({
       onClick={handleClick}
       className={`${
         fullWidth ? `w-full` : ``
-      } font-jost font-semibold text-base px-4 transition ${className} ${
+      } font-jost font-semibold text-base px-4 transition disabled:opacity-50 ${className} ${
         variantStyles[variant][color]
       } ${sizeStyles[size]} ${roundedStyle[variant]}`}
       disabled={disabled || loading}

@@ -23,7 +23,7 @@ const cards: CardConfig[] = [
         id: 1,
         text: "+ Add Your Gym",
         style: ButtonStyles.Primary,
-        href: "./dashboard/gymlocation"
+        href: "./dashboard/gym/create/address"
       },
     ],
   },

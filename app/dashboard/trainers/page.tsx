@@ -1,6 +1,6 @@
 /*Interface to add a new Trainers to an account*/
 "use client";
-import InputNavHeader from "@/app/components/shared/InputNavHeader"
+import WizardHeader from "@/app/components/shared/WizardHeader"
 import { DataInputTable, FieldConfig, InputType } from "@/app/components/shared/DataInputTable"
 
 export default function CreateTrainer() {
@@ -71,7 +71,7 @@ export default function CreateTrainer() {
 
             <div className="mx-[56px] my-10">
 
-                <InputNavHeader
+                <WizardHeader
                     name={"Create Trainer Account"}
                     description={"Complete the fields below to add your trainer's profile"}
                     buttonLeftLabel="Previous"
