@@ -21,7 +21,7 @@ const CardSelect: FC<Props> = ({ active, options, onSelect, multiple = false }) 
   };
 
   return (
-    <div className="flex items-stretch gap-12 auto-cols-min">
+    <div className="grid grid-cols-4 items-stretch gap-12 auto-cols-min">
       {options.map((option) => (
         <div key={option.id} className="max-w-[292px] w-full min-h-[371px]">
           <div
