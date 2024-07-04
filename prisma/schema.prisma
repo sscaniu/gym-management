@@ -89,12 +89,12 @@ model Clients {
   first_name String
   last_name String
   street_1 String
-  street_2 String
+  street_2 String?
   city String
   state String
   zip String
   phone1 String
-  phone2 String
+  phone2 String?
   contact_preference String
   created_at DateTime @default(now())
   updated_at DateTime?
