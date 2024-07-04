@@ -1,9 +1,12 @@
 "use client";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import WizardHeader from "@/app/components/shared/WizardHeader";
 import Link from "next/link";
 
 const ProfileReview = () => {
+  const gym = useSelector((state: any) => state.gym);
+
   return (
     <div className="grid gap-10">
       <WizardHeader
@@ -30,23 +33,25 @@ const ProfileReview = () => {
         <div className="grid gap-4 font-jost text-base pt-8">
           <p>
             <span className="font-bold">Gym Name: </span>
-            <span>Brooklyn Body Works</span>
+            <span>{gym.name}</span>
           </p>
           <p>
             <span className="font-bold">Gym phone: </span>
-            <span>718-223-4582</span>
+            <span>{gym.phone}</span>
           </p>
           <p>
             <span className="font-bold">Address: </span>
-            <span>123 Main Street, Apt.3, Brooklyn, New York, 11217</span>
+            <span>{gym.address}</span>
           </p>
           <p>
             <span className="font-bold">Location Size: </span>
-            <span>Medium</span>
+            <span>{gym.locationSize?.name}</span>
           </p>
           <p>
             <span className="font-bold">Gym Specialties: </span>
-            <span>Crossfit</span>
+            <span>
+              {gym.specialty?.map((item: any) => item.name).join(", ")}
+            </span>
           </p>
         </div>
       </div>

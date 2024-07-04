@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { change } from "@/app/store/features/gym/gymSlice";
+import { change } from "@/app/store/features/trainer/trainerSlice";
 import CardSelect, { OptionConfig } from "@/app/components/shared/CardSelect";
 import WizardHeader from "@/app/components/shared/WizardHeader";
 
@@ -25,16 +25,30 @@ const options: OptionConfig[] = [
     iconPath: "/images/dashboard/yoga.png",
   },
   {
-    id: "other",
-    name: "Other",
-    description: "Your gym provides another kind of fitness program.",
-    iconPath: "/images/dashboard/other.png",
+    id: "pilates",
+    name: "Pilates",
+    description: "Exercises that can be performed on a mat or other equipment",
+    iconPath: "/images/dashboard/pilates.png",
+  },
+  {
+    id: "gymnastics",
+    name: "Gymnastics",
+    description:
+      "Agility and coordination exercises includes Artistic, Acrobatics, Rhythmic, Etc.",
+    iconPath: "/images/dashboard/gymnastics.png",
+  },
+  {
+    id: "strongman",
+    name: "Strongman",
+    description:
+      "High-intensity resistance training with functional movements patterns ",
+    iconPath: "/images/dashboard/strongman.png",
   },
 ];
 
-const GymSpecialty = () => {
+const TrainerSpecialty = () => {
   const dispatch = useDispatch();
-  const gym = useSelector((state: any) => state.gym);
+  const trainer = useSelector((state: any) => state.trainer);
   const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {
@@ -45,27 +59,29 @@ const GymSpecialty = () => {
   }, [selectedOptions]);
 
   useEffect(() => {
-    const specialty = gym.specialty?.map((item: OptionConfig) => item.id) || [];
+    const specialty =
+      trainer.specialty?.map((item: OptionConfig) => item.id) || [];
     setSelectedOptions([...selectedOptions, ...specialty]);
   }, []);
 
   return (
     <div className="grid gap-[70px]">
       <WizardHeader
-        name="Gym Specialty"
-        description="Which of the following choices best describes this gym’s fitness program?"
-        hrefLeft="./staffsize"
-        hrefRight="./review"
+        name="Trainer Specialities"
+        description="Which of the following choices best describes this trainer’s speciality?"
+        hrefLeft="./contact"
+        hrefRight="./locations"
         disableRight={selectedOptions.length === 0}
       />
       <CardSelect
         options={options}
         active={selectedOptions}
         onSelect={setSelectedOptions}
+        max={2}
         multiple
       />
     </div>
   );
 };
 
-export default GymSpecialty;
+export default TrainerSpecialty;

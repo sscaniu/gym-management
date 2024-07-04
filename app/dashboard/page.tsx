@@ -45,7 +45,7 @@ const cards: CardConfig[] = [
         text: "+ Add Trainers",
         style: ButtonStyles.Primary,
         disabled: false,
-        href: "./dashboard/trainers"
+        href: "./dashboard/trainers/create/contact"
       },
     ],
   },
