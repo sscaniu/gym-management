@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import Eye from "../assets/Eye";
 
 interface TextFieldProps {
@@ -9,7 +9,7 @@ interface TextFieldProps {
   id?: string;
   size?: "sm" | "lg";
   value?: string;
-  onChange?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   className?: string;
   fullWidth?: boolean;
@@ -41,7 +41,7 @@ const TextField: FC<TextFieldProps> = ({
   };
 
   return (
-    <div className="w-full grid gap-2">
+    <div className={`${fullWidth ? `w-full` : ``} grid gap-2`}>
       {label && (
         <label
           htmlFor={id}
@@ -69,9 +69,7 @@ const TextField: FC<TextFieldProps> = ({
           autoComplete={name}
           value={value}
           onChange={onChange}
-          className={`${
-            fullWidth ? `w-full` : ``
-          } h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
+          className={`w-full h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
             error ? `text-danger` : `text-white`
           } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
             endAdornment ? `pr-0` : `pr-[22px]`

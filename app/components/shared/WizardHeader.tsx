@@ -10,7 +10,9 @@ interface Props {
   buttonLeftLabel?: string;
   buttonRightLabel?: string;
   hrefLeft?: string;
+  disableLeft?: boolean;
   hrefRight?: string;
+  disableRight?: boolean;
 }
 
 const WizardHeader: FC<Props> = ({
@@ -19,7 +21,9 @@ const WizardHeader: FC<Props> = ({
   buttonLeftLabel = "Previous",
   buttonRightLabel = "Next",
   hrefLeft,
+  disableLeft,
   hrefRight,
+  disableRight
 }) => {
   return (
     <div className="flex justify-between">
@@ -34,6 +38,7 @@ const WizardHeader: FC<Props> = ({
           variant="outlined"
           className="w-[200px]"
           color="warning"
+          disabled={disableLeft}
         >
           {buttonLeftLabel}
         </Button>
@@ -42,6 +47,7 @@ const WizardHeader: FC<Props> = ({
           size="sm"
           className="w-[200px]"
           color="warning"
+          disabled={disableRight}
         >
           {buttonRightLabel}
         </Button>
