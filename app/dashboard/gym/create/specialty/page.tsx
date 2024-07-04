@@ -35,28 +35,18 @@ const options: OptionConfig[] = [
 const GymSpecialty = () => {
   const dispatch = useDispatch();
   const gym = useSelector((state: any) => state.gym);
-  const [selectedOption, setSelectedOption] = useState<any>([]);
+  const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
-  const handleSelect = (id: string | number) => {
-    const clonedSelectedOption = [...selectedOption];
-    const index = clonedSelectedOption.indexOf(id);
-    if (index > -1) {
-      clonedSelectedOption.splice(index, 1);
-    } else {
-      clonedSelectedOption.push(id);
-    }
-
-    const selectedOptions = options.filter(
-      (option) => clonedSelectedOption.indexOf(option.id) > -1
+  useEffect(() => {
+    const filteredOptions = options.filter(
+      (option) => selectedOptions.indexOf(option.id) > -1
     );
-    dispatch(change({ target: "specialty", value: selectedOptions }));
-
-    setSelectedOption([...clonedSelectedOption]);
-  };
+    dispatch(change({ target: "specialty", value: filteredOptions }));
+  }, [selectedOptions]);
 
   useEffect(() => {
     const specialty = gym.specialty?.map((item: OptionConfig) => item.id) || [];
-    setSelectedOption([...selectedOption, ...specialty]);
+    setSelectedOptions([...selectedOptions, ...specialty]);
   }, []);
 
   return (
@@ -66,12 +56,12 @@ const GymSpecialty = () => {
         description="Which of the following choices best describes this gym’s fitness program?"
         hrefLeft="./staffsize"
         hrefRight="./review"
-        disableRight={selectedOption.length === 0}
+        disableRight={selectedOptions.length === 0}
       />
       <CardSelect
         options={options}
-        active={selectedOption}
-        onSelect={(id) => handleSelect(id)}
+        active={selectedOptions}
+        onSelect={setSelectedOptions}
         multiple
       />
     </div>

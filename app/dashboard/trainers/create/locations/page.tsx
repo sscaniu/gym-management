@@ -23,28 +23,19 @@ const options: OptionConfig[] = [
 const TrainerLocations = () => {
   const dispatch = useDispatch();
   const trainer = useSelector((state: any) => state.trainer);
-  const [selectedOption, setSelectedOption] = useState<any>([]);
-
-  const handleSelect = (id: string | number) => {
-    const clonedSelectedOption = [...selectedOption];
-    const index = clonedSelectedOption.indexOf(id);
-    if (index > -1) {
-      clonedSelectedOption.splice(index, 1);
-    } else {
-      clonedSelectedOption.push(id);
-    }
-
-    const selectedOptions = options.filter(
-      (option) => clonedSelectedOption.indexOf(option.id) > -1
-    );
-    dispatch(change({ target: "locations", value: selectedOptions }));
-
-    setSelectedOption([...clonedSelectedOption]);
-  };
+  const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {
-    const locations = trainer.locations?.map((item: OptionConfig) => item.id) || [];
-    setSelectedOption([...selectedOption, ...locations]);
+    const filteredOptions = options.filter(
+      (option) => selectedOptions.indexOf(option.id) > -1
+    );
+    dispatch(change({ target: "locations", value: filteredOptions }));
+  }, [selectedOptions]);
+
+  useEffect(() => {
+    const locations =
+      trainer.locations?.map((item: OptionConfig) => item.id) || [];
+    setSelectedOptions([...selectedOptions, ...locations]);
   }, []);
 
   return (
@@ -54,13 +45,14 @@ const TrainerLocations = () => {
         description="Which gym in this trainer’s primary location?"
         hrefLeft="./specialty"
         hrefRight="./review"
-        disableRight={selectedOption.length === 0}
+        disableRight={selectedOptions.length === 0}
       />
       <CardSelect
         options={options}
-        active={selectedOption}
-        onSelect={(id) => handleSelect(id)}
+        active={selectedOptions}
+        onSelect={setSelectedOptions}
         multiple
+        max={2}
       />
     </div>
   );

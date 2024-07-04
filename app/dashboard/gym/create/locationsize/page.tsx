@@ -30,13 +30,13 @@ const LocationSize = () => {
   const dispatch = useDispatch();
   const gym = useSelector((state: any) => state.gym);
 
-  const [selectedOption, setSelectedOption] = useState<string | number>();
+  const [selectedOption, setSelectedOption] = useState<any>();
 
-  const handleSelect = (id: any) => {
-    setSelectedOption(id);
-    const option = options.filter((item: OptionConfig) => item.id === id)[0];
+
+  useEffect(() => {
+    const option = options.filter((item: OptionConfig) => item.id === selectedOption)[0];
     dispatch(change({ target: "locationSize", value: option }));
-  };
+  }, [selectedOption])
 
   useEffect(() => {
     setSelectedOption(gym.locationSize?.id || null);
@@ -54,7 +54,7 @@ const LocationSize = () => {
       <CardSelect
         options={options}
         active={selectedOption}
-        onSelect={handleSelect}
+        onSelect={setSelectedOption}
       />
     </div>
   );

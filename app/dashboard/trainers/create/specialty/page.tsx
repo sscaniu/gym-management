@@ -33,13 +33,15 @@ const options: OptionConfig[] = [
   {
     id: "gymnastics",
     name: "Gymnastics",
-    description: "Agility and coordination exercises includes Artistic, Acrobatics, Rhythmic, Etc.",
+    description:
+      "Agility and coordination exercises includes Artistic, Acrobatics, Rhythmic, Etc.",
     iconPath: "/images/dashboard/gymnastics.png",
   },
   {
     id: "strongman",
     name: "Strongman",
-    description: "High-intensity resistance training with functional movements patterns ",
+    description:
+      "High-intensity resistance training with functional movements patterns ",
     iconPath: "/images/dashboard/strongman.png",
   },
 ];
@@ -47,28 +49,19 @@ const options: OptionConfig[] = [
 const TrainerSpecialty = () => {
   const dispatch = useDispatch();
   const trainer = useSelector((state: any) => state.trainer);
-  const [selectedOption, setSelectedOption] = useState<any>([]);
-
-  const handleSelect = (id: string | number) => {
-    const clonedSelectedOption = [...selectedOption];
-    const index = clonedSelectedOption.indexOf(id);
-    if (index > -1) {
-      clonedSelectedOption.splice(index, 1);
-    } else {
-      clonedSelectedOption.push(id);
-    }
-
-    const selectedOptions = options.filter(
-      (option) => clonedSelectedOption.indexOf(option.id) > -1
-    );
-    dispatch(change({ target: "specialty", value: selectedOptions }));
-
-    setSelectedOption([...clonedSelectedOption]);
-  };
+  const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {
-    const specialty = trainer.specialty?.map((item: OptionConfig) => item.id) || [];
-    setSelectedOption([...selectedOption, ...specialty]);
+    const filteredOptions = options.filter(
+      (option) => selectedOptions.indexOf(option.id) > -1
+    );
+    dispatch(change({ target: "specialty", value: filteredOptions }));
+  }, [selectedOptions]);
+
+  useEffect(() => {
+    const specialty =
+      trainer.specialty?.map((item: OptionConfig) => item.id) || [];
+    setSelectedOptions([...selectedOptions, ...specialty]);
   }, []);
 
   return (
@@ -78,12 +71,13 @@ const TrainerSpecialty = () => {
         description="Which of the following choices best describes this trainer’s speciality?"
         hrefLeft="./contact"
         hrefRight="./locations"
-        disableRight={selectedOption.length === 0}
+        disableRight={selectedOptions.length === 0}
       />
       <CardSelect
         options={options}
-        active={selectedOption}
-        onSelect={(id) => handleSelect(id)}
+        active={selectedOptions}
+        onSelect={setSelectedOptions}
+        max={2}
         multiple
       />
     </div>
