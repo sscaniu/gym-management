@@ -3,27 +3,28 @@
 import { useState } from "react";
 import { Dialog, Listbox, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon } from "@heroicons/react/20/solid";
-import { BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
-import { rubik } from "./font";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Gym", href: "/login" },
   { name: "Trainers", href: "/dashboard/messages" },
   { name: "Clients", href: "/dashboard/clients" },
-  { name: "Classes", href: "/dashboard/messages" },
+  { name: "Calendar", href: "/dashboard/messages" },
   { name: "Billing", href: "/dashboard/clients" },
   { name: "Admin", href: "/dashboard/messages" },
-  { name: "Support", href: "/dashboard/messages" }
+  { name: "Support", href: "/dashboard/messages" },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="flex inset-x-0 top-0 z-50 h-16 border-b border-gray-900/10 bg-oxford-blue p-4 text-white">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="flex inset-x-0 top-0 z-50 bg-black text-white font-jost font-medium text-sm">
+      <div className="mx-auto flex w-full max-w-7xl h-[56px] items-center justify-between px-4 sm:px-6 lg:px-14">
         <div className="flex flex-1 items-center gap-x-6">
           <button
             type="button"
@@ -33,33 +34,44 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-5 w-5 text-gray-900" aria-hidden="true" />
           </button>
-          <h1 className={`${rubik.className} inline-flex w-full items-center text-left text-base font-bold leading-[48px] tracking-wider`}>Gym Buddies</h1>
+          <Image src="/logo.png" width={104} height={29} alt="Gym Buddies" />
         </div>
         <nav className="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-white">
-          {navigation.map((item, itemIdx) => (
-            <a key={itemIdx} href={item.href}>
-              {item.name}
-            </a>
-          ))}
+          {navigation.map((item) => {
+            const active: boolean = pathname === item.href;
+
+            return (
+              <div className="flex relative" key={item.name}>
+                <Link
+                  href={item.href}
+                  className={`text-sm leading-5 ${
+                    active ? `font-bold text-warning` : ``
+                  }`}
+                >
+                  {item.name}
+                </Link>
+                {active && (
+                  <Image
+                    src="/heart.png"
+                    width={7.4}
+                    height={6}
+                    alt="Active Link"
+                    className="absolute left-1/2 -bottom-0.5 -translate-x-1/2 translate-y-full"
+                  />
+                )}
+              </div>
+            );
+          })}
         </nav>
         <div className="flex flex-1 items-center justify-end gap-x-8">
-          <button
-            type="button"
-            className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
-          >
-            <span className="sr-only">View notifications</span>
-            <BellIcon className="h-6 w-6" aria-hidden="true" />
-          </button>
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your profile</span>
+          <a href="#" className="flex items-center gap-2">
             <Image
-              className="h-8 w-8 rounded-full bg-gray-800"
               src="/images/dashboard/user.png"
               alt="profile pic"
-              width={0}
-              height={0}
-              sizes="100vw"
+              width={24}
+              height={24}
             />
+            <span>Hi, Alexander</span>
           </a>
         </div>
       </div>
