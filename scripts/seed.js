@@ -1,3 +1,7 @@
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
+
 const { db } = require('@vercel/postgres');
 
 const { hash } = require('bcrypt');
@@ -40,10 +44,36 @@ async function seedUsers(client) {
   }
 }
 
+async function seedMessages() {
+
+  const result = await prisma.message.createMany({
+    data: [
+      {uuid:"123456",from:"+17632601953", to:"+15516893667",body:"hello there"},
+      {uuid:"123457",from:"+15516893667",to:"+17632601953",body:"howdy"}
+    ],
+    skipDuplicates: true,    
+  });
+
+  console.log(JSON.stringify(result));
+  disconnect();
+
+}
+
+async function disconnect() {
+  try {
+      await prisma.$disconnect();
+  } catch (e) {
+      console.error(e);
+      await prisma.$disconnect();
+      process.exit(1);
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
   await seedUsers(client);
+  await seedMessages();
   
 }
 
