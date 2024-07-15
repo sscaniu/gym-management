@@ -11,7 +11,9 @@ const TrainerContact = () => {
   const dispatch = useDispatch();
   const trainer = useSelector((state: any) => state.trainer);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
     dispatch(change({ target: e.target.name, value: e.target.value }));
   };
 

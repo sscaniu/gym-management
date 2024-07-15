@@ -6,8 +6,8 @@ interface Option {
 }
 
 interface SelectProps {
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   value: string | number;
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   label?: string;
