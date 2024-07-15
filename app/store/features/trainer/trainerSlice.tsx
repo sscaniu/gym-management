@@ -2,7 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Gym {
+interface Trainer {
   [key: string]: any;
   firstname: string;
   lastname: string;
@@ -16,7 +16,7 @@ interface Gym {
   locations: object[] | null;
 }
 
-const initialState: Gym = {
+const initialState: Trainer = {
   firstname: "",
   lastname: "",
   email: "",

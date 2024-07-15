@@ -2,20 +2,23 @@ import React, { ChangeEvent, FC, useState } from "react";
 import Eye from "../assets/Eye";
 
 interface TextFieldProps {
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "date";
   label?: string;
   placeholder?: string;
   name?: string;
   id?: string;
   size?: "sm" | "lg";
   value?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   required?: boolean;
   className?: string;
   fullWidth?: boolean;
   startAdornment?: string | React.ReactNode;
   endAdornment?: string | React.ReactNode;
   error?: boolean;
+  multiple?: boolean;
 }
 
 const TextField: FC<TextFieldProps> = ({
@@ -33,6 +36,7 @@ const TextField: FC<TextFieldProps> = ({
   startAdornment,
   endAdornment,
   error,
+  multiple = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const sizeStyles = {
@@ -52,46 +56,64 @@ const TextField: FC<TextFieldProps> = ({
           {label}
         </label>
       )}
-      <div
-        className={`${sizeStyles[size]} flex border-2 ${
-          error ? `border-danger` : `border-white`
-        } rounded-sm shadow`}
-      >
-        {startAdornment && (
-          <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">
-            {startAdornment}
-          </div>
-        )}
-        <input
-          id={id}
-          name={name}
-          type={showPassword ? `text` : type}
-          autoComplete={name}
-          value={value}
-          onChange={onChange}
-          className={`w-full h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
-            error ? `text-danger` : `text-white`
-          } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
-            endAdornment ? `pr-0` : `pr-[22px]`
-          }`}
-          placeholder={placeholder}
-          required={required}
-        />
-        {endAdornment && (
-          <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">
-            {endAdornment}
-          </div>
-        )}
-        {type === "password" && (
-          <button
-            type="button"
-            className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5 cursor-pointer"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            <Eye />
-          </button>
-        )}
-      </div>
+      {multiple ? (
+        <div className="flex flex-col items-end gap-2">
+          <textarea
+            id={id}
+            name={name}
+            value={value}
+            autoComplete={name}
+            onChange={onChange}
+            className={`w-full h-[192px] font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none border-2 ${
+              error ? `border-danger` : `border-white`
+            } rounded-sm shadow resize-none`}
+          />
+          <span className="font-jost font-semibold text-xs">
+            {value?.length || 0}/150
+          </span>
+        </div>
+      ) : (
+        <div
+          className={`${sizeStyles[size]} flex border-2 ${
+            error ? `border-danger` : `border-white`
+          } rounded-sm shadow`}
+        >
+          {startAdornment && (
+            <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">
+              {startAdornment}
+            </div>
+          )}
+          <input
+            id={id}
+            name={name}
+            type={showPassword ? `text` : type}
+            autoComplete={name}
+            value={value}
+            onChange={onChange}
+            className={`w-full h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
+              error ? `text-danger` : `text-white`
+            } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
+              endAdornment ? `pr-0` : `pr-[22px]`
+            }`}
+            placeholder={placeholder}
+            required={required}
+          />
+          {endAdornment && (
+            <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">
+              {endAdornment}
+            </div>
+          )}
+          {type === "password" && (
+            <button
+              type="button"
+              className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <Eye />
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

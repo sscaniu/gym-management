@@ -1,5 +1,6 @@
 "use client";
 import React, { FC, useState } from "react";
+import Link from "next/link";
 import moment from "moment";
 import Toggle from "@/app/components/shared/Toggle";
 import Image from "next/image";
@@ -176,13 +177,22 @@ const Clients = () => {
         <Col>{row.trainer || "Unassigned"}</Col>
         <Col>
           <div className="grid">
-            <span className="leading-none">{moment(row.last_session).format("MM/DD/YYYY")}</span>
-            <span className="text-xs leading-none">{moment(row.last_session).format("hh:mm A")}</span>
+            <span className="leading-none">
+              {moment(row.last_session).format("MM/DD/YYYY")}
+            </span>
+            <span className="text-xs leading-none">
+              {moment(row.last_session).format("hh:mm A")}
+            </span>
           </div>
         </Col>
         <Col>
           <div className="flex items-center gap-5">
-            <Button size="sm" variant="outlined" color="white">
+            <Button
+              size="sm"
+              variant="outlined"
+              color="white"
+              href={`/dashboard/clients/${row.id}`}
+            >
               Profile
             </Button>
             <Image
@@ -213,7 +223,9 @@ const Clients = () => {
               <ActionButton icon="/alternate.png">Send Email</ActionButton>
               <ActionButton icon="/phone.png">Send SMS</ActionButton>
               <ActionButton icon="/message.png">Send Slack</ActionButton>
-              <ActionButton icon="/plus.png">Add client</ActionButton>
+              <Link href="/dashboard/clients/create/contact">
+                <ActionButton icon="/plus.png">Add client</ActionButton>
+              </Link>
             </div>
             <TextField
               value={searchKey}
