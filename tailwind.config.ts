@@ -42,7 +42,7 @@ const config: Config = {
         jost: "Jost",
       },
       fontSize: {
-        xs: '10px'
+        xxs: '10px'
       },
       backgroundImage: {
         rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",

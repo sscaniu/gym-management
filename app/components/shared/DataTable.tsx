@@ -57,7 +57,7 @@ const DataTable: FC<DataTableProps> = ({
   const checkbox = useRef<HTMLInputElement>(null);
   const [perPageCount, setPerPageCount] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(1);
-  const perPageCountOptions: SelectOption[] = [
+  const perPageCountOptions: (SelectOption | string | number)[] = [
     { value: 10, label: 10 },
     { value: 20, label: 20 },
     { value: 50, label: 50 },
@@ -178,6 +178,8 @@ const DataTable: FC<DataTableProps> = ({
       {pagination && (
         <div className="flex items-center justify-between">
           <Select
+            id="per_page_acount"
+            name="per_page_acount"
             value={perPageCount}
             onChange={handleChangePerPageCount}
             options={perPageCountOptions}

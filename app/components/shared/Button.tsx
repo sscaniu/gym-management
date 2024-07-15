@@ -10,7 +10,7 @@ interface ButtonProps {
   loading?: boolean;
   fullWidth?: boolean;
   color?: "primary" | "danger" | "warning" | "success" | "dark" | "white";
-  variant?: "filled" | "outlined";
+  variant?: "filled" | "outlined" | "link";
   size?: "sm" | "md" | "lg";
   href?: string;
 }
@@ -50,11 +50,20 @@ const Button: FC<ButtonProps> = ({
         "border-2 border-success hover:bg-success text-success hover:text-black",
       dark: "border-2 border-dark hover:bg-dark text-dark hover:text-black",
     },
+    link: {
+      white: "text-white",
+      primary: "text-primary",
+      danger: "text-danger",
+      warning: "text-warning",
+      success: "text-success",
+      dark: "text-dark",
+    },
   };
 
   const roundedStyle = {
     filled: "rounded-sm",
     outlined: "rounded",
+    link: "rounded-none"
   };
 
   const sizeStyles = {
