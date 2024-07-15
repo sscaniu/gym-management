@@ -178,6 +178,8 @@ const DataTable: FC<DataTableProps> = ({
       {pagination && (
         <div className="flex items-center justify-between">
           <Select
+            id="123"
+            name="select"
             value={perPageCount}
             onChange={handleChangePerPageCount}
             options={perPageCountOptions}
