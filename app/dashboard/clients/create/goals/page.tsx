@@ -4,7 +4,7 @@ import React, { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { change } from "@/app/store/features/client/clientSlice";
 import TextField from "@/app/components/shared/TextField";
-import Select from "@/app/components/shared/Select";
+import Select, { SelectOption } from "@/app/components/shared/Select";
 import WizardHeader from "@/app/components/shared/WizardHeader";
 
 const ClientGoals = () => {
@@ -19,6 +19,25 @@ const ClientGoals = () => {
   ) => {
     dispatch(change({ target: e.target.name, value: e.target.value }));
   };
+
+  const handleSelect = (option: any, target: string) => {
+    dispatch(change({ target: [target], value: option.value }));
+  };
+
+  const types: SelectOption[] = [
+    { value: 1, label: "Active" },
+    { value: 2, label: "In Active" },
+  ];
+
+  const locations: SelectOption[] = [
+    { value: 1, label: "Queens Location" },
+    { value: 2, label: "Queens Location1" },
+  ];
+
+  const durations: SelectOption[] = [
+    { value: 1, label: "Amanda Moore" },
+    { value: 2, label: "Billy Smith" },
+  ];
 
   return (
     <div className="grid gap-7">
@@ -41,21 +60,17 @@ const ClientGoals = () => {
           <div className="grid gap-6 px-6 py-4">
             <Select
               label="Type"
-              id="primary_goal_type"
-              name="primary_goal_type"
               value={client.primary_goal_type}
-              onChange={handleChange}
-              options={["Weight", "Weight 1"]}
-              size="md"
+              onChange={(option: SelectOption) => handleSelect(option, "primary_goal_type")}
+              options={types}
             />
             <Select
               label="Meeting Frequency"
-              id="primary_goal_meeting_frequency"
-              name="primary_goal_meeting_frequency"
               value={client.primary_goal_meeting_frequency}
-              onChange={handleChange}
-              options={["Bi-weekly", "Bi-weekly 1"]}
-              size="md"
+              onChange={(option: SelectOption) =>
+                handleSelect(option, "primary_goal_meeting_frequency")
+              }
+              options={locations}
             />
             <TextField
               type="date"
@@ -80,23 +95,19 @@ const ClientGoals = () => {
             Secondary Goal (Optional)
           </div>
           <div className="grid gap-6 px-6 py-4">
-            <Select
+          <Select
               label="Type"
-              id="secondary_goal_type"
-              name="secondary_goal_type"
               value={client.secondary_goal_type}
-              onChange={handleChange}
-              options={["Weight", "Weight 1"]}
-              size="md"
+              onChange={(option: SelectOption) => handleSelect(option, "secondary_goal_type")}
+              options={types}
             />
             <Select
               label="Meeting Frequency"
-              id="secondary_goal_meeting_frequency"
-              name="secondary_goal_meeting_frequency"
               value={client.secondary_goal_meeting_frequency}
-              onChange={handleChange}
-              options={["Bi-weekly", "Bi-weekly 1"]}
-              size="md"
+              onChange={(option: SelectOption) =>
+                handleSelect(option, "secondary_goal_meeting_frequency")
+              }
+              options={locations}
             />
             <TextField
               type="date"

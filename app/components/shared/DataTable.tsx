@@ -7,7 +7,6 @@ import React, {
   useState,
 } from "react";
 import Image from "next/image";
-import Select from "./Select";
 
 interface SelectOption {
   value: string | number;
@@ -57,7 +56,7 @@ const DataTable: FC<DataTableProps> = ({
   const checkbox = useRef<HTMLInputElement>(null);
   const [perPageCount, setPerPageCount] = useState<number>(10);
   const [pageNum, setPageNum] = useState<number>(1);
-  const perPageCountOptions: (SelectOption | string | number)[] = [
+  const perPageCountOptions: SelectOption[] = [
     { value: 10, label: 10 },
     { value: 20, label: 20 },
     { value: 50, label: 50 },
@@ -177,14 +176,17 @@ const DataTable: FC<DataTableProps> = ({
       </table>
       {pagination && (
         <div className="flex items-center justify-between">
-          <Select
-            id="per_page_acount"
-            name="per_page_acount"
+          <select
             value={perPageCount}
             onChange={handleChangePerPageCount}
-            options={perPageCountOptions}
-            className="w-[90px]"
-          />
+            className={`w-[90px] h-10 font-rubik text-sm px-[26px] bg-[#0F142452] border border-white rounded focus:ring-0 focus:border-white text-white appearance-none `}
+          >
+            {perPageCountOptions.map((option: any) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
           <ul className="flex items-center gap-6 font-rubik text-base">
             <li className="cursor-pointer" onClick={handlePrevious}>{`<`}</li>
             {Array.from(Array(Math.ceil(rows.length / perPageCount))).map(

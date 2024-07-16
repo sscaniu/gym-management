@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Button from "@/app/components/shared/Button";
-import Select from "@/app/components/shared/Select";
+import Select, { SelectOption } from "@/app/components/shared/Select";
 import TextField from "@/app/components/shared/TextField";
 
 interface ContactType {
@@ -11,7 +11,7 @@ interface ContactType {
   details: string;
 }
 
-const PrimaryGoal = () => {
+const SecondaryGoal = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [info, setInfo] = useState<ContactType>({
     type: "",
@@ -19,6 +19,10 @@ const PrimaryGoal = () => {
     program_duration: "",
     details: "",
   });
+
+  const handleSelect = (option: any, target: string) => {
+    setInfo({ ...info, [target]: option.label });
+  };
 
   const handleChange = (
     e:
@@ -30,13 +34,25 @@ const PrimaryGoal = () => {
   };
 
   const handleToggleEdit = () => setEditMode(!editMode);
+  const types: SelectOption[] = [
+    { value: 1, label: "Active" },
+    { value: 2, label: "In Active" },
+  ];
+
+  const locations: SelectOption[] = [
+    { value: 1, label: "Queens Location" },
+    { value: 2, label: "Queens Location1" },
+  ];
+
+  const durations: SelectOption[] = [
+    { value: 1, label: "Amanda Moore" },
+    { value: 2, label: "Billy Smith" },
+  ];
 
   return (
     <div className="w-full bg-black shadow-sm rounded-sm p-6 pb-9">
       <div className="flex items-center justify-between pb-4 border-b border-b-white">
-        <h2 className="font-rubik font-bold text-2xl">
-          Secondary Goal
-        </h2>
+        <h2 className="font-rubik font-bold text-2xl">Secondary Goal</h2>
         {!editMode && (
           <Image
             src="/images/dashboard/pen.png"
@@ -73,30 +89,20 @@ const PrimaryGoal = () => {
             <div className="grid gap-4">
               <Select
                 label="Type"
-                id="type"
-                name="type"
                 value={info.type}
-                onChange={handleChange}
-                options={["Active", "In Active"]}
-                size="md"
+                onChange={(option) => handleSelect(option, "type")}
+                options={types}
               />
               <Select
                 label="Meeting Frequency"
-                id="meeting_frequency"
-                name="meeting_frequency"
                 value={info.meeting_frequency}
-                onChange={handleChange}
-                options={["Queens Location", "Queens Location 1"]}
-                size="md"
+                onChange={(option) => handleSelect(option, "meeting_frequency")}
+                options={locations}
               />
               <Select
                 label="Program Duration"
-                id="program_duration"
-                name="program_duration"
-                value={info.program_duration}
-                onChange={handleChange}
-                options={["Amanda Moore", "Billy Smith"]}
-                size="md"
+                onChange={(option) => handleSelect(option, "meeting_frequency")}
+                options={durations}
               />
               <TextField
                 label="Details"
@@ -127,4 +133,4 @@ const PrimaryGoal = () => {
   );
 };
 
-export default PrimaryGoal;
+export default SecondaryGoal;

@@ -14,6 +14,7 @@ const config: Config = {
         danger: "#FA5E83",
         warning: "#FFCDB2",
         black: "#1A2239",
+        info: "#41BFDD",
         white: "#FFFFFF",
         dark: "#434D6C",
         grey: "#363E57",
