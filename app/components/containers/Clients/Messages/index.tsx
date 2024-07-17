@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, MouseEvent, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import moment from "moment";
 
@@ -11,6 +11,7 @@ interface Message {
 }
 
 const Messages: FC = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -44,6 +45,12 @@ const Messages: FC = () => {
     },
   ]);
 
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const handleSend = () => {
     setMessages([
       ...messages,
@@ -67,7 +74,10 @@ const Messages: FC = () => {
           SMS Chat with Alexander
         </h3>
       </div>
-      <div className="flex flex-col gap-4 pt-6 pb-12">
+      <div
+        className="max-h-[560px] flex flex-col gap-4 pt-6 pb-12 overflow-y-auto pr-1"
+        ref={containerRef}
+      >
         {messages.map((message: Message, index: number) => (
           <div
             key={index}

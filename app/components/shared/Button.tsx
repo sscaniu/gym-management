@@ -94,7 +94,7 @@ const Button: FC<ButtonProps> = ({
 
   const activeButtonStyles = {
     filled: "active:shadow-md",
-    outlined: "active:border-4",
+    outlined: "active:outline outline-2 -outline-offset-4",
     link: "",
   };
 

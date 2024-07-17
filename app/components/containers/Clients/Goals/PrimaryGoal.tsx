@@ -1,13 +1,17 @@
 import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
+import moment from "moment";
 import Button from "@/app/components/shared/Button";
 import Select, { SelectOption } from "@/app/components/shared/Select";
 import TextField from "@/app/components/shared/TextField";
+import DateRangePicker, {
+  ValueProps,
+} from "@/app/components/shared/DateRangePicker";
 
 interface ContactType {
   type: string;
   meeting_frequency: string;
-  program_duration: string;
+  program_duration: ValueProps;
   details: string;
 }
 
@@ -16,7 +20,10 @@ const PrimaryGoal = () => {
   const [info, setInfo] = useState<ContactType>({
     type: "",
     meeting_frequency: "",
-    program_duration: "",
+    program_duration: {
+      from: null,
+      to: null,
+    },
     details: "",
   });
 
@@ -77,7 +84,19 @@ const PrimaryGoal = () => {
             </p>
             <p>
               <span className="font-bold">Duration: </span>
-              <span>{info.program_duration}</span>
+              <span>
+                {info.program_duration.from && (
+                  <span>
+                    {moment(info.program_duration.from).format("MMMM DD, YYYY")}{" "}
+                    -{" "}
+                  </span>
+                )}
+                {info.program_duration.to && (
+                  <span>
+                    {moment(info.program_duration.to).format("MMMM DD, YYYY")}
+                  </span>
+                )}
+              </span>
             </p>
             <p>
               <span className="font-bold">Details: </span>
@@ -99,10 +118,12 @@ const PrimaryGoal = () => {
                 onChange={(option) => handleSelect(option, "meeting_frequency")}
                 options={locations}
               />
-              <Select
+              <DateRangePicker
                 label="Program Duration"
-                onChange={(option) => handleSelect(option, "meeting_frequency")}
-                options={durations}
+                onChange={(e: ValueProps) =>
+                  setInfo({ ...info, program_duration: { ...e } })
+                }
+                value={info.program_duration}
               />
               <TextField
                 label="Details"

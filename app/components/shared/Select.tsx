@@ -62,8 +62,12 @@ const Select: FC<SelectProps> = ({
                 ? `border-y-2 border-info !bg-info/30`
                 : `!bg-transparent border-transparent`
             }`,
-          control: () =>
-            `${sizeStyles[size]} !bg-transparent !border-2 !border-white rounded !shadow-none text-white`,
+          control: ({ isFocused }) =>
+            `${
+              sizeStyles[size]
+            } !bg-transparent !border-2 rounded !shadow-none text-white ${
+              isFocused ? `!border-info` : `!border-white`
+            }`,
           indicatorSeparator: () => `hidden`,
           menu: () => `border-2 border-white !bg-black !rounded !mt-1`,
           menuList: () => `!p-0`,

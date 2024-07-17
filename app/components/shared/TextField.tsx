@@ -71,7 +71,7 @@ const TextField: FC<TextFieldProps> = ({
             className={`w-full h-[192px] font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none border-2 ${
               error
                 ? `border-danger`
-                : `border-white focus:border-info hover:border-info`
+                : `border-white focus:border-info`
             } ${disabled ? `opacity-50` : ``} ${
               readonly ? `border-white/50` : ``
             } rounded-sm shadow resize-none`}
@@ -87,7 +87,7 @@ const TextField: FC<TextFieldProps> = ({
           } ${readonly ? `border-white/50` : ``} ${
             error
               ? `border-danger`
-              : `border-white focus-within:border-info hover:border-info`
+              : `border-white focus-within:border-info`
           } rounded-sm shadow`}
         >
           {startAdornment && (

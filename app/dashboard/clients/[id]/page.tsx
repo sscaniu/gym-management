@@ -8,7 +8,10 @@ import Profile from "@/app/components/containers/Clients/Profile";
 import Goals from "@/app/components/containers/Clients/Goals";
 import Messages from "@/app/components/containers/Clients/Messages";
 
+import Modal from "@/app/components/shared/Modal";
+
 const Client = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedTab, setSelectedTab] = useState<string | number>("profile");
   const tabs = [
     { id: "profile", label: "Profile" },
@@ -18,13 +21,19 @@ const Client = () => {
     { id: "calendar", label: "Client Calendar" },
   ];
 
+  const handleClose = () => setIsOpen(false);
+
   return (
     <div className="grid gap-8">
       <div className="grid gap-5">
         <div className="grid gap-6">
           <div className="flex items-center justify-between">
             <h2 className="font-rubik font-bold text-4xl">Alexander Doukas</h2>
-            <Button color="danger" variant="link">
+            <Button
+              color="danger"
+              variant="link"
+              onClick={() => setIsOpen(true)}
+            >
               <div className="flex items-center gap-2">
                 <Image src="/trash.png" width={24} height={24} alt="Trash" />
                 <span>Delete Client</span>
@@ -49,6 +58,32 @@ const Client = () => {
           {selectedTab === "messages" && <Messages />}
         </div>
       </div>
+
+      <Modal
+        title="You are about to delete this account."
+        open={isOpen}
+        onClose={handleClose}
+      >
+        <div className="grid gap-10">
+          <div className="font-rubik text-xl">
+            By clicking “continue”, all data regarding this client’s account
+            will be deleted permanently. Are you sure you want to continue?
+          </div>
+          <div className="flex justify-center gap-14">
+            <Button
+              className="w-[230px]"
+              variant="outlined"
+              color="white"
+              onClick={handleClose}
+            >
+              Cancel
+            </Button>
+            <Button className="w-[230px]" color="warning" onClick={handleClose}>
+              Yes, Continue
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
