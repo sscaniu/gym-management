@@ -19,6 +19,8 @@ interface TextFieldProps {
   endAdornment?: string | React.ReactNode;
   error?: boolean;
   multiple?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
 }
 
 const TextField: FC<TextFieldProps> = ({
@@ -37,6 +39,8 @@ const TextField: FC<TextFieldProps> = ({
   endAdornment,
   error,
   multiple = false,
+  disabled = false,
+  readonly = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const sizeStyles = {
@@ -65,7 +69,11 @@ const TextField: FC<TextFieldProps> = ({
             autoComplete={name}
             onChange={onChange}
             className={`w-full h-[192px] font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none border-2 ${
-              error ? `border-danger` : `border-white`
+              error
+                ? `border-danger`
+                : `border-white focus:border-info hover:border-info`
+            } ${disabled ? `opacity-50` : ``} ${
+              readonly ? `border-white/50` : ``
             } rounded-sm shadow resize-none`}
           />
           <span className="font-jost font-semibold text-xs">
@@ -75,7 +83,11 @@ const TextField: FC<TextFieldProps> = ({
       ) : (
         <div
           className={`${sizeStyles[size]} flex border-2 ${
-            error ? `border-danger` : `border-white`
+            disabled ? `opacity-50` : ``
+          } ${readonly ? `border-white/50` : ``} ${
+            error
+              ? `border-danger`
+              : `border-white focus-within:border-info hover:border-info`
           } rounded-sm shadow`}
         >
           {startAdornment && (
@@ -97,6 +109,8 @@ const TextField: FC<TextFieldProps> = ({
             }`}
             placeholder={placeholder}
             required={required}
+            disabled={disabled}
+            readOnly={readonly}
           />
           {endAdornment && (
             <div className="h-full flex flex-shrink-0 items-center justify-center font-jost text-[32px] px-3.5">

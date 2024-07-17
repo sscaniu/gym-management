@@ -6,6 +6,7 @@ import Image from "next/image";
 import Tabs from "@/app/components/shared/Tabs";
 import Profile from "@/app/components/containers/Clients/Profile";
 import Goals from "@/app/components/containers/Clients/Goals";
+import Messages from "@/app/components/containers/Clients/Messages";
 
 const Client = () => {
   const [selectedTab, setSelectedTab] = useState<string | number>("profile");
@@ -45,6 +46,7 @@ const Client = () => {
         <div>
           {selectedTab === "profile" && <Profile />}
           {selectedTab === "goals" && <Goals />}
+          {selectedTab === "messages" && <Messages />}
         </div>
       </div>
     </div>

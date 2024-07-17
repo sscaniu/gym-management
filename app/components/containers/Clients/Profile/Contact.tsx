@@ -152,6 +152,7 @@ const Contact = () => {
                 color="warning"
                 variant="outlined"
                 onClick={handleToggleEdit}
+                fullWidth
               >
                 Cancel
               </Button>
