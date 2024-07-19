@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
+    console.log(request);
   const body = await request.json();
   console.log('request body: ', body);
 //   const twilioSignature = request.headers.get('X-Twilio-Signature');
