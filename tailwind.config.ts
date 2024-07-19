@@ -17,7 +17,11 @@ const config: Config = {
         white: "#FFFFFF",
         dark: "#434D6C",
         grey: "#363E57",
-        
+        toggle: "#1F2537",
+        table: {
+          container: '#1E2436',
+          odd: '#121522'
+        },
 
         // old
         'aero': '#42BFDD',
@@ -37,10 +41,16 @@ const config: Config = {
         rubik: "Rubik",
         jost: "Jost",
       },
+      fontSize: {
+        xxs: '10px'
+      },
       backgroundImage: {
         rect: "b-bg-vector-2bgyms-bbrectangle-30rectangle-1092",
         vectorcurve: 'url("/images/swoosh/swoosh_1282_473.svg")',
       },
+      boxShadow: {
+        'inset-toggle': 'inset 0 0 4px 0 #1F2537',
+      }
     },
   },
   plugins: [require("@tailwindcss/forms")],

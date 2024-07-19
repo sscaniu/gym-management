@@ -10,7 +10,9 @@ const GymLocation = () => {
   const dispatch = useDispatch();
   const gym = useSelector((state: any) => state.gym);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
     dispatch(change({ target: e.target.name, value: e.target.value }));
   };
 
