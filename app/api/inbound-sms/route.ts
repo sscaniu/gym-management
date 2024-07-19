@@ -5,8 +5,15 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  console.log('request body: ', body);
+  console.log(request);
+  
+  // Parse URL-encoded form data
+  const formData = await request.formData();
+  const requestBody = Object.fromEntries(
+    Array.from(formData.entries()).map(([key, value]) => [key, value.toString()])
+  );
+  console.log('request body: ', requestBody);
+
 //   const twilioSignature = request.headers.get('X-Twilio-Signature');
 //   const url = process.env.TWILIO_WEBHOOK_URL; // Set this in your .env file
 
@@ -14,12 +21,6 @@ export async function POST(request: Request) {
 //   const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, authToken);
 
   // Validate the request is from Twilio
-  const requestBody: any = {};
-  for (const [key, value] of body.entries()) {
-    requestBody[key] = value;
-  }
-  console.log("request body: ", requestBody);
-
 //   const isValidRequest = twilioClient.validateRequest(
 //     authToken!,
 //     twilioSignature!,
