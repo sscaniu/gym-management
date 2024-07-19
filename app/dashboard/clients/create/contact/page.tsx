@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { change } from "@/app/store/features/client/clientSlice";
 import TextField from "@/app/components/shared/TextField";
-import Select from "@/app/components/shared/Select";
+import Select, { SelectOption } from "@/app/components/shared/Select";
 import WizardHeader from "@/app/components/shared/WizardHeader";
 
 const ClientContact = () => {
@@ -21,7 +21,11 @@ const ClientContact = () => {
     dispatch(change({ target: e.target.name, value: e.target.value }));
   };
 
-  const contactOptions = [
+  const handleSelect = (option: any, target: string) => {
+    dispatch(change({ target: [target], value: option.value }));
+  };
+
+  const contactOptions: SelectOption[] = [
     { value: 1, label: "SMS" },
     { value: 2, label: "Email" },
     { value: 3, label: "Slack" },
@@ -121,13 +125,10 @@ const ClientContact = () => {
           </div>
           <div className="grid gap-6 px-6 py-4">
             <Select
-              label="Preferred contact method"
-              id="method"
-              name="method"
+              label="preferred contact method"
               value={client.method}
-              onChange={handleChange}
+              onChange={(e: SelectOption) => handleSelect(e, "method")}
               options={contactOptions}
-              size="md"
             />
           </div>
         </div>

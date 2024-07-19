@@ -12,10 +12,10 @@ const navigation = [
   { name: "Gym", href: "/login" },
   { name: "Trainers", href: "/dashboard/messages" },
   { name: "Clients", href: "/dashboard/clients" },
-  { name: "Calendar", href: "/dashboard/messages" },
-  { name: "Billing", href: "/dashboard/clients" },
-  { name: "Admin", href: "/dashboard/messages" },
-  { name: "Support", href: "/dashboard/messages" },
+  { name: "Calendar", href: "/dashboard/calendar" },
+  { name: "Billing", href: "/dashboard/billing" },
+  { name: "Admin", href: "/dashboard/admin" },
+  { name: "Support", href: "/dashboard/support" },
 ];
 
 export default function Header() {
@@ -38,7 +38,7 @@ export default function Header() {
         </div>
         <nav className="hidden md:flex md:gap-x-11 md:text-sm md:font-semibold md:leading-6 md:text-white">
           {navigation.map((item) => {
-            const active: boolean = pathname === item.href;
+            const active: boolean = pathname.indexOf(item.href) === 0;
 
             return (
               <div className="flex relative" key={item.name}>
