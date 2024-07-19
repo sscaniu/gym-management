@@ -1,17 +1,17 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import twilio from 'twilio';
+// import twilio from 'twilio';
 
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   const body = await request.json();
   console.log('request body: ', body);
-  const twilioSignature = request.headers.get('X-Twilio-Signature');
-  const url = process.env.TWILIO_WEBHOOK_URL; // Set this in your .env file
+//   const twilioSignature = request.headers.get('X-Twilio-Signature');
+//   const url = process.env.TWILIO_WEBHOOK_URL; // Set this in your .env file
 
-  const authToken = process.env.TWILIO_AUTH_TOKEN;
-  const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, authToken);
+//   const authToken = process.env.TWILIO_AUTH_TOKEN;
+//   const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, authToken);
 
   // Validate the request is from Twilio
   const requestBody: any = {};
