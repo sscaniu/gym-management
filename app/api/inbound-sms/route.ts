@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 // import twilio from 'twilio';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   const body = await request.json();
