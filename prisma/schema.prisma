@@ -43,7 +43,7 @@ model Gym {
   updated_at DateTime?
   locations Location[]
   users User[]
-  clients Clients[]
+  clients Client[]
 
   @@map("gyms")
 }
@@ -67,6 +67,7 @@ model Location {
   @@map("locations")
 }
 
+//We might need to add an identifier for client and sender
 model Message {
   id String @id @default(uuid())
   uuid String? @unique
@@ -83,7 +84,7 @@ model Message {
   @@map("messages")
 }
 
-model Clients {
+model Client {
   id String @id @default(uuid())
   email String @unique
   first_name String
