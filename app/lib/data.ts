@@ -4,7 +4,8 @@
 
 "use server";
 
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Clients } from '@prisma/client'
+
 
 const prisma = new PrismaClient();
 
@@ -16,6 +17,16 @@ export async function getMessages(number: String) {
     disconnect();
 
     return messages;
+}
+
+export async function getClients(trainerId: String) {
+
+    //TODO: Add filter for trainer and gym
+    const clients = await prisma.clients.findMany();
+
+    disconnect();
+
+    return clients;
 }
 
 async function disconnect() {
