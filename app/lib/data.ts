@@ -22,7 +22,7 @@ export async function getMessages(number: String) {
 export async function getClients(trainerId: String) {
 
     //TODO: Add filter for trainer and gym
-    const clients = await prisma.clients.findMany();
+    const clients = await prisma.client.findMany();
 
     disconnect();
 
