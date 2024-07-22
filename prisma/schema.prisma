@@ -44,7 +44,6 @@ model Gym {
   users User[]
   clients Client[]
   trainers Trainer[]
-  sessions Session[]
 
   @@map("gyms")
 }
@@ -64,6 +63,7 @@ model Location {
   updated_at DateTime?
   gym Gym @relation(fields: [gymId], references: [id])
   gymId String
+  sessions Session[]
 
   @@map("locations")
 }
@@ -103,6 +103,7 @@ model Client {
   updated_at DateTime?
   gyms Gym[]
   trainers Trainer[]
+  sessions Session[]
 
   @@map("clients")
 }
@@ -131,16 +132,21 @@ model Trainer {
 
 model Session {
   id String @id @default(uuid())
+  client Client @relation(fields:[clientId], references:[id])
+  clientId String
+
   start_time DateTime
   end_time DateTime
   type String
   title String
   Description String?
 
-  gym Gym @relation(fields:[gymId], references:[id])
-  gymId String
+  location Location @relation(fields:[locationId], references:[id])
+  locationId String
+
   trainer Trainer @relation(fields:[trainerId], references:[id])
   trainerId String
+
   created_at DateTime @default(now())
   updated_at DateTime?
 
