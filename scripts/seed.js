@@ -172,9 +172,10 @@ async function deleteAll() {
   const location = prisma.location.deleteMany();
   const messages = prisma.message.deleteMany();
   const gyms = prisma.gym.deleteMany();
+  const sessions = prisma.session.deleteMany();
   
 
-  await prisma.$transaction([messages, trainer, location, gyms, clients]);
+  await prisma.$transaction([messages, trainer, location, gyms, sessions, clients]);
 }
 
 async function seedClients(trainerId,gymId) {
@@ -254,174 +255,11 @@ async function seedClients(trainerId,gymId) {
       }
     }
   }
-  
-  // {
-  //   id: 3,
-  //   name: "Brent  Coral",
-  //   email: "br.coral@gmail.com",
-  //   phone: "+1(646) 222-2622",
-  //   location: "Queen’s Gym",
-  //   trainer: {
-  //     connect: {
-  //       id:trainerId
-  //     }
-  //   },
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/04/2023 11:45 PM",
-  // },
-  // {
-  //   id: 4,
-  //   name: "Kelly Lee",
-  //   email: "kelly.lee@gmail.com",
-  //   phone: "+1(202) 222-2222",
-  //   location: "Queen’s Gym",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/05/2023 03:00 PM",
-  // },
-  // {
-  //   id: 5,
-  //   name: "June Parker",
-  //   email: "june.walk@gmail.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Brooklyn’s Studio",
-  //   trainer: {
-  //     connect: {
-  //       id:trainerId
-  //     }
-  //   },
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/05/2023 11:43 AM",
-  // },
-  // {
-  //   id: 6,
-  //   name: "Tanner Miller",
-  //   email: "t.miller@gmail.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Queen’s Gym",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/05/2023 04:43 PM",
-  // },
-  // {
-  //   id: 7,
-  //   name: "Von Smith",
-  //   email: "v.smith@gmail.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Queen’s Gym",
-  //   trainer: {
-  //     connect: {
-  //       id:trainerId
-  //     }
-  //   },
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/03/2023 05:00 PM",
-  // },
-  // {
-  //   id: 8,
-  //   name: "Sammy Ranger",
-  //   email: "sammy0182@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Brooklyn’s Studio",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/03/2023 05:00 PM",
-  // },
-  // {
-  //   id: 9,
-  //   name: "Walker Tejas",
-  //   email: "walkertejas@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Queen’s Gym",
-  //   trainer: {
-  //     connect: {
-  //       id:trainerId
-  //     }
-  //   },
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/06/2023 08:00 AM",
-  // },
-  // {
-  //   id: 10,
-  //   name: "Sammy Ranger",
-  //   email: "sammy0182@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Brooklyn’s Studio",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/03/2023 05:00 PM",
-  // },
-  // {
-  //   id: 11,
-  //   name: "Sammy Ranger",
-  //   email: "sammy0182@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Brooklyn’s Studio",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/03/2023 05:00 PM",
-  // },
-  // {
-  //   id: 12,
-  //   name: "Walker Tejas",
-  //   email: "walkertejas@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Queen’s Gym",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/06/2023 08:00 AM",
-  // },
-  // {
-  //   id: 13,
-  //   name: "Sammy Ranger",
-  //   email: "sammy0182@email.com",
-  //   phone: "+1(916) 222-2222",
-  //   location: "Brooklyn’s Studio",
-  //   gym: {
-  //     connect: {
-  //       id: gymId
-  //     }
-  //   },
-  //   last_session: "10/03/2023 05:00 PM",
-  // };
+   
   ];
   
   
-  await prisma.client.create({
+  const clientData = await prisma.client.create({
     data: data[0]
   });
 
@@ -437,7 +275,43 @@ async function seedClients(trainerId,gymId) {
     data: data[3]
   });
       
+  return clientData;
   
+}
+
+async function seedSessions(clientId,trainerId) {
+
+  const location = await prisma.location.findFirst();
+
+  const sessions = [{
+    client: {
+      connect: clientId
+    },
+    start_time: new Date('July 21, 2024 08:00:00').toISOString(),
+    end_time: new Date('July 21, 2024 09:00:00').toISOString(),
+    type: "Strength",
+    title: "Lifting with Arthur",
+    Description: "Hour long training session for strength.",
+    location: {
+      connect: {
+        id:location.id
+      }
+    },
+    trainer: {
+      connect: {
+        id:trainerId.id
+      }
+    }
+  }];
+
+  const result = await prisma.session.create(
+    {
+      data: sessions[0]
+    }
+  )
+
+  console.log(result);
+
 }
 
 async function main() {
@@ -449,7 +323,8 @@ async function main() {
   await seedMessages();
   const gymId = await seedGyms();
   const trainerid = await seedTrainers(gymId.id);
-  await seedClients(trainerid.id, gymId.id);
+  const clientId = await seedClients(trainerid.id, gymId.id);
+  await seedSessions(clientId, trainerid);
   
   process.exit();
 }
