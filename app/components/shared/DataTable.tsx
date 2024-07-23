@@ -98,6 +98,7 @@ const DataTable: FC<DataTableProps> = ({
     if (checkbox.current !== null) {
       checkbox.current.indeterminate = isIndeterminate;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRows]);
 
   return (

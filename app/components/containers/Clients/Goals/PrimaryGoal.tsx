@@ -9,8 +9,8 @@ import DateRangePicker, {
 } from "@/app/components/shared/DateRangePicker";
 
 interface ContactType {
-  type: string;
-  meeting_frequency: string;
+  type: SelectOption | null;
+  meeting_frequency: SelectOption | null;
   program_duration: ValueProps;
   details: string;
 }
@@ -18,8 +18,8 @@ interface ContactType {
 const PrimaryGoal = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [info, setInfo] = useState<ContactType>({
-    type: "",
-    meeting_frequency: "",
+    type: null,
+    meeting_frequency: null,
     program_duration: {
       from: null,
       to: null,
@@ -28,7 +28,7 @@ const PrimaryGoal = () => {
   });
 
   const handleSelect = (option: any, target: string) => {
-    setInfo({ ...info, [target]: option.label });
+    setInfo({ ...info, [target]: option });
   };
 
   const handleChange = (
@@ -51,11 +51,6 @@ const PrimaryGoal = () => {
     { value: 2, label: "Queens Location1" },
   ];
 
-  const durations: SelectOption[] = [
-    { value: 1, label: "Amanda Moore" },
-    { value: 2, label: "Billy Smith" },
-  ];
-
   return (
     <div className="w-full bg-black shadow-sm rounded-sm p-6 pb-9">
       <div className="flex items-center justify-between pb-4 border-b border-b-white">
@@ -63,8 +58,8 @@ const PrimaryGoal = () => {
         {!editMode && (
           <Image
             src="/images/dashboard/pen.png"
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt=""
             className="cursor-pointer"
             onClick={handleToggleEdit}
@@ -76,11 +71,13 @@ const PrimaryGoal = () => {
           <>
             <p>
               <span className="font-bold">Type: </span>
-              <span>{info.type}</span>
+              {info.type && <span>{info.type.label}</span>}
             </p>
             <p>
               <span className="font-bold">Meeting Frequency: </span>
-              <span>{info.meeting_frequency}</span>
+              {info.meeting_frequency && (
+                <span>{info.meeting_frequency.label}</span>
+              )}
             </p>
             <p>
               <span className="font-bold">Duration: </span>

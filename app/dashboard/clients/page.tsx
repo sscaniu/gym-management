@@ -1,12 +1,13 @@
 "use client";
 import React, { FC, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import moment from "moment";
 import Toggle from "@/app/components/shared/Toggle";
 import Image from "next/image";
-import TextField from "@/app/components/shared/TextField";
+import Search from "@/app/components/shared/Search";
 import DataTable, { Col } from "@/app/components/shared/DataTable";
 import Button from "@/app/components/shared/Button";
+import ActionButton from "@/app/components/shared/ActionButton";
 
 interface Client {
   id: number;
@@ -18,22 +19,8 @@ interface Client {
   last_session: string;
 }
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  icon: string;
-}
-
-const ActionButton: FC<ButtonProps> = ({ children, onClick, icon }) => {
-  return (
-    <button onClick={onClick} className="h-[52px] flex items-center gap-4 px-4">
-      <Image src={icon} width={24} height={24} alt="button" />
-      <span className="font-jost font-medium text-sm">{children}</span>
-    </button>
-  );
-};
-
 const Clients = () => {
+  const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [searchKey, setSearchKey] = useState("");
 
@@ -219,20 +206,20 @@ const Clients = () => {
             onClick={() => setChecked(!checked)}
           />
           <div className="flex items-center gap-5">
-            <div className="flex gap-2.5">
+            <div className="flex flex-shrink-0 gap-2.5">
               <ActionButton icon="/alternate.png">Send Email</ActionButton>
               <ActionButton icon="/phone.png">Send SMS</ActionButton>
               <ActionButton icon="/message.png">Send Slack</ActionButton>
-              <Link href="/dashboard/clients/create/contact">
-                <ActionButton icon="/plus.png">Add client</ActionButton>
-              </Link>
+              <ActionButton
+                icon="/plus.png"
+                onClick={() => router.push("/dashboard/clients/create/contact")}
+              >
+                Add client
+              </ActionButton>
             </div>
-            <TextField
+            <Search
               value={searchKey}
               onChange={(e) => setSearchKey(e.target.value)}
-              startAdornment={
-                <Image src="/search.png" width={24} height={24} alt="Search" />
-              }
               placeholder="Search"
             />
           </div>

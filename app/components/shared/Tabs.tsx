@@ -20,7 +20,7 @@ const Tabs: FC<TabsProps> = ({ active, items, onChange }) => {
         return (
           <li
             key={item.id}
-            className={`flex items-center relative h-12 px-4 font-jost font-medium text-base cursor-pointer ${
+            className={`flex items-center relative h-12 px-4 font-jost font-medium text-base cursor-pointer hover:bg-dark ${
               isActive ? `text-warning` : `text-white`
             }`}
             onClick={() => onChange(item.id)}

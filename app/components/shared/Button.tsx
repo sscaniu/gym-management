@@ -59,7 +59,7 @@ const Button: FC<ButtonProps> = ({
     link: {
       white: "text-white",
       primary: "text-primary",
-      danger: "text-danger",
+      danger: "text-danger hover:bg-[#401D25] active:bg-[#2F161C] focus:bg-[#401D25] focus:outline-danger",
       warning: "text-warning",
       success: "text-success",
       dark: "text-dark",
@@ -69,7 +69,7 @@ const Button: FC<ButtonProps> = ({
   const roundedStyle = {
     filled: "rounded-sm",
     outlined: "rounded",
-    link: "rounded-none",
+    link: "rounded-lg",
   };
 
   const sizeStyles = {
@@ -94,7 +94,7 @@ const Button: FC<ButtonProps> = ({
 
   const activeButtonStyles = {
     filled: "active:shadow-md",
-    outlined: "active:outline outline-2 -outline-offset-4",
+    outlined: "active:outline outline-2 outline-offset-4",
     link: "",
   };
 
@@ -108,7 +108,7 @@ const Button: FC<ButtonProps> = ({
     filled:
       "focus-visible:outline focus-visible:outline-2 focus-visible:outline-info focus-visible: outline-offset-2",
     outlined: "focus-visible:outline-none focus-visible:text-dark",
-    link: "",
+    link: "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-0",
   };
 
   return (
