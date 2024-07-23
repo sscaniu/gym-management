@@ -167,15 +167,16 @@ async function disconnect() {
 }
 
 async function deleteAll() {
+  const sessions = prisma.session.deleteMany();
   const clients = prisma.client.deleteMany({});
   const trainer = prisma.trainer.deleteMany();
   const location = prisma.location.deleteMany();
   const messages = prisma.message.deleteMany();
   const gyms = prisma.gym.deleteMany();
-  const sessions = prisma.session.deleteMany();
+  
   
 
-  await prisma.$transaction([messages, trainer, location, gyms, sessions, clients]);
+  await prisma.$transaction([sessions, messages, trainer, location, gyms, clients]);
 }
 
 async function seedClients(trainerId,gymId) {
@@ -302,11 +303,37 @@ async function seedSessions(clientId,trainerId) {
         id:trainerId.id
       }
     }
+  },
+  {
+    client: {
+      connect: clientId
+    },
+    start_time: new Date('July 22, 2024 08:00:00').toISOString(),
+    end_time: new Date('July 22, 2024 09:00:00').toISOString(),
+    type: "Crossfit",
+    title: "Crossfit with Sam",
+    Description: "Do all the crossfit things.",
+    location: {
+      connect: {
+        id:location.id
+      }
+    },
+    trainer: {
+      connect: {
+        id:trainerId.id
+      }
+    }
   }];
 
   const result = await prisma.session.create(
     {
       data: sessions[0]
+    }
+  )
+
+  const result2 = await prisma.session.create(
+    {
+      data: sessions[1]
     }
   )
 

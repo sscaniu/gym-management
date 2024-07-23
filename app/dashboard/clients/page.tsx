@@ -7,16 +7,8 @@ import Image from "next/image";
 import TextField from "@/app/components/shared/TextField";
 import DataTable, { Col } from "@/app/components/shared/DataTable";
 import Button from "@/app/components/shared/Button";
+import { UIClient } from "@/app/lib/definitions";
 
-interface Client {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  location: string;
-  trainer: string | null;
-  last_session: string;
-}
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -47,9 +39,9 @@ const Clients = () => {
     { id: "action", label: "" },
   ];
 
-  const rows: Client[] = [
+  const rows: UIClient[] = [
     {
-      id: 1,
+      id: "1",
       name: "Suji Muse",
       email: "smuse@gmail.com",
       phone: "+1(914) 222-1213",
@@ -58,7 +50,7 @@ const Clients = () => {
       last_session: "10/03/2023 11:30 AM",
     },
     {
-      id: 2,
+      id: '2',
       name: "Amber McKee",
       email: "amkee@gmail.com",
       phone: "+1(929) 985-2322",
@@ -67,7 +59,7 @@ const Clients = () => {
       last_session: "10/03/2023 09:30 AM",
     },
     {
-      id: 3,
+      id: "3",
       name: "Brent  Coral",
       email: "br.coral@gmail.com",
       phone: "+1(646) 222-2622",
@@ -76,7 +68,7 @@ const Clients = () => {
       last_session: "10/04/2023 11:45 PM",
     },
     {
-      id: 4,
+      id: "4",
       name: "Kelly Lee",
       email: "kelly.lee@gmail.com",
       phone: "+1(202) 222-2222",
@@ -85,7 +77,7 @@ const Clients = () => {
       last_session: "10/05/2023 03:00 PM",
     },
     {
-      id: 5,
+      id: "5",
       name: "June Parker",
       email: "june.walk@gmail.com",
       phone: "+1(916) 222-2222",
@@ -94,7 +86,7 @@ const Clients = () => {
       last_session: "10/05/2023 11:43 AM",
     },
     {
-      id: 6,
+      id: "6",
       name: "Tanner Miller",
       email: "t.miller@gmail.com",
       phone: "+1(916) 222-2222",
@@ -103,7 +95,7 @@ const Clients = () => {
       last_session: "10/05/2023 04:43 PM",
     },
     {
-      id: 7,
+      id: "7",
       name: "Von Smith",
       email: "v.smith@gmail.com",
       phone: "+1(916) 222-2222",
@@ -112,7 +104,7 @@ const Clients = () => {
       last_session: "10/03/2023 05:00 PM",
     },
     {
-      id: 8,
+      id: "8",
       name: "Sammy Ranger",
       email: "sammy0182@email.com",
       phone: "+1(916) 222-2222",
@@ -121,7 +113,7 @@ const Clients = () => {
       last_session: "10/03/2023 05:00 PM",
     },
     {
-      id: 9,
+      id: "9",
       name: "Walker Tejas",
       email: "walkertejas@email.com",
       phone: "+1(916) 222-2222",
@@ -130,7 +122,7 @@ const Clients = () => {
       last_session: "10/06/2023 08:00 AM",
     },
     {
-      id: 10,
+      id: "10",
       name: "Sammy Ranger",
       email: "sammy0182@email.com",
       phone: "+1(916) 222-2222",
@@ -139,7 +131,7 @@ const Clients = () => {
       last_session: "10/03/2023 05:00 PM",
     },
     {
-      id: 11,
+      id: "11",
       name: "Sammy Ranger",
       email: "sammy0182@email.com",
       phone: "+1(916) 222-2222",
@@ -148,7 +140,7 @@ const Clients = () => {
       last_session: "10/03/2023 05:00 PM",
     },
     {
-      id: 12,
+      id: "12",
       name: "Walker Tejas",
       email: "walkertejas@email.com",
       phone: "+1(916) 222-2222",
@@ -157,7 +149,7 @@ const Clients = () => {
       last_session: "10/06/2023 08:00 AM",
     },
     {
-      id: 13,
+      id: "13",
       name: "Sammy Ranger",
       email: "sammy0182@email.com",
       phone: "+1(916) 222-2222",
@@ -167,7 +159,7 @@ const Clients = () => {
     },
   ];
 
-  const renderRow = (row: Client) => {
+  const renderRow = (row: UIClient) => {
     return (
       <>
         <Col>{row.name}</Col>
@@ -240,7 +232,7 @@ const Clients = () => {
       </div>
       <DataTable
         cols={cols}
-        rows={rows.filter((row: Client) =>
+        rows={rows.filter((row: UIClient) =>
           checked ? row.trainer === null : true
         )}
         renderRow={renderRow}
