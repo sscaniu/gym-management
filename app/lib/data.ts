@@ -24,45 +24,52 @@ export async function getMessages(number: String) {
 //Get the client list for a gym. Used in the Clients table
 export async function getClientsForGym(gymId: string) {
 
-    const clients = await prisma.client.findMany({
+    const gym = await prisma.gym.findUnique({
         where: {
             id: gymId
         },
         include: {
-            trainers: true,
-            sessions: {
-                orderBy: {
-                    start_time: 'desc'
-                },
-                take: 1,
+            clients: {
                 include: {
-                    location: true
+                    trainers: true,
+                    sessions: {
+                        orderBy: {
+                            start_time: 'desc'
+                        },
+                        take: 1,
+                        include: {
+                            location: true
+                        }
+                    }
                 }
             }
+
         }
     });
 
+    if (gym === null) {
+        return [];
+    } else {
 
-    const clientStruct = clients.map((client) => {
+        const clientStruct = gym.clients.map((client) => {
 
-        const value: UIClient = {
-            id: client.id,
-            name: client.first_name + " " + client.last_name,
-            email: client.email,
-            phone: client.phone1,
-            location: client.sessions.length > 0 ? client.sessions[0].location.name : "",
-            trainer: client.trainers.length > 0 ? client.trainers[0].first_name + ' ' + client.trainers[0].last_name : "",
-            last_session: client.sessions.length > 0 ? client.sessions[0].start_time.toLocaleDateString() : ""
-        }
+            return {
+                id: client.id,
+                name: client.first_name + " " + client.last_name,
+                email: client.email,
+                phone: client.phone1,
+                location: client.sessions.length > 0 ? client.sessions[0].location.name : "",
+                trainer: client.trainers.length > 0 ? client.trainers[0].first_name + ' ' + client.trainers[0].last_name : "",
+                last_session: client.sessions.length > 0 ? client.sessions[0].start_time : ""
+            }
 
-        return value;
-
-    });
+        });
 
 
-    disconnect();
+        disconnect();
 
-    return clientStruct;
+        return clientStruct;
+    }
 }
 
 async function disconnect() {

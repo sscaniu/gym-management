@@ -41,30 +41,32 @@ async function disconnect() {
 
 async function getClientsForGym() {
 
-    const gymId = await prisma.gym.findFirst().id;
+    const gymId = await prisma.gym.findFirst();
 
-    const clients = await prisma.client.findMany({
+    const gym = await prisma.gym.findUnique({
         where: {
-            id: gymId
+            id:gymId.id
         },
         include: {
-            trainers: true,
-            sessions: {
-                orderBy: {
-                    start_time: 'desc'
-                },
-                take: 1,
-                include: {
-                    location: true
+            clients: {
+                include:{ 
+                    trainers: true,
+                    sessions: {
+                        orderBy: {
+                            start_time: 'desc'
+                        },
+                        take: 1,
+                        include: {
+                            location: true
+                        }
+                    }
+                }    
                 }
-            }
+                
         }
     });
 
-    console.log(JSON.stringify(clients));
-
-
-    const clientStruct = clients.map((client) => {
+    const clientStruct = gym.clients.map((client) => {
 
         return {
             id: client.id,

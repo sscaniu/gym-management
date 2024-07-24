@@ -1,2 +1,38 @@
-
-[{"id":"f4eea274-bf44-4db5-99d2-c4e1e5a34dfe","email":"smuse@gmail.com","first_name":"Suji","last_name":"Muse","street_1":"1234 Jones St","street_2":null,"city":"New York","state":"NY","zip":"10128","phone1":"+19142221213","phone2":null,"contact_preference":"phone1","created_at":"2024-07-22T15:43:59.690Z","updated_at":null,"trainers":[{"id":"39c6fbf1-1029-4203-8a7f-476122d0b427","email":"tomjones@gmail.com","first_name":"Tom","last_name":"Jones","street_1":"124 Spring St","street_2":"","city":"New York","state":"NY","zip":"11101","phone1":"+1555555555","phone2":"","specialty":"Strength","created_at":"2024-07-22T15:43:59.232Z","updated_at":null}],"sessions":[{"id":"6adbc138-fcfe-42bd-9bf7-d6b29ce3c4e7","clientId":"f4eea274-bf44-4db5-99d2-c4e1e5a34dfe","start_time":"2024-07-21T12:00:00.000Z","end_time":"2024-07-21T13:00:00.000Z","type":"Strength","title":"Lifting with Arthur","Description":"Hour long training session for strength.","locationId":"20fe133c-19c8-48ca-899a-cff53ec74b86","trainerId":"39c6fbf1-1029-4203-8a7f-476122d0b427","created_at":"2024-07-22T15:44:00.880Z","updated_at":null}]},{"id":"678cca1b-85bb-47f2-bf8e-e9d9b6a33d89","email":"amkee@gmail.com","first_name":"Amber","last_name":"McKee","street_1":"1024 Smith Ct","street_2":null,"city":"Brooklyn","state":"NY","zip":"11102","phone1":"+19142221215","phone2":null,"contact_preference":"phone1","created_at":"2024-07-22T15:43:59.944Z","updated_at":null,"trainers":[],"sessions":[]},{"id":"608f4236-641e-42f5-9457-ac4362ccad7b","email":"sh@gmail.com","first_name":"Scott","last_name":"Hathaway","street_1":"339 E 90th","street_2":null,"city":"New York","state":"NY","zip":"10128","phone1":"+15516893667","phone2":null,"contact_preference":"phone1","created_at":"2024-07-22T15:44:00.113Z","updated_at":null,"trainers":[{"id":"39c6fbf1-1029-4203-8a7f-476122d0b427","email":"tomjones@gmail.com","first_name":"Tom","last_name":"Jones","street_1":"124 Spring St","street_2":"","city":"New York","state":"NY","zip":"11101","phone1":"+1555555555","phone2":"","specialty":"Strength","created_at":"2024-07-22T15:43:59.232Z","updated_at":null}],"sessions":[]},{"id":"309a5596-6f85-47c5-a124-28050df04b59","email":"br.coral@gmail.com","first_name":"Brent","last_name":"Coral","street_1":"111 Center Blvd","street_2":"Apt 2A","city":"Long Islan City","state":"NY","zip":"11101","phone1":"+19142221218","phone2":null,"contact_preference":"phone1","created_at":"2024-07-22T15:44:00.358Z","updated_at":null,"trainers":[],"sessions":[]}]
+[
+    {
+        "id": "d22cd40a-3528-48ca-8e29-ba2d57b26877",
+        "name": "Suji Muse",
+        "email": "smuse@gmail.com",
+        "phone": "+19142221213",
+        "location": "Primary Location",
+        "trainer": "Tom Jones",
+        "last_session": "2024-07-22T12:00:00.000Z"
+    },
+    {
+        "id": "2dda8a2a-b8fc-4681-bc9b-319ede775122",
+        "name": "Amber McKee",
+        "email": "amkee@gmail.com",
+        "phone": "+19142221215",
+        "location": "",
+        "trainer": "",
+        "last_session": ""
+    },
+    {
+        "id": "ddf22cf3-27af-4938-bec3-9eeed3e9f17b",
+        "name": "Scott Hathaway",
+        "email": "sh@gmail.com",
+        "phone": "+15516893667",
+        "location": "",
+        "trainer": "Tom Jones",
+        "last_session": ""
+    },
+    {
+        "id": "5eee8cd8-22bf-45a8-bf29-c2462cf98e3a",
+        "name": "Brent Coral",
+        "email": "br.coral@gmail.com",
+        "phone": "+19142221218",
+        "location": "",
+        "trainer": "",
+        "last_session": ""
+    }
+]
