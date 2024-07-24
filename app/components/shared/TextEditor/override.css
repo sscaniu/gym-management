@@ -1,0 +1,45 @@
+.ck-editor {
+  font-family: Jost;
+}
+.ck-toolbar {
+  height: 48px !important;
+  background: #121623 !important;
+}
+
+.ck-toolbar .ck-icon {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.ck-button:hover {
+  background: #41bfdd !important;
+}
+
+.ck-button.ck-on {
+  background: #41bfdd !important;
+}
+
+.ck-button__label {
+  color: #fff !important;
+  font-family: Jost !important;
+}
+
+.ck-list {
+  background-color: #121623 !important;
+}
+
+.ck-sticky-panel__content {
+  border: 2px solid #fff !important;
+  border-bottom: 0 !important;
+}
+
+.ck-editor__editable {
+  background: #121623 !important;
+  border: 2px solid #fff !important;
+  min-height: 257px;
+  padding: 0 16px !important;
+}
+
+.ck-powered-by {
+  display: none;
+}

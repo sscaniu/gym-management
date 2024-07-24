@@ -17,9 +17,7 @@ export default function DashboardLayout({
       {/*Main Container Grid*/}
       <div className={"flex flex-col w-full h-screen"}>
         <Header />
-        <div className="flex-1 bg-grey text-white">
-          <div className="w-full max-w-7xl mx-auto px-9 py-10">{children}</div>
-        </div>
+        <div className="flex-1 bg-grey text-white">{children}</div>
         <Footer />
       </div>
     </>

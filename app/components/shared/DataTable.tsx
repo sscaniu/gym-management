@@ -22,18 +22,21 @@ interface ColumnProps {
 
 interface Props {
   children: React.ReactNode;
+  className?: string;
 }
 
-export const Col: FC<Props> = ({ children }) => {
+export const Col: FC<Props> = ({ children, className }) => {
   return (
-    <td className="h-[56px] font-rubik text-sm first:pl-7 last:pr-7 px-2">
+    <td
+      className={`h-[56px] font-rubik text-sm first:pl-7 last:pr-7 px-2 ${className}`}
+    >
       {children}
     </td>
   );
 };
 
-export const Row: FC<Props> = ({ children }) => {
-  return <tr className="odd:bg-table-odd">{children}</tr>;
+export const Row: FC<Props> = ({ children, className }) => {
+  return <tr className={`odd:bg-table-odd ${className}`}>{children}</tr>;
 };
 
 interface DataTableProps {
@@ -98,6 +101,7 @@ const DataTable: FC<DataTableProps> = ({
     if (checkbox.current !== null) {
       checkbox.current.indeterminate = isIndeterminate;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRows]);
 
   return (

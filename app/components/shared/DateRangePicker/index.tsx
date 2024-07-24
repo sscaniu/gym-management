@@ -42,7 +42,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   };
 
   return (
-    <div className={`${fullWidth ? `w-full` : ``} grid gap-2`}>
+    <div className={`${fullWidth ? `w-full` : ``} grid gap-2 font-jost`}>
       {label && (
         <label
           htmlFor={id}
@@ -54,7 +54,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
         </label>
       )}
       <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-        <div className="relative">
+        <div className="relative bg-black">
           <div
             className={`${
               sizeStyles[size]

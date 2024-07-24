@@ -50,20 +50,22 @@ const GymSpecialty = () => {
   }, []);
 
   return (
-    <div className="grid gap-[70px]">
-      <WizardHeader
-        name="Gym Specialty"
-        description="Which of the following choices best describes this gym’s fitness program?"
-        hrefLeft="./staffsize"
-        hrefRight="./review"
-        disableRight={selectedOptions.length === 0}
-      />
-      <CardSelect
-        options={options}
-        active={selectedOptions}
-        onSelect={setSelectedOptions}
-        multiple
-      />
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-[70px]">
+        <WizardHeader
+          name="Gym Specialty"
+          description="Which of the following choices best describes this gym’s fitness program?"
+          hrefLeft="./staffsize"
+          hrefRight="./review"
+          disableRight={selectedOptions.length === 0}
+        />
+        <CardSelect
+          options={options}
+          active={selectedOptions}
+          onSelect={setSelectedOptions}
+          multiple
+        />
+      </div>
     </div>
   );
 };

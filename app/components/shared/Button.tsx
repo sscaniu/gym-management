@@ -32,16 +32,16 @@ const Button: FC<ButtonProps> = ({
   const variantStyles = {
     filled: {
       white:
-        "bg-white text-dark hover:bg-white hover:shadow-white/30 active:bg-white-dark active:shadow-white/30",
+        "bg-white text-black hover:bg-white hover:shadow-white/30 active:bg-white-dark active:shadow-white/30",
       primary:
-        "bg-primary text-dark hover:bg-primary hover:shadow-primary/30 active:bg-primary-dark active:shadow-primary/30",
+        "bg-primary text-black hover:bg-primary hover:shadow-primary/30 active:bg-primary-dark active:shadow-primary/30",
       danger:
-        "bg-danger text-dark hover:bg-danger hover:shadow-danger/30 active:bg-danger-dark active:shadow-danger/30",
+        "bg-danger text-black hover:bg-danger hover:shadow-danger/30 active:bg-danger-dark active:shadow-danger/30",
       warning:
-        "bg-warning text-dark hover:bg-warning hover:shadow-warning/30 active:bg-warning-dark active:shadow-warning/30",
+        "bg-warning text-black hover:bg-warning hover:shadow-warning/30 active:bg-warning-dark active:shadow-warning/30",
       success:
-        "bg-success text-dark hover:bg-success hover:shadow-success/30 active:bg-success-dark active:shadow-success/30",
-      dark: "bg-dark text-dark hover:bg-dark hover:shadow-dark/30 active:bg-dark-dark active:shadow-dark/30",
+        "bg-success text-black hover:bg-success hover:shadow-success/30 active:bg-success-dark active:shadow-success/30",
+      dark: "bg-dark text-black hover:bg-dark hover:shadow-dark/30 active:bg-dark-dark active:shadow-dark/30",
     },
     outlined: {
       white:
@@ -59,7 +59,7 @@ const Button: FC<ButtonProps> = ({
     link: {
       white: "text-white",
       primary: "text-primary",
-      danger: "text-danger",
+      danger: "text-danger hover:bg-[#401D25] active:bg-[#2F161C] focus:bg-[#401D25] focus:outline-danger",
       warning: "text-warning",
       success: "text-success",
       dark: "text-dark",
@@ -69,7 +69,7 @@ const Button: FC<ButtonProps> = ({
   const roundedStyle = {
     filled: "rounded-sm",
     outlined: "rounded",
-    link: "rounded-none",
+    link: "rounded-lg",
   };
 
   const sizeStyles = {
@@ -94,7 +94,7 @@ const Button: FC<ButtonProps> = ({
 
   const activeButtonStyles = {
     filled: "active:shadow-md",
-    outlined: "active:outline outline-2 -outline-offset-4",
+    outlined: "active:outline outline-2 outline-offset-4",
     link: "",
   };
 
@@ -108,7 +108,7 @@ const Button: FC<ButtonProps> = ({
     filled:
       "focus-visible:outline focus-visible:outline-2 focus-visible:outline-info focus-visible: outline-offset-2",
     outlined: "focus-visible:outline-none focus-visible:text-dark",
-    link: "",
+    link: "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-0",
   };
 
   return (

@@ -4,23 +4,23 @@ import Button from "@/app/components/shared/Button";
 import Select, { SelectOption } from "@/app/components/shared/Select";
 
 interface ContactType {
-  status: string;
-  gym: string;
-  trainer: string;
-  contact_method: string;
+  status: SelectOption | null;
+  gym: SelectOption | null;
+  trainer: SelectOption[] | null;
+  contact_method: SelectOption | null;
 }
 
 const Membership = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [info, setInfo] = useState<ContactType>({
-    status: "",
-    gym: "",
-    trainer: "",
-    contact_method: "",
+    status: null,
+    gym: null,
+    trainer: null,
+    contact_method: null,
   });
 
   const handleSelect = (option: any, target: string) => {
-    setInfo({ ...info, [target]: option.label });
+    setInfo({ ...info, [target]: option });
   };
 
   const handleToggleEdit = () => setEditMode(!editMode);
@@ -55,8 +55,8 @@ const Membership = () => {
         {!editMode && (
           <Image
             src="/images/dashboard/pen.png"
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt=""
             className="cursor-pointer"
             onClick={handleToggleEdit}
@@ -68,19 +68,23 @@ const Membership = () => {
           <>
             <p>
               <span className="font-bold">Status: </span>
-              <span>{info.status}</span>
+              {info.status && <span>{info.status.label}</span>}
             </p>
             <p>
               <span className="font-bold">Preferred Gym: </span>
-              <span>{info.gym}</span>
+              {info.gym && <span>{info.gym.label}</span>}
             </p>
             <p>
               <span className="font-bold">Trainer: </span>
-              <span>{info.trainer}</span>
+              {info.trainer && (
+                <span>
+                  {info.trainer.map((trainer) => trainer.label).join(", ")}
+                </span>
+              )}
             </p>
             <p>
               <span className="font-bold">Preferred Contact Method: </span>
-              <span>{info.contact_method}</span>
+              {info.contact_method && <span>{info.contact_method.label}</span>}
             </p>
           </>
         ) : (
@@ -108,7 +112,9 @@ const Membership = () => {
               <Select
                 label="preferred contact method"
                 value={info.contact_method}
-                onChange={(e: SelectOption) => handleSelect(e, "contact_method")}
+                onChange={(e: SelectOption) =>
+                  handleSelect(e, "contact_method")
+                }
                 options={contactMethods}
               />
             </div>
