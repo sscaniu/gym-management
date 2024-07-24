@@ -121,7 +121,7 @@ const Select: FC<SelectProps> = ({
         placeholder={placeholder}
         classNames={{
           control: () =>
-            `${sizeStyles[size]} !bg-transparent !border-2 rounded !shadow-none text-white !border-white ${className}`,
+            `${sizeStyles[size]} !bg-black !border-2 rounded !shadow-none text-white !border-white ${className}`,
           indicatorSeparator: () => `hidden`,
           menu: () => `border-2 border-white !bg-black !rounded !mt-1`,
           menuList: () => `!p-0`,

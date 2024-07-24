@@ -196,43 +196,47 @@ const Clients = () => {
   };
 
   return (
-    <div className="grid gap-5">
-      <div className="grid gap-4">
-        <h2 className="font-rubik font-bold text-4xl">Manage Client</h2>
-        <div className="flex items-center justify-between">
-          <Toggle
-            label="Show Unassigned Only"
-            value={checked}
-            onClick={() => setChecked(!checked)}
-          />
-          <div className="flex items-center gap-5">
-            <div className="flex flex-shrink-0 gap-2.5">
-              <ActionButton icon="/alternate.png">Send Email</ActionButton>
-              <ActionButton icon="/phone.png">Send SMS</ActionButton>
-              <ActionButton icon="/message.png">Send Slack</ActionButton>
-              <ActionButton
-                icon="/plus.png"
-                onClick={() => router.push("/dashboard/clients/create/contact")}
-              >
-                Add client
-              </ActionButton>
-            </div>
-            <Search
-              value={searchKey}
-              onChange={(e) => setSearchKey(e.target.value)}
-              placeholder="Search"
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-5">
+        <div className="grid gap-4">
+          <h2 className="font-rubik font-bold text-4xl">Manage Client</h2>
+          <div className="flex items-center justify-between">
+            <Toggle
+              label="Show Unassigned Only"
+              value={checked}
+              onClick={() => setChecked(!checked)}
             />
+            <div className="flex items-center gap-5">
+              <div className="flex flex-shrink-0 gap-2.5">
+                <ActionButton icon="/alternate.png">Send Email</ActionButton>
+                <ActionButton icon="/phone.png">Send SMS</ActionButton>
+                <ActionButton icon="/message.png">Send Slack</ActionButton>
+                <ActionButton
+                  icon="/plus.png"
+                  onClick={() =>
+                    router.push("/dashboard/clients/create/contact")
+                  }
+                >
+                  Add client
+                </ActionButton>
+              </div>
+              <Search
+                value={searchKey}
+                onChange={(e) => setSearchKey(e.target.value)}
+                placeholder="Search"
+              />
+            </div>
           </div>
         </div>
+        <DataTable
+          cols={cols}
+          rows={rows.filter((row: Client) =>
+            checked ? row.trainer === null : true
+          )}
+          renderRow={renderRow}
+          pagination
+        />
       </div>
-      <DataTable
-        cols={cols}
-        rows={rows.filter((row: Client) =>
-          checked ? row.trainer === null : true
-        )}
-        renderRow={renderRow}
-        pagination
-      />
     </div>
   );
 };

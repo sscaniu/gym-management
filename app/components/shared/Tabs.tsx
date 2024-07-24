@@ -1,20 +1,20 @@
 import React, { FC } from "react";
 
-interface Tab {
+export interface TabType {
   id: number | string;
   label: number | string;
 }
 
 interface TabsProps {
   active: number | string;
-  items: Tab[];
+  items: TabType[];
   onChange: (e: string | number) => void;
 }
 
 const Tabs: FC<TabsProps> = ({ active, items, onChange }) => {
   return (
     <ul className="flex border-b-2 border-b-[#192239]">
-      {items.map((item: Tab) => {
+      {items.map((item: TabType) => {
         const isActive = item.id === active;
 
         return (
