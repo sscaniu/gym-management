@@ -1,12 +1,13 @@
 "use client";
 import React, { FC, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import moment from "moment";
 import Toggle from "@/app/components/shared/Toggle";
 import Image from "next/image";
-import TextField from "@/app/components/shared/TextField";
+import Search from "@/app/components/shared/Search";
 import DataTable, { Col } from "@/app/components/shared/DataTable";
 import Button from "@/app/components/shared/Button";
+
 import { UIClient } from "@/app/lib/definitions";
 
 
@@ -26,6 +27,7 @@ const ActionButton: FC<ButtonProps> = ({ children, onClick, icon }) => {
 };
 
 const Clients = () => {
+  const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [searchKey, setSearchKey] = useState("");
 
@@ -201,43 +203,47 @@ const Clients = () => {
   };
 
   return (
-    <div className="grid gap-5">
-      <div className="grid gap-4">
-        <h2 className="font-rubik font-bold text-4xl">Manage Client</h2>
-        <div className="flex items-center justify-between">
-          <Toggle
-            label="Show Unassigned Only"
-            value={checked}
-            onClick={() => setChecked(!checked)}
-          />
-          <div className="flex items-center gap-5">
-            <div className="flex gap-2.5">
-              <ActionButton icon="/alternate.png">Send Email</ActionButton>
-              <ActionButton icon="/phone.png">Send SMS</ActionButton>
-              <ActionButton icon="/message.png">Send Slack</ActionButton>
-              <Link href="/dashboard/clients/create/contact">
-                <ActionButton icon="/plus.png">Add client</ActionButton>
-              </Link>
-            </div>
-            <TextField
-              value={searchKey}
-              onChange={(e) => setSearchKey(e.target.value)}
-              startAdornment={
-                <Image src="/search.png" width={24} height={24} alt="Search" />
-              }
-              placeholder="Search"
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-5">
+        <div className="grid gap-4">
+          <h2 className="font-rubik font-bold text-4xl">Manage Client</h2>
+          <div className="flex items-center justify-between">
+            <Toggle
+              label="Show Unassigned Only"
+              value={checked}
+              onClick={() => setChecked(!checked)}
             />
+            <div className="flex items-center gap-5">
+              <div className="flex flex-shrink-0 gap-2.5">
+                <ActionButton icon="/alternate.png">Send Email</ActionButton>
+                <ActionButton icon="/phone.png">Send SMS</ActionButton>
+                <ActionButton icon="/message.png">Send Slack</ActionButton>
+                <ActionButton
+                  icon="/plus.png"
+                  onClick={() =>
+                    router.push("/dashboard/clients/create/contact")
+                  }
+                >
+                  Add client
+                </ActionButton>
+              </div>
+              <Search
+                value={searchKey}
+                onChange={(e) => setSearchKey(e.target.value)}
+                placeholder="Search"
+              />
+            </div>
           </div>
         </div>
+        <DataTable
+          cols={cols}
+          rows={rows.filter((row: UIClient) =>
+            checked ? row.trainer === null : true
+          )}
+          renderRow={renderRow}
+          pagination
+        />
       </div>
-      <DataTable
-        cols={cols}
-        rows={rows.filter((row: UIClient) =>
-          checked ? row.trainer === null : true
-        )}
-        renderRow={renderRow}
-        pagination
-      />
     </div>
   );
 };

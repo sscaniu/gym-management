@@ -42,7 +42,9 @@ const StaffSize = () => {
   const [selectedOption, setSelectedOption] = useState<any>();
 
   useEffect(() => {
-    const option = options.filter((item: OptionConfig) => item.id === selectedOption)[0];
+    const option = options.filter(
+      (item: OptionConfig) => item.id === selectedOption
+    )[0];
     dispatch(change({ target: "staffSize", value: option }));
   }, [selectedOption]);
 
@@ -51,19 +53,21 @@ const StaffSize = () => {
   }, []);
 
   return (
-    <div className="grid gap-12">
-      <WizardHeader
-        name="Staff Size"
-        description="How many trainers work this gym location?"
-        hrefLeft="./locationsize"
-        hrefRight="./specialty"
-        disableRight={!selectedOption}
-      />
-      <CardSelect
-        options={options}
-        active={selectedOption}
-        onSelect={setSelectedOption}
-      />
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-12">
+        <WizardHeader
+          name="Staff Size"
+          description="How many trainers work this gym location?"
+          hrefLeft="./locationsize"
+          hrefRight="./specialty"
+          disableRight={!selectedOption}
+        />
+        <CardSelect
+          options={options}
+          active={selectedOption}
+          onSelect={setSelectedOption}
+        />
+      </div>
     </div>
   );
 };

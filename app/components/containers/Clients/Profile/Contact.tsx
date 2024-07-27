@@ -15,6 +15,7 @@ interface ContactType {
 }
 
 const Contact = () => {
+  const [isRequestSent, setIsRequestSent] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [contactInfo, setContactInfo] = useState<ContactType>({
     firstname: "",
@@ -40,42 +41,59 @@ const Contact = () => {
 
   return (
     <div className="w-full bg-black shadow-sm rounded-sm p-6 pb-9">
+      {isRequestSent && (
+        <div className="absolute top-14 left-0 right-0 w-full min-h-10 bg-success/50 font-jost font-semibold text-base text-center py-2">
+          Success! Updated info request has been sent.
+        </div>
+      )}
       <div className="flex items-center justify-between pb-4 border-b border-b-white">
         <h2 className="font-rubik font-bold text-2xl">Client Contact Info</h2>
         {!editMode && (
           <Image
             src="/images/dashboard/pen.png"
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt=""
             className="cursor-pointer"
             onClick={handleToggleEdit}
           />
         )}
       </div>
-      <div className="grid gap-4 font-jost text-base pt-8">
+      <div className="grid gap-10 font-jost text-base pt-8">
         {!editMode ? (
           <>
-            <p>
-              <span className="font-bold">First Name: </span>
-              <span>{contactInfo.firstname}</span>
-            </p>
-            <p>
-              <span className="font-bold">Last Name: </span>
-              <span>{contactInfo.lastname}</span>
-            </p>
-            <p>
-              <span className="font-bold">Email: </span>
-              <span>{contactInfo.email}</span>
-            </p>
-            <p>
-              <span className="font-bold">Phone: </span>
-              <span>{contactInfo.phone}</span>
-            </p>
-            <p>
-              <span className="font-bold">Address: </span>
-              <span>{contactInfo.address}</span>
-            </p>
+            <div className="grid gap-4">
+              <p>
+                <span className="font-bold">First Name: </span>
+                <span>{contactInfo.firstname}</span>
+              </p>
+              <p>
+                <span className="font-bold">Last Name: </span>
+                <span>{contactInfo.lastname}</span>
+              </p>
+              <p>
+                <span className="font-bold">Email: </span>
+                <span>{contactInfo.email}</span>
+              </p>
+              <p>
+                <span className="font-bold">Phone: </span>
+                <span>{contactInfo.phone}</span>
+              </p>
+              <p>
+                <span className="font-bold">Address: </span>
+                <span>{contactInfo.address}</span>
+              </p>
+            </div>
+
+            <div className="flex justify-center">
+              <Button
+                className="w-[267px]"
+                color="warning"
+                onClick={() => setIsRequestSent(true)}
+              >
+                Request Updated Info
+              </Button>
+            </div>
           </>
         ) : (
           <div className="grid gap-12">
@@ -152,6 +170,7 @@ const Contact = () => {
                 color="warning"
                 variant="outlined"
                 onClick={handleToggleEdit}
+                fullWidth
               >
                 Cancel
               </Button>

@@ -1,34 +1,50 @@
 import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Button from "@/app/components/shared/Button";
-import Select from "@/app/components/shared/Select";
+import Select, { SelectOption } from "@/app/components/shared/Select";
 
 interface ContactType {
-  status: string;
-  gym: string;
-  trainer: string;
-  contact_method: string;
+  status: SelectOption | null;
+  gym: SelectOption | null;
+  trainer: SelectOption[] | null;
+  contact_method: SelectOption | null;
 }
 
 const Membership = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [info, setInfo] = useState<ContactType>({
-    status: "",
-    gym: "",
-    trainer: "",
-    contact_method: "",
+    status: null,
+    gym: null,
+    trainer: null,
+    contact_method: null,
   });
 
-  const handleChange = (
-    e:
-      | ChangeEvent<HTMLInputElement>
-      | ChangeEvent<HTMLSelectElement>
-      | ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
+  const handleSelect = (option: any, target: string) => {
+    setInfo({ ...info, [target]: option });
   };
 
   const handleToggleEdit = () => setEditMode(!editMode);
+
+  const states: SelectOption[] = [
+    { value: 1, label: "Active" },
+    { value: 2, label: "In Active" },
+  ];
+
+  const gyms: SelectOption[] = [
+    { value: 1, label: "Queens Location" },
+    { value: 2, label: "Queens Location1" },
+  ];
+
+  const trainers: SelectOption[] = [
+    { value: 1, label: "Amanda Moore" },
+    { value: 2, label: "Billy Smith" },
+  ];
+
+  const contactMethods: SelectOption[] = [
+    { value: 1, label: "SMS" },
+    { value: 2, label: "Slack" },
+    { value: 3, label: "Whatsapp" },
+  ];
 
   return (
     <div className="w-full bg-black shadow-sm rounded-sm p-6 pb-9">
@@ -39,8 +55,8 @@ const Membership = () => {
         {!editMode && (
           <Image
             src="/images/dashboard/pen.png"
-            width={16}
-            height={16}
+            width={24}
+            height={24}
             alt=""
             className="cursor-pointer"
             onClick={handleToggleEdit}
@@ -52,19 +68,23 @@ const Membership = () => {
           <>
             <p>
               <span className="font-bold">Status: </span>
-              <span>{info.status}</span>
+              {info.status && <span>{info.status.label}</span>}
             </p>
             <p>
               <span className="font-bold">Preferred Gym: </span>
-              <span>{info.gym}</span>
+              {info.gym && <span>{info.gym.label}</span>}
             </p>
             <p>
               <span className="font-bold">Trainer: </span>
-              <span>{info.trainer}</span>
+              {info.trainer && (
+                <span>
+                  {info.trainer.map((trainer) => trainer.label).join(", ")}
+                </span>
+              )}
             </p>
             <p>
               <span className="font-bold">Preferred Contact Method: </span>
-              <span>{info.contact_method}</span>
+              {info.contact_method && <span>{info.contact_method.label}</span>}
             </p>
           </>
         ) : (
@@ -72,39 +92,30 @@ const Membership = () => {
             <div className="grid gap-4">
               <Select
                 label="Status"
-                id="status"
-                name="status"
                 value={info.status}
-                onChange={handleChange}
-                options={["Active", "In Active"]}
-                size="md"
+                onChange={(e: SelectOption) => handleSelect(e, "status")}
+                options={states}
               />
               <Select
                 label="Preferred GYM"
-                id="gym"
-                name="gym"
                 value={info.gym}
-                onChange={handleChange}
-                options={["Queens Location", "Queens Location 1"]}
-                size="md"
+                onChange={(e: SelectOption) => handleSelect(e, "gym")}
+                options={gyms}
               />
               <Select
                 label="Trainer(s)"
-                id="trainer"
-                name="trainer"
                 value={info.trainer}
-                onChange={handleChange}
-                options={["Amanda Moore", "Billy Smith"]}
-                size="md"
+                onChange={(e: SelectOption) => handleSelect(e, "trainer")}
+                options={trainers}
+                multiple
               />
               <Select
                 label="preferred contact method"
-                id="contact_method"
-                name="contact_method"
                 value={info.contact_method}
-                onChange={handleChange}
-                options={["SMS", "Slack", "Whatsapp"]}
-                size="md"
+                onChange={(e: SelectOption) =>
+                  handleSelect(e, "contact_method")
+                }
+                options={contactMethods}
               />
             </div>
             <div className="flex gap-12">

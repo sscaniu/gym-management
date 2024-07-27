@@ -32,30 +32,33 @@ const LocationSize = () => {
 
   const [selectedOption, setSelectedOption] = useState<any>();
 
-
   useEffect(() => {
-    const option = options.filter((item: OptionConfig) => item.id === selectedOption)[0];
+    const option = options.filter(
+      (item: OptionConfig) => item.id === selectedOption
+    )[0];
     dispatch(change({ target: "locationSize", value: option }));
-  }, [selectedOption])
+  }, [selectedOption]);
 
   useEffect(() => {
     setSelectedOption(gym.locationSize?.id || null);
   }, []);
 
   return (
-    <div className="grid gap-[70px]">
-      <WizardHeader
-        name="Location Size"
-        description="Which of the following choices best describes this gym’s membership size?"
-        hrefLeft="./address"
-        disableRight={!selectedOption}
-        hrefRight="./staffsize"
-      />
-      <CardSelect
-        options={options}
-        active={selectedOption}
-        onSelect={setSelectedOption}
-      />
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-[70px]">
+        <WizardHeader
+          name="Location Size"
+          description="Which of the following choices best describes this gym’s membership size?"
+          hrefLeft="./address"
+          disableRight={!selectedOption}
+          hrefRight="./staffsize"
+        />
+        <CardSelect
+          options={options}
+          active={selectedOption}
+          onSelect={setSelectedOption}
+        />
+      </div>
     </div>
   );
 };

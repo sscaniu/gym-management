@@ -1,46 +1,112 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { FC } from "react";
+import Image from "next/image";
+import ReactSelect, {
+  components,
+  OptionProps,
+  DropdownIndicatorProps,
+  MultiValueProps,
+} from "react-select";
 
-interface Option {
+export interface SelectOption {
   value: string | number;
   label: string | number;
 }
 
+const CustomOption: FC<OptionProps<SelectOption>> = (props) => {
+  const { isSelected, isFocused, data } = props;
+
+  return (
+    <components.Option
+      {...props}
+      className="h-12 !p-0 !bg-transparent mb-0.5 last:mb-0"
+    >
+      <div
+        className={`flex items-center h-12 px-[22px] relative border-[3px] rounded-sm ${
+          isSelected
+            ? `bg-info/30 border-info`
+            : `border-transparent hover:bg-warning/10`
+        }`}
+      >
+        <span className="font-jost font-semibold text-base">{data.label}</span>
+        {isSelected && (
+          <Image
+            src="/check.png"
+            width={24}
+            height={24}
+            alt="Check"
+            className="absolute top-1/2 right-2.5 -translate-y-1/2"
+          />
+        )}
+      </div>
+    </components.Option>
+  );
+};
+
+const CustomDropdownIndicator: FC<DropdownIndicatorProps> = (props) => {
+  const { selectProps } = props;
+
+  return (
+    <components.DropdownIndicator {...props} className="!px-3">
+      <Image
+        src="/caret.png"
+        width={24}
+        height={24}
+        alt="Arrow down"
+        className={`transition-all ${
+          selectProps.menuIsOpen ? `rotate-180` : `rotate-0`
+        }`}
+      />
+    </components.DropdownIndicator>
+  );
+};
+
+const CustomMultiValue = (props: MultiValueProps<any>) => {
+  const { data, index, getValue } = props;
+  return (
+    <span className="mr-1">
+      {data.label}
+      {getValue().length - 1 === index ? `` : `,`}
+    </span>
+  );
+};
+
 interface SelectProps {
-  id?: string;
-  name?: string;
-  value: string | number;
-  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   label?: string;
-  options: (Option | string | number)[];
-  className?: string;
-  size?: "sm" | "md" | "lg";
-  error?: boolean;
+  multiple?: boolean;
+  options?: SelectOption[];
+  placeholder?: string;
   fullWidth?: boolean;
+  className?: string;
+  error?: boolean;
+  value?: SelectOption | SelectOption[] | null;
+  onChange?: (e: any) => void;
+  size?: "sm" | "lg";
+  searchable?: boolean;
+  clearable?: boolean;
 }
 
 const Select: FC<SelectProps> = ({
-  value,
-  onChange,
   label,
-  options,
+  options = [],
+  multiple = false,
   className,
-  id,
-  name,
+  fullWidth = false,
+  error = false,
+  onChange,
   size = "sm",
-  error,
-  fullWidth,
+  searchable = false,
+  clearable = false,
+  placeholder = "Select an option",
 }) => {
   const sizeStyles = {
-    lg: "h-14 border-2 font-jost font-semibold text-base px-[22px] bg-transparent",
-    md: "h-12 border-2 font-jost font-semibold text-base px-[22px] bg-transparent",
-    sm: "h-10 font-rubik text-sm px-[26px] bg-[#0F142452]",
+    lg: "h-14 border-2 font-jost font-semibold text-base bg-transparent",
+    sm: "h-12 border-2 font-jost font-semibold text-base bg-transparent",
   };
 
   return (
-    <div className={`${fullWidth ? `w-full` : ``} grid gap-2 ${className}`}>
+    <div className={`${fullWidth ? `w-full` : ``} grid gap-2`}>
       {label && (
         <label
-          htmlFor={id}
           className={`font-jost font-semibold text-xs uppercase ${
             error ? `text-danger` : `text-white`
           }`}
@@ -48,23 +114,32 @@ const Select: FC<SelectProps> = ({
           {label}
         </label>
       )}
-      <select
-        value={value}
+      <ReactSelect
+        options={options}
+        isMulti={multiple}
         onChange={onChange}
-        className={`w-full border border-white rounded focus:ring-0 focus:border-white text-white appearance-none ${sizeStyles[size]}`}
-        id={id}
-        name={name}
-      >
-        {options.map((option: Option | number | string) => (
-          <option
-            key={typeof option === "object" ? option.value : option}
-            value={typeof option === "object" ? option.value : option}
-            className="text-black"
-          >
-            {typeof option === "object" ? option.label : option}
-          </option>
-        ))}
-      </select>
+        placeholder={placeholder}
+        classNames={{
+          control: () =>
+            `${sizeStyles[size]} !bg-black !border-2 rounded !shadow-none text-white !border-white ${className}`,
+          indicatorSeparator: () => `hidden`,
+          menu: () => `border-2 border-white !bg-black !rounded !mt-1`,
+          menuList: () => `!p-0`,
+          singleValue: () => `!text-white`,
+          multiValue: () => `!bg-transparent`,
+          valueContainer: () => `!px-5`,
+        }}
+        isSearchable={searchable}
+        isClearable={clearable}
+        hideSelectedOptions={false}
+        closeMenuOnSelect={false}
+        components={{
+          // @ts-ignore
+          Option: CustomOption,
+          MultiValue: CustomMultiValue,
+          DropdownIndicator: CustomDropdownIndicator,
+        }}
+      />
     </div>
   );
 };

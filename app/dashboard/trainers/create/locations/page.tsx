@@ -39,21 +39,23 @@ const TrainerLocations = () => {
   }, []);
 
   return (
-    <div className="grid gap-[70px]">
-      <WizardHeader
-        name="Trainer Gym Location"
-        description="Which gym in this trainer’s primary location?"
-        hrefLeft="./specialty"
-        hrefRight="./review"
-        disableRight={selectedOptions.length === 0}
-      />
-      <CardSelect
-        options={options}
-        active={selectedOptions}
-        onSelect={setSelectedOptions}
-        multiple
-        max={2}
-      />
+    <div className="w-full max-w-7xl px-9 py-10 mx-auto">
+      <div className="grid gap-[70px]">
+        <WizardHeader
+          name="Trainer Gym Location"
+          description="Which gym in this trainer’s primary location?"
+          hrefLeft="./specialty"
+          hrefRight="./review"
+          disableRight={selectedOptions.length === 0}
+        />
+        <CardSelect
+          options={options}
+          active={selectedOptions}
+          onSelect={setSelectedOptions}
+          multiple
+          max={2}
+        />
+      </div>
     </div>
   );
 };

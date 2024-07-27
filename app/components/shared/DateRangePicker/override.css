@@ -1,0 +1,118 @@
+.rdrDateRangePickerWrapper {
+  border: 2px solid #434d6c;
+}
+.rdrCalendarWrapper {
+  color: #fff;
+  background-color: #1a2239;
+}
+
+.rdrDateDisplayWrapper {
+  background-color: #1a2239;
+}
+
+.rdrDateDisplayItem {
+  background-color: #434d6c;
+  border-radius: 0;
+}
+
+.rdrDateDisplayItem input {
+  --tw-ring-color: #ffcdb2;
+  color: #7d888d;
+}
+
+.rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.rdrDateDisplayItemActive input {
+  color: #fff;
+}
+
+.rdrMonthAndYearPickers select {
+  color: #fff;
+}
+
+.rdrMonthAndYearPickers select:hover {
+  background-color: #434d6c;
+}
+
+.rdrDefinedRangesWrapper {
+  width: 180px;
+  background-color: #1a2239;
+  border-right: 2px solid #434d6c;
+}
+
+.rdrStaticRange {
+  background-color: #1a2239;
+  border-bottom: 2px solid #434d6c;
+}
+
+.rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.rdrSelected,
+.rdrInRange,
+.rdrStartEdge,
+.rdrEndEdge {
+  background: #ffcdb2;
+}
+
+.rdrDayStartPreview,
+.rdrDayInPreview,
+.rdrDayEndPreview {
+  border: 0px solid #ffcdb2;
+}
+
+.rdrDefinedRangesWrapper .rdrStaticRangeSelected {
+  color: #ffcdb2;
+}
+
+.rdrStaticRange.rdrStaticRangeSelected .rdrStaticRangeLabel {
+  color: #ffcdb2;
+}
+
+.rdrStaticRange:hover .rdrStaticRangeLabel {
+  background: transparent;
+  color: #ffcdb2;
+}
+
+.rdrCalendarWrapper:not(.rdrDateRangeWrapper)
+  .rdrDayHovered
+  .rdrDayNumber:after {
+  border: 1px solid #ffcdb2;
+}
+
+.rdrInputRangeInput {
+  padding: 0;
+  background-color: #434d6c;
+  border: 1px solid #1a2239;
+  --tw-ring-color: #ffcdb2 !important;
+  color: #fff !important;
+}
+
+.rdrDayNumber span {
+  color: #fff;
+}
+
+.rdrNextPrevButton {
+  background-color: #434d6c;
+}
+
+.rdrNextPrevButton i {
+  filter: brightness(0) invert(1);
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  background: #ffcdb2;
+}
+
+.rdrMonth {
+  width: 320px;
+}
+
+@media(max-width: 640px) {
+  .rdrDefinedRangesWrapper {
+    display: none;
+  }
+}
