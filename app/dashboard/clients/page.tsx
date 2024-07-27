@@ -10,7 +10,6 @@ import Button from "@/app/components/shared/Button";
 import ActionButton from "@/app/components/shared/ActionButton";
 import { UIClient } from "@/app/lib/definitions";
 
-
 const Clients = () => {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
