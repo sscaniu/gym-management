@@ -7,24 +7,9 @@ import Image from "next/image";
 import Search from "@/app/components/shared/Search";
 import DataTable, { Col } from "@/app/components/shared/DataTable";
 import Button from "@/app/components/shared/Button";
-
+import ActionButton from "@/app/components/shared/ActionButton";
 import { UIClient } from "@/app/lib/definitions";
 
-
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  icon: string;
-}
-
-const ActionButton: FC<ButtonProps> = ({ children, onClick, icon }) => {
-  return (
-    <button onClick={onClick} className="h-[52px] flex items-center gap-4 px-4">
-      <Image src={icon} width={24} height={24} alt="button" />
-      <span className="font-jost font-medium text-sm">{children}</span>
-    </button>
-  );
-};
 
 const Clients = () => {
   const router = useRouter();
