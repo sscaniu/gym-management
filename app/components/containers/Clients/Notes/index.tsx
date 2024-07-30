@@ -7,6 +7,7 @@ import Select, { SelectOption } from "@/app/components/shared/Select";
 import FileUploader from "@/app/components/shared/FileUploader";
 import TextEditor from "@/app/components/shared/TextEditor";
 import moment from "moment";
+import TagsField from "@/app/components/shared/TagsField";
 
 const tagOptions: SelectOption[] = [
   { value: 1, label: "TAG ONE" },
@@ -17,7 +18,7 @@ interface Note {
   id: number;
   title?: string;
   content?: string;
-  tags?: SelectOption[];
+  tags?: string[];
   files?: File[];
   time: Date;
 }
@@ -72,7 +73,7 @@ const Notes: FC = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [tags, setTags] = useState<SelectOption[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const [files, setFiles] = useState<File[]>([]);
 
   const handleFilesAdded = (newFiles: File[]) => {
@@ -273,14 +274,10 @@ const Notes: FC = () => {
                   onChange={(data: string) => setContent(data)}
                   label="Description"
                 />
-                <Select
-                  size="lg"
+                <TagsField
                   value={tags}
-                  options={tagOptions}
                   onChange={(e) => setTags(e)}
                   label="Tags"
-                  className="!bg-table-odd"
-                  multiple
                 />
                 <FileUploader onFilesAdded={handleFilesAdded} />
               </div>
@@ -309,12 +306,12 @@ const Notes: FC = () => {
               )}
               {tags.length > 0 && (
                 <ul className="flex flex-wrap gap-8">
-                  {tags.map((tag: SelectOption) => (
+                  {tags.map((tag: string) => (
                     <li
-                      key={tag.value}
+                      key={tag}
                       className="font-jost font-bold text-black text-xs bg-info rounded-sm p-2"
                     >
-                      {tag.label}
+                      {tag}
                     </li>
                   ))}
                 </ul>

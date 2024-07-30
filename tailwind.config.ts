@@ -43,6 +43,8 @@ const config: Config = {
       fontFamily: {
         rubik: "Rubik",
         jost: "Jost",
+        roboto: "Roboto",
+        ibm: "IBM Plex Sans"
       },
       fontSize: {
         xxs: "10px",
@@ -53,7 +55,7 @@ const config: Config = {
       },
       boxShadow: {
         "inset-toggle": "inset 0 0 4px 0 #1F2537",
-        "center": "0 0 8px 0 #00000020"
+        center: "0 0 8px 0 #00000020",
       },
     },
   },

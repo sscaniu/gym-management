@@ -1,0 +1,189 @@
+.calendar .rdrMonthAndYearWrapper {
+  height: 44px;
+}
+
+.calendar .rdrMonthAndYearWrapper,
+.calendar .rdrMonth {
+  padding: 0;
+  width: auto;
+}
+
+.calendar .rdrCalendarWrapper {
+  color: #fff;
+  background-color: transparent;
+  display: flex;
+}
+
+.calendar .rdrDateDisplayWrapper {
+  background-color: transparent;
+}
+
+.calendar .rdrDateDisplayItem {
+  background-color: #434d6c;
+  border-radius: 0;
+}
+
+.calendar .rdrDateDisplayItem input {
+  --tw-ring-color: #ffcdb2;
+  color: #7d888d;
+}
+
+.calendar .rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.calendar .rdrDateDisplayItemActive input {
+  color: #fff;
+}
+
+.calendar .rdrMonthAndYearPickers {
+  font-weight: 700;
+}
+
+.calendar .rdrDefinedRangesWrapper {
+  width: 180px;
+  background-color: transparent;
+  border-right: 2px solid #434d6c;
+}
+
+.calendar .rdrStaticRange {
+  background-color: transparent;
+  border-bottom: 2px solid #434d6c;
+}
+
+.calendar .rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.calendar .rdrSelected,
+.calendar .rdrInRange,
+.calendar .rdrStartEdge,
+.calendar .rdrEndEdge {
+  width: 100%;
+  height: 100%;
+  background: #ffcdb2;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.calendar .rdrDayStartPreview,
+.calendar .rdrDayInPreview,
+.calendar .rdrDayEndPreview {
+  border: 0px solid #ffcdb2;
+}
+
+.calendar .rdrDefinedRangesWrapper .rdrStaticRangeSelected {
+  color: #ffcdb2;
+}
+
+.calendar .rdrStaticRange.rdrStaticRangeSelected .rdrStaticRangeLabel {
+  color: #ffcdb2;
+}
+
+.calendar .rdrStaticRange:hover .rdrStaticRangeLabel {
+  background: transparent;
+  color: #ffcdb2;
+}
+
+.calendar
+  .rdrCalendarWrapper:not(.rdrDateRangeWrapper)
+  .rdrDayHovered
+  .rdrDayNumber:after {
+  border: 1px solid #ffcdb2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.calendar .rdrDayStartPreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.calendar .rdrInputRangeInput {
+  padding: 0;
+  background-color: #434d6c;
+  border: 1px solid #1a2239;
+  --tw-ring-color: #ffcdb2 !important;
+  color: #fff !important;
+}
+
+.calendar .rdrDayNumber span {
+  color: #fff;
+}
+
+.calendar .rdrNextPrevButton {
+  background-color: #434d6c;
+}
+
+.calendar .rdrNextPrevButton i {
+  filter: brightness(0) invert(1);
+}
+
+.calendar .rdrDayToday .rdrDayNumber span:after {
+  background: #ffcdb2;
+}
+
+@media (max-width: 640px) {
+  .calendar .rdrDefinedRangesWrapper {
+    display: none;
+  }
+}
+
+.calendar .rdrDay {
+  width: 44px;
+  height: 44px !important;
+  border-radius: 50%;
+}
+
+.calendar .rdrDayNumber {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-family: Rubik;
+  color: #fff;
+}
+
+.calendar .rdrWeekDay {
+  width: 44px !important;
+  height: 44px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.calendar .rdrSelected ~ .rdrDayNumber {
+  color: #1a2239;
+}
+
+.calendar .dot {
+  display: inline-flex;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffcdb2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+}
+
+.calendar .rdrSelected ~ .rdrDayNumber .dot {
+  background: #1a2239;
+}
+
+.rdrNextPrevButton {
+  opacity: 0;
+}

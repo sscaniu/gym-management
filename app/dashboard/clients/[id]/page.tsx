@@ -10,6 +10,7 @@ import Messages from "@/app/components/containers/Clients/Messages";
 
 import Modal from "@/app/components/shared/Modal";
 import Notes from "@/app/components/containers/Clients/Notes";
+import Calendar from "@/app/components/containers/Clients/Calendar";
 
 const Client = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -61,6 +62,7 @@ const Client = () => {
             {selectedTab === "goals" && <Goals />}
             {selectedTab === "messages" && <Messages />}
             {selectedTab === "notes" && <Notes />}
+            {selectedTab === "calendar" && <Calendar />}
           </div>
         </div>
 

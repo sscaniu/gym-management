@@ -68,10 +68,8 @@ const TextField: FC<TextFieldProps> = ({
             value={value}
             autoComplete={name}
             onChange={onChange}
-            className={`w-full h-[192px] font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none border-2 ${
-              error
-                ? `border-danger`
-                : `border-white focus:border-info`
+            className={`w-full h-[192px] font-jost font-semibold text-base bg-black border-0 focus:border-white focus:ring-0 focus:outline-none border-2 ${
+              error ? `border-danger` : `border-white focus:border-info`
             } ${disabled ? `opacity-50` : ``} ${
               readonly ? `border-white/50` : ``
             } rounded-sm shadow resize-none`}
@@ -82,12 +80,10 @@ const TextField: FC<TextFieldProps> = ({
         </div>
       ) : (
         <div
-          className={`${sizeStyles[size]} flex border-2 ${
+          className={`${sizeStyles[size]} flex border-2 bg-black ${
             disabled ? `opacity-50` : ``
           } ${readonly ? `border-white/50` : ``} ${
-            error
-              ? `border-danger`
-              : `border-white focus-within:border-info`
+            error ? `border-danger` : `border-white focus-within:border-info`
           } rounded-sm shadow`}
         >
           {startAdornment && (
@@ -102,7 +98,7 @@ const TextField: FC<TextFieldProps> = ({
             autoComplete={name}
             value={value}
             onChange={onChange}
-            className={`w-full h-full font-jost font-semibold text-base bg-transparent border-0 focus:border-white focus:ring-0 focus:outline-none ${
+            className={`w-full h-full font-jost font-semibold text-base bg-black border-0 focus:border-white focus:ring-0 focus:outline-none ${
               error ? `text-danger` : `text-white`
             } ${className} ${startAdornment ? `pl-0` : `pl-[22px]`} ${
               endAdornment ? `pr-0` : `pr-[22px]`

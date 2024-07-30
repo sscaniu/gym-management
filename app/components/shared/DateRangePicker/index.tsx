@@ -42,7 +42,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   };
 
   return (
-    <div className={`${fullWidth ? `w-full` : ``} grid gap-2 font-jost`}>
+    <div className={`${fullWidth ? `w-full` : ``} grid gap-2 font-jost date-range-picker`}>
       {label && (
         <label
           htmlFor={id}
