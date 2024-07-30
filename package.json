@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "node -r dotenv/config ./scripts/seed.js",
@@ -24,7 +24,7 @@
     "@types/react": "^18.2.75",
     "@types/react-chartjs-2": "^2.5.7",
     "@types/react-dom": "^18.2.24",
-    "@vercel/postgres": "^0.8.0",
+    "@vercel/postgres": "^0.9.0",
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.1",
     "bcrypt-ts": "^5.0.2",

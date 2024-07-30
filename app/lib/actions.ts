@@ -4,10 +4,13 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { Twilio } from "twilio";
 
+
 const twilioClient: Twilio = new Twilio(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
 );
+
+
 
 export async function authenticate(
   prevState: string | undefined,
@@ -39,6 +42,7 @@ export async function register(
   return "success";
 }
 
+/* Sends a message using the Twilio API */
 export async function sendMessage(formData: FormData) {
   //Not safe values could be empty
   const toNumber = String(formData.get("to"));
@@ -56,3 +60,5 @@ export async function sendMessage(formData: FormData) {
     throw error;
   }
 }
+
+

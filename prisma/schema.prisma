@@ -23,7 +23,7 @@ model User {
   phone String
   password String
   role String?
-  gyms GymsOnUsers[]
+  gym Gym[]
 
   @@map("users")
 }
@@ -38,45 +38,41 @@ model Gym {
   zip String
   client_size String
   training_staff_size String
-  specialty String
   created_at DateTime @default(now())
   updated_at DateTime?
   locations Location[]
-  users GymsOnUsers[]
+  users User[]
+  clients Client[]
+  trainers Trainer[]
 
   @@map("gyms")
 }
 
-model GymsOnUsers {
-  user User @relation(fields: [userId], references: [id])
-  userId String
-  gym Gym @relation(fields: [gymId], references: [id])
-  gymId String
-
-  @@id([userId, gymId])
-}
 
 model Location {
   id String @id @default(uuid())
+  name String
   street_1 String
   street_2 String
   city String
   state String
   zip String
   client_size String
-  training_staff_size String
   specialty String
   created_at DateTime @default(now())
   updated_at DateTime?
   gym Gym @relation(fields: [gymId], references: [id])
   gymId String
+  sessions Session[]
 
   @@map("locations")
 }
 
+//We might need to add an identifier for client and sender
 model Message {
   id String @id @default(uuid())
   uuid String? @unique
+  sender String?
   to String
   from String
   body String
@@ -88,4 +84,71 @@ model Message {
   updated_at DateTime?
 
   @@map("messages")
+}
+
+model Client {
+  id String @id @default(uuid())
+  email String @unique
+  first_name String
+  last_name String
+  street_1 String
+  street_2 String?
+  city String
+  state String
+  zip String
+  phone1 String
+  phone2 String?
+  contact_preference String
+  created_at DateTime @default(now())
+  updated_at DateTime?
+  gyms Gym[]
+  trainers Trainer[]
+  sessions Session[]
+
+  @@map("clients")
+}
+
+model Trainer {
+  id String @id @default(uuid())
+  email String @unique
+  first_name String
+  last_name String
+  street_1 String
+  street_2 String?
+  city String
+  state String
+  zip String
+  phone1 String
+  phone2 String?
+  specialty String
+  created_at DateTime @default(now())
+  updated_at DateTime?
+  gym Gym[]
+  clients Client[]
+  sessions Session[]
+
+  @@map("trainers")
+}
+
+model Session {
+  id String @id @default(uuid())
+  client Client @relation(fields:[clientId], references:[id])
+  clientId String
+
+  start_time DateTime
+  end_time DateTime
+  type String
+  title String
+  Description String?
+
+  location Location @relation(fields:[locationId], references:[id])
+  locationId String
+
+  trainer Trainer @relation(fields:[trainerId], references:[id])
+  trainerId String
+
+  created_at DateTime @default(now())
+  updated_at DateTime?
+
+  @@map("sessions")
 }
