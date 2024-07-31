@@ -1,89 +1,90 @@
-.rdrDateRangePickerWrapper {
+.date-range-picker .rdrDateRangePickerWrapper {
   border: 2px solid #434d6c;
 }
-.rdrCalendarWrapper {
+.date-range-picker .rdrCalendarWrapper {
   color: #fff;
   background-color: #1a2239;
 }
 
-.rdrDateDisplayWrapper {
+.date-range-picker .rdrDateDisplayWrapper {
   background-color: #1a2239;
 }
 
-.rdrDateDisplayItem {
+.date-range-picker .rdrDateDisplayItem {
   background-color: #434d6c;
   border-radius: 0;
 }
 
-.rdrDateDisplayItem input {
+.date-range-picker .rdrDateDisplayItem input {
   --tw-ring-color: #ffcdb2;
   color: #7d888d;
 }
 
-.rdrDateDisplayItemActive {
+.date-range-picker .rdrDateDisplayItemActive {
   border-color: #ffcdb2;
 }
 
-.rdrDateDisplayItemActive input {
+.date-range-picker .rdrDateDisplayItemActive input {
   color: #fff;
 }
 
-.rdrMonthAndYearPickers select {
+.date-range-picker .rdrMonthAndYearPickers select {
   color: #fff;
 }
 
-.rdrMonthAndYearPickers select:hover {
+.date-range-picker .rdrMonthAndYearPickers select:hover {
   background-color: #434d6c;
 }
 
-.rdrDefinedRangesWrapper {
+.date-range-picker .rdrDefinedRangesWrapper {
   width: 180px;
   background-color: #1a2239;
   border-right: 2px solid #434d6c;
 }
 
-.rdrStaticRange {
+.date-range-picker .rdrStaticRange {
   background-color: #1a2239;
   border-bottom: 2px solid #434d6c;
 }
 
-.rdrDateDisplayItemActive {
+.date-range-picker .rdrDateDisplayItemActive {
   border-color: #ffcdb2;
 }
 
-.rdrSelected,
-.rdrInRange,
-.rdrStartEdge,
-.rdrEndEdge {
+.date-range-picker .rdrSelected,
+.date-range-picker .rdrInRange,
+.date-range-picker .rdrStartEdge,
+.date-range-picker .rdrEndEdge {
   background: #ffcdb2;
 }
 
-.rdrDayStartPreview,
-.rdrDayInPreview,
-.rdrDayEndPreview {
+.date-range-picker .rdrDayStartPreview,
+.date-range-picker .rdrDayInPreview,
+.date-range-picker .rdrDayEndPreview {
   border: 0px solid #ffcdb2;
 }
 
-.rdrDefinedRangesWrapper .rdrStaticRangeSelected {
+.date-range-picker .rdrDefinedRangesWrapper .rdrStaticRangeSelected {
   color: #ffcdb2;
 }
 
-.rdrStaticRange.rdrStaticRangeSelected .rdrStaticRangeLabel {
+.date-range-picker .rdrStaticRange.rdrStaticRangeSelected .rdrStaticRangeLabel {
   color: #ffcdb2;
 }
 
-.rdrStaticRange:hover .rdrStaticRangeLabel {
+.date-range-picker .rdrStaticRange:hover .rdrStaticRangeLabel {
   background: transparent;
   color: #ffcdb2;
 }
 
-.rdrCalendarWrapper:not(.rdrDateRangeWrapper)
+.date-range-picker
+  .rdrCalendarWrapper:not(.rdrDateRangeWrapper)
   .rdrDayHovered
   .rdrDayNumber:after {
   border: 1px solid #ffcdb2;
 }
 
-.rdrInputRangeInput {
+.date-range-picker .rdrInputRangeInput {
   padding: 0;
   background-color: #434d6c;
   border: 1px solid #1a2239;
@@ -91,28 +92,28 @@
   color: #fff !important;
 }
 
-.rdrDayNumber span {
+.date-range-picker .rdrDayNumber span {
   color: #fff;
 }
 
-.rdrNextPrevButton {
+.date-range-picker .rdrNextPrevButton {
   background-color: #434d6c;
 }
 
-.rdrNextPrevButton i {
+.date-range-picker .rdrNextPrevButton i {
   filter: brightness(0) invert(1);
 }
 
-.rdrDayToday .rdrDayNumber span:after {
+.date-range-picker .rdrDayToday .rdrDayNumber span:after {
   background: #ffcdb2;
 }
 
-.rdrMonth {
+.date-range-picker .rdrMonth {
   width: 320px;
 }
 
-@media(max-width: 640px) {
-  .rdrDefinedRangesWrapper {
+@media (max-width: 640px) {
+  .date-range-picker .rdrDefinedRangesWrapper {
     display: none;
   }
 }

@@ -1,0 +1,20 @@
+.react-tagsinput {
+  min-height: 64px;
+  background: #121623;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  padding-top: 14px;
+  padding-left: 14px;
+}
+
+.react-tagsinput-input {
+  margin: 0;
+  outline: 0;
+  font-family: Jost;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.react-tagsinput-input:focus {
+  --tw-ring-color: transparent;
+}
