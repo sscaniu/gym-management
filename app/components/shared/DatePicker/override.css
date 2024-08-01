@@ -1,0 +1,124 @@
+.date-range-picker .rdrDateRangePickerWrapper {
+  border: 2px solid #434d6c;
+}
+.date-range-picker .rdrCalendarWrapper {
+  color: #fff;
+  background-color: #1a2239;
+}
+
+.date-range-picker .rdrDateDisplayWrapper {
+  background-color: #1a2239;
+}
+
+.date-range-picker .rdrDateDisplayItem {
+  background-color: #434d6c;
+  border-radius: 0;
+}
+
+.date-range-picker .rdrDateDisplayItem input {
+  --tw-ring-color: #ffcdb2;
+  color: #7d888d;
+}
+
+.date-range-picker .rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.date-range-picker .rdrDateDisplayItemActive input {
+  color: #fff;
+}
+
+.date-range-picker .rdrMonthAndYearPickers select {
+  color: #fff;
+}
+
+.date-range-picker .rdrMonthAndYearPickers select:hover {
+  background-color: #434d6c;
+}
+
+.date-range-picker .rdrDefinedRangesWrapper {
+  display: none;
+  width: 180px;
+  background-color: #1a2239;
+  border-right: 2px solid #434d6c;
+}
+
+.date-range-picker .rdrStaticRange {
+  background-color: #1a2239;
+  border-bottom: 2px solid #434d6c;
+}
+
+.date-range-picker .rdrDateDisplayItemActive {
+  border-color: #ffcdb2;
+}
+
+.date-range-picker .rdrSelected,
+.date-range-picker .rdrInRange,
+.date-range-picker .rdrStartEdge,
+.date-range-picker .rdrEndEdge {
+  background: #ffcdb2;
+}
+
+.date-range-picker .rdrDayStartPreview,
+.date-range-picker .rdrDayInPreview,
+.date-range-picker .rdrDayEndPreview {
+  border: 0px solid #ffcdb2;
+}
+
+.date-range-picker .rdrDefinedRangesWrapper .rdrStaticRangeSelected {
+  color: #ffcdb2;
+}
+
+.date-range-picker .rdrStaticRange.rdrStaticRangeSelected .rdrStaticRangeLabel {
+  color: #ffcdb2;
+}
+
+.date-range-picker .rdrStaticRange:hover .rdrStaticRangeLabel {
+  background: transparent;
+  color: #ffcdb2;
+}
+
+.date-range-picker
+  .rdrCalendarWrapper:not(.rdrDateRangeWrapper)
+  .rdrDayHovered
+  .rdrDayNumber:after {
+  border: 1px solid #ffcdb2;
+}
+
+.date-range-picker .rdrInputRangeInput {
+  padding: 0;
+  background-color: #434d6c;
+  border: 1px solid #1a2239;
+  --tw-ring-color: #ffcdb2 !important;
+  color: #fff !important;
+}
+
+.date-range-picker .rdrDayNumber span {
+  color: #fff;
+}
+
+.date-range-picker .rdrNextPrevButton {
+  background-color: #434d6c;
+}
+
+.date-range-picker .rdrNextPrevButton i {
+  filter: brightness(0) invert(1);
+}
+
+.date-range-picker .rdrDayToday .rdrDayNumber span:after {
+  background: #ffcdb2;
+}
+
+.date-range-picker .rdrMonth {
+  width: 320px;
+}
+
+@media (max-width: 640px) {
+  .date-range-picker .rdrDefinedRangesWrapper {
+    display: none;
+  }
+}
+
+.rdrMonthName {
+  display: none;
+}
