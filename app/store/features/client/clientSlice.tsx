@@ -1,6 +1,7 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { ValueProps } from "@/app/components/shared/DateRangePicker";
 
 interface Client {
   [key: string]: any;
@@ -15,11 +16,11 @@ interface Client {
   method: string | number;
   primary_goal_type?: string | number;
   primary_goal_meeting_frequency?: string | number;
-  primary_goal_program_duration?: string;
+  primary_goal_program_duration: ValueProps;
   primary_goal_details?: string;
   secondary_goal_type?: string | number;
   secondary_goal_meeting_frequency?: string | number;
-  secondary_goal_program_duration?: string;
+  secondary_goal_program_duration: ValueProps;
   secondary_goal_details?: string;
   locations: object[] | null;
   trainer: object | null;
@@ -37,11 +38,17 @@ const initialState: Client = {
   method: "",
   primary_goal_type: "",
   primary_goal_meeting_frequency: "",
-  primary_goal_program_duration: "",
+  primary_goal_program_duration: {
+    from: null,
+    to: null,
+  },
   primary_goal_details: "",
   secondary_goal_type: "",
   secondary_goal_meeting_frequency: "",
-  secondary_goal_program_duration: "",
+  secondary_goal_program_duration: {
+    from: null,
+    to: null,
+  },
   secondary_goal_details: "",
   locations: null,
   trainer: null,

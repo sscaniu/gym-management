@@ -32,7 +32,7 @@ const Dropdown: FC<DropdownProps> = ({ onEdit, onDelete }) => {
           <Image src="/dots.png" width={24} height={24} alt="Menu" />
         </button>
         {isOpen && (
-          <div className="absolute right-0 w-[180px] grid gap-[1px] -bottom-1 translate-y-full shadow-center">
+          <div className="absolute right-0 w-[180px] grid gap-[1px] -bottom-1 translate-y-full shadow-center z-50">
             <button
               className="bg-dark hover:bg-[#313B5B] cursor-pointer focus-visible:outline focus-visible:-outline-offset-2 focus-visible:outline-2 focus-visible:outline-info focus-visible:bg-[#313B5B] px-2 py-3 flex items-center gap-2 rounded-t-lg"
               onClick={handleEdit}

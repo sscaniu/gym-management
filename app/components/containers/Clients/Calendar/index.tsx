@@ -1,9 +1,11 @@
 import React, { FC, useState } from "react";
+import { useRouter } from "next/navigation";
 import Calendar from "@/app/components/shared/Calendar";
 import Checkbox from "@/app/components/shared/Checkbox";
 import Image from "next/image";
 import Button from "@/app/components/shared/Button";
 import Dropdown from "@/app/components/shared/Dropdown";
+import DeleteEventModal from "@/app/components/containers/Calendar/DeleteEventModal";
 import moment from "moment";
 
 interface Workout {
@@ -58,7 +60,10 @@ const workouts: Workout[] = [
 ];
 
 const ClientCalendar: FC = () => {
+  const router = useRouter();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [isOpenDeleteEventModal, setIsOpenDeleteEventModal] =
+    useState<boolean>(false);
   const [selectedWorkoutTypes, setSelectedWOrkoutTypes] = useState<string[]>(
     []
   );
@@ -131,7 +136,7 @@ const ClientCalendar: FC = () => {
           <Button
             color="warning"
             className="w-full max-w-[234px]"
-            href="/dashboard/calendar/create"
+            href="/dashboard/clients/1/calendar/create"
           >
             + Add New Event
           </Button>
@@ -158,7 +163,12 @@ const ClientCalendar: FC = () => {
                     </div>
                     <div className="w-full bg-table-odd p-4 rounded-sm shadow-lg relative">
                       <div className="absolute top-4 right-4">
-                        <Dropdown />
+                        <Dropdown
+                          onEdit={() =>
+                            router.push("/dashboard/clients/1/calendar/1/edit")
+                          }
+                          onDelete={() => setIsOpenDeleteEventModal(true)}
+                        />
                       </div>
                       <p className="text-base mb-1">{workout.title}</p>
                       <p className="font-rubik font-semibold text-xs mb-2 opacity-70">
@@ -210,6 +220,11 @@ const ClientCalendar: FC = () => {
           ))}
         </div>
       </div>
+
+      <DeleteEventModal
+        open={isOpenDeleteEventModal}
+        onClose={() => setIsOpenDeleteEventModal(false)}
+      />
     </div>
   );
 };

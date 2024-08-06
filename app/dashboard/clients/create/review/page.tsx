@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import WizardHeader from "@/app/components/shared/WizardHeader";
 import Link from "next/link";
+import moment from "moment";
 
 const ProfileReview = () => {
   const client = useSelector((state: any) => state.client);
@@ -104,7 +105,25 @@ const ProfileReview = () => {
               </p>
               <p>
                 <span className="font-bold">Duration: </span>
-                <span>{client.primary_goal_program_duration}</span>
+                <span>
+                  {client.primary_goal_program_duration.from && (
+                    <>
+                      <span>
+                        {moment(
+                          client.primary_goal_program_duration.from
+                        ).format("MMMM DD, YYYY")}
+                      </span>
+                      <span>{` - `}</span>
+                    </>
+                  )}
+                  {client.primary_goal_program_duration.to && (
+                    <span>
+                      {moment(client.primary_goal_program_duration.to).format(
+                        "MMMM DD, YYYY"
+                      )}
+                    </span>
+                  )}
+                </span>
               </p>
               <p>
                 <span className="font-bold">Details: </span>

@@ -117,7 +117,7 @@ const Button: FC<ButtonProps> = ({
       onClick={handleClick}
       className={`${
         fullWidth ? `w-full` : ``
-      } font-jost font-semibold px-4 transition box-border ${
+      } font-rubik font-semibold px-4 transition box-border ${
         disableButtonStyles[variant]
       } ${activeButtonStyles[variant]} ${hoverButtonStyles[variant]} ${
         focusButtonStyles[variant]
