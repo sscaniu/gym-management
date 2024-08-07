@@ -92,10 +92,10 @@ async function getClientsForGym() {
   //Entry point
   async function main() {
       
-    // getUsers();
+    getUsers();
     // getGyms();
     // getTrainers();
-    getClientsForGym();
+    //getClientsForGym();
     
   }
   

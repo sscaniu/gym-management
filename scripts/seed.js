@@ -6,48 +6,43 @@ const { db } = require('@vercel/postgres');
 
 const { hash } = require('bcrypt');
 
-const users = [
-  {
-    id: '410544b2-4001-4271-9855-fec4b6a6442a',
-    first_name: 'Bob',
-    last_name: 'Dylan',
-    email: 'user@nextmail.com',
-    password: '123456',
-    phone:"5516893667"
-  },
-];
 
-async function seedUsers(client) {
-  try {
-    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-    // Insert data into the "users" table
-    const insertedUsers = await Promise.all(
-      users.map(async (user) => {
-        const hashedPassword = await hash(user.password, 10);
-        return client.sql`
-        INSERT INTO users (id, first_name, last_name, email, password, phone)
-        VALUES (${user.id}, ${user.first_name}, ${user.last_name}, ${user.email}, ${hashedPassword}, ${user.phone})
-        ON CONFLICT (id) DO NOTHING;
-      `;
-      }),
-    );
-
-    console.log(`Seeded ${insertedUsers.length} users`);
-
-    return {
-      users: insertedUsers
-    };
-  } catch (error) {
-    console.error('Error seeding users:', error);
-    throw error;
+async function seedUsers() {
+ 
+   
+ const result1 =  await prisma.user.create({
+    data: {
+      first_name: 'Bob',
+      last_name: 'Dylan',
+      email:'user@nextmail.com',
+      password: await hash('123456', 10),
+      phone:"+15516893667",
+      role:"owner"
+    }
   }
+)
+ 
+await prisma.user.create({
+  data: {
+    first_name: 'Tom',
+    last_name: 'Jones',
+    email:'tom.jones@gmail.com',
+    password: await hash('123456', 10),
+    phone:"+15516893667",
+    role:"owner"
+  }
+}
+)
+  
+  return result1;
 }
 
 
-/*Test Gyms*/
-async function seedGyms() {
 
+/*Test Gyms*/
+async function seedGyms(userId) {
+console.log("OwnerId: "+userId);
   const result = await prisma.gym.create({
     data: 
       {
@@ -75,10 +70,10 @@ async function seedGyms() {
         },
         users: {
           connect: {
-            id:"410544b2-4001-4271-9855-fec4b6a6442a"
+            id: userId
            }
         }
-        
+      
   
       }
     
@@ -167,6 +162,7 @@ async function disconnect() {
 }
 
 async function deleteAll() {
+  const users = prisma.user.deleteMany();
   const sessions = prisma.session.deleteMany();
   const clients = prisma.client.deleteMany({});
   const trainer = prisma.trainer.deleteMany();
@@ -176,7 +172,8 @@ async function deleteAll() {
   
   
 
-  await prisma.$transaction([sessions, messages, trainer, location, gyms, clients]);
+  const res = await prisma.$transaction([sessions, messages, trainer, location, gyms, clients, users]);
+  console.log("Delete result"+JSON.stringify(res));
 }
 
 async function seedClients(trainerId,gymId) {
@@ -342,13 +339,12 @@ async function seedSessions(clientId,trainerId) {
 }
 
 async function main() {
-  const client = await db.connect();
+  
+  await deleteAll();
 
-  deleteAll();
-
-  await seedUsers(client);
+  const owner = await seedUsers();
+  const gymId = await seedGyms(owner.id);
   await seedMessages();
-  const gymId = await seedGyms();
   const trainerid = await seedTrainers(gymId.id);
   const clientId = await seedClients(trainerid.id, gymId.id);
   await seedSessions(clientId, trainerid);

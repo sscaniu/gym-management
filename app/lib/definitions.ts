@@ -7,6 +7,8 @@ export type UIUser = {
     name: string;
     email: string;
     password: string;
+    role: string;
+    guid: string;
 };
 
 export type UIClient = {

@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { ButtonStyles } from "../components/shared/Buttons";
 import { rubik } from "../components/shared/font";
 import Card, { CardConfig } from "../components/shared/Card";
+import GetClients from "./datatemp";
+import { getClientsForGym, getUser } from "../lib/data";
+import { auth } from "@/auth";
+
 
 
 const statuses = {
@@ -142,11 +146,12 @@ export default function Dashboard() {
 
         </div>
 
+        <div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <GetClients />
+          </Suspense>
+        </div>
       </article >
-
-
-
-
 
     </>
   );
