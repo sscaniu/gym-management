@@ -187,3 +187,7 @@
 .rdrNextPrevButton {
   opacity: 0;
 }
+.rdrDayStartPreview,
+.rdrDayEndPreview {
+  display: none !important;
+}

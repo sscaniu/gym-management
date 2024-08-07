@@ -6,6 +6,9 @@ import { change } from "@/app/store/features/client/clientSlice";
 import TextField from "@/app/components/shared/TextField";
 import Select, { SelectOption } from "@/app/components/shared/Select";
 import WizardHeader from "@/app/components/shared/WizardHeader";
+import DateRangePicker, {
+  ValueProps,
+} from "@/app/components/shared/DateRangePicker";
 
 const ClientGoals = () => {
   const dispatch = useDispatch();
@@ -32,11 +35,6 @@ const ClientGoals = () => {
   const locations: SelectOption[] = [
     { value: 1, label: "Queens Location" },
     { value: 2, label: "Queens Location1" },
-  ];
-
-  const durations: SelectOption[] = [
-    { value: 1, label: "Amanda Moore" },
-    { value: 2, label: "Billy Smith" },
   ];
 
   return (
@@ -75,13 +73,12 @@ const ClientGoals = () => {
                 }
                 options={locations}
               />
-              <TextField
-                type="date"
+              <DateRangePicker
                 label="Program Duration"
-                id="primary_goal_program_duration"
-                name="primary_goal_program_duration"
+                onChange={(e: ValueProps) =>
+                  handleSelect({ value: e }, "primary_goal_program_duration")
+                }
                 value={client.primary_goal_program_duration}
-                onChange={handleChange}
               />
               <TextField
                 label="Details"
@@ -114,13 +111,13 @@ const ClientGoals = () => {
                 }
                 options={locations}
               />
-              <TextField
-                type="date"
+
+              <DateRangePicker
                 label="Program Duration"
-                id="secondary_goal_program_duration"
-                name="secondary_goal_program_duration"
+                onChange={(e: ValueProps) =>
+                  handleSelect({ value: e }, "secondary_goal_program_duration")
+                }
                 value={client.secondary_goal_program_duration}
-                onChange={handleChange}
               />
               <TextField
                 label="Details"

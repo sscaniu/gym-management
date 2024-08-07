@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Button from "@/app/components/shared/Button";
 import Image from "next/image";
 import Tabs from "@/app/components/shared/Tabs";
@@ -13,6 +14,7 @@ import Notes from "@/app/components/containers/Clients/Notes";
 import Calendar from "@/app/components/containers/Clients/Calendar";
 
 const Client = () => {
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedTab, setSelectedTab] = useState<string | number>("profile");
   const tabs = [
@@ -24,6 +26,11 @@ const Client = () => {
   ];
 
   const handleClose = () => setIsOpen(false);
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab) setSelectedTab(tab);
+  }, [searchParams]);
 
   return (
     <div className="w-full max-w-7xl px-9 py-10 mx-auto">
