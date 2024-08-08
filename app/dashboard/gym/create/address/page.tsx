@@ -8,7 +8,7 @@ import WizardHeader from "@/app/components/shared/WizardHeader";
 
 const GymLocation = () => {
   const dispatch = useDispatch();
-  const gym = useSelector((state: any) => state.gym);
+  const gym = useSelector((state: any) => state.gym.gym);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>

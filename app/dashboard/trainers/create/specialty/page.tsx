@@ -48,7 +48,7 @@ const options: OptionConfig[] = [
 
 const TrainerSpecialty = () => {
   const dispatch = useDispatch();
-  const trainer = useSelector((state: any) => state.trainer);
+  const trainer = useSelector((state: any) => state.trainer.trainer);
   const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {

@@ -81,7 +81,6 @@ const Button: FC<ButtonProps> = ({
   const handleClick = () => {
     if (href) {
       router.push(href);
-      return;
     }
     onClick && onClick();
   };

@@ -1,11 +1,17 @@
 "use client";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WizardHeader from "@/app/components/shared/WizardHeader";
+import { create } from "@/app/store/features/gym/gymSlice";
+
 import Link from "next/link";
 
 const ProfileReview = () => {
-  const gym = useSelector((state: any) => state.gym);
+  const dispatch = useDispatch();
+  const gym = useSelector((state: any) => state.gym.gym);
+  const handleSave = () => {
+    dispatch(create(gym));
+  };
 
   return (
     <div className="w-full max-w-7xl px-9 py-10 mx-auto">
@@ -16,6 +22,7 @@ const ProfileReview = () => {
           buttonRightLabel="Finish"
           hrefLeft="./specialty"
           hrefRight="/"
+          onFinish={handleSave}
         />
 
         <div className="w-full max-w-[556px] bg-black shadow-sm rounded-sm p-6 pb-9">

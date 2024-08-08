@@ -9,7 +9,7 @@ import WizardHeader from "@/app/components/shared/WizardHeader";
 
 const TrainerContact = () => {
   const dispatch = useDispatch();
-  const trainer = useSelector((state: any) => state.trainer);
+  const trainer = useSelector((state: any) => state.trainer.trainer);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>

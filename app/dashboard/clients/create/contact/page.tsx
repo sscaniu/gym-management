@@ -10,7 +10,7 @@ import WizardHeader from "@/app/components/shared/WizardHeader";
 
 const ClientContact = () => {
   const dispatch = useDispatch();
-  const client = useSelector((state: any) => state.client);
+  const client = useSelector((state: any) => state.client.client);
 
   const handleChange = (
     e:

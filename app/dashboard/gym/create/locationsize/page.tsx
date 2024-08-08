@@ -28,7 +28,7 @@ const options: OptionConfig[] = [
 
 const LocationSize = () => {
   const dispatch = useDispatch();
-  const gym = useSelector((state: any) => state.gym);
+  const gym = useSelector((state: any) => state.gym.gym);
 
   const [selectedOption, setSelectedOption] = useState<any>();
 
