@@ -13,6 +13,7 @@ interface Props {
   disableLeft?: boolean;
   hrefRight?: string;
   disableRight?: boolean;
+  onFinish?: () => void;
 }
 
 const WizardHeader: FC<Props> = ({
@@ -23,7 +24,8 @@ const WizardHeader: FC<Props> = ({
   hrefLeft,
   disableLeft,
   hrefRight,
-  disableRight
+  disableRight,
+  onFinish,
 }) => {
   return (
     <div className="flex justify-between">
@@ -43,6 +45,7 @@ const WizardHeader: FC<Props> = ({
           {buttonLeftLabel}
         </Button>
         <Button
+          onClick={onFinish}
           href={hrefRight}
           size="sm"
           className="w-[200px]"

@@ -22,7 +22,7 @@ const options: OptionConfig[] = [
 
 const ClientLocations = () => {
   const dispatch = useDispatch();
-  const client = useSelector((state: any) => state.client);
+  const client = useSelector((state: any) => state.client.client);
   const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {

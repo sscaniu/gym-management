@@ -34,7 +34,7 @@ const options: OptionConfig[] = [
 
 const GymSpecialty = () => {
   const dispatch = useDispatch();
-  const gym = useSelector((state: any) => state.gym);
+  const gym = useSelector((state: any) => state.gym.gym);
   const [selectedOptions, setSelectedOptions] = useState<any>([]);
 
   useEffect(() => {

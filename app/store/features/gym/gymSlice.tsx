@@ -2,6 +2,11 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+interface State {
+  gym: Gym;
+  gyms: Gym[];
+}
+
 interface Gym {
   [key: string]: any;
   name: string;
@@ -15,16 +20,19 @@ interface Gym {
   specialty: object[] | null;
 }
 
-const initialState: Gym = {
-  name: "",
-  phone: "",
-  address: "",
-  city: "",
-  state: "",
-  zipcode: "",
-  locationSize: null,
-  staffSize: null,
-  specialty: null,
+const initialState: State = {
+  gym: {
+    name: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    locationSize: null,
+    staffSize: null,
+    specialty: null,
+  },
+  gyms: [],
 };
 
 export const gymSlice = createSlice({
@@ -33,11 +41,14 @@ export const gymSlice = createSlice({
   reducers: {
     change: (state, action) => {
       const { target, value } = action.payload;
-      state[target] = value;
+      state.gym[target] = value;
+    },
+    create: (state, action) => {
+      state.gyms = [...state.gyms, { ...action.payload }];
     },
   },
 });
 
-export const { change } = gymSlice.actions;
+export const { change, create } = gymSlice.actions;
 
 export default gymSlice.reducer;
