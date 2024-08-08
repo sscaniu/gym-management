@@ -2,12 +2,8 @@
  * Database functions
  */
 
-"use server";
-
 import { PrismaClient } from '@prisma/client'
 import { UIClient, UIUser } from './definitions';
-import { unknown } from 'zod';
-
 
 const prisma = new PrismaClient();
 

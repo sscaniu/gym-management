@@ -20,3 +20,11 @@ export type UIClient = {
     trainer: string | null;
     last_session: string;
 }
+
+export type UIMessage = {
+    id: string;
+
+
+
+
+}
