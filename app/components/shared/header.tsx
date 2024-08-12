@@ -9,7 +9,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: "Gym", href: "/login" },
+  { name: "Gym", href: "/dashboard/gym" },
   { name: "Trainers", href: "/dashboard/trainers" },
   { name: "Clients", href: "/dashboard/clients" },
   { name: "Calendar", href: "/dashboard/calendar" },
