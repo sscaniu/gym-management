@@ -1,30 +1,32 @@
+"use server";
+
+import { Session } from "next-auth";
+import { SessionContextValue } from "next-auth/react";
+
+export default async function GetClients({ session }: { session: Session | null }) {
 
 
+    // const { data: session } = useSession();
+    console.log("User " + session?.user);
 
-
-import { auth } from "../../auth"
-import { getClientsForGym } from "../lib/data";
-
-export default async function GetClients() {
-    const session = await auth();
-
-    if (session?.user?.email != null)
-        var clients = await getClientsForGym(session?.user?.email);
-    else
-        clients = [];
+    //This will work for a gym or a trainer
+    // if (session?.user?.email != null)
+    //    var clients = await getClients(session?.user?.email);
+    // else
+    //     clients = [];
 
 
     return (
 
         <div>
 
-            {clients.map((client) => {
+            {/* {clients.map((client) => {
 
                 return <div key={client.id}>
                     {client.name}
                 </div>
 
-            })}
+            })} */}
 
 
         </div>

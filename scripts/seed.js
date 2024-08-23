@@ -30,7 +30,7 @@ await prisma.user.create({
     email:'tom.jones@gmail.com',
     password: await hash('123456', 10),
     phone:"+15516893667",
-    role:"owner"
+    role:"trainer"
   }
 }
 )
