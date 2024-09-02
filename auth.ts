@@ -1,23 +1,29 @@
-import NextAuth from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from './auth.config';
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
-import type { UIUser } from '@/app/lib/definitions';
 import { compare } from "bcrypt-ts";
+import { getUser } from './app/lib/data';
 
-async function getUser(email: string): Promise<UIUser | undefined> {
-    try {
-        const user = await sql<UIUser>`SELECT * FROM users WHERE email=${email}`;
-        return user.rows[0];
-    } catch (error) {
-        console.error('Failed to fetch user:', error);
-        throw new Error('Failed to fetch user.');
-    }
-}
 
-export const { auth, signIn, signOut } = NextAuth({
-    ...authConfig,
+export const { handlers, signIn, signOut, auth } = NextAuth({
+    callbacks: {
+
+        authorized: async ({ request, auth }) => {
+
+            const nextUrl = request.nextUrl;
+            const isLoggedIn = !!auth?.user;
+            const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+
+            if (isOnDashboard) {
+                if (isLoggedIn) return true;
+                return false;
+            } else if (isLoggedIn) {
+                return Response.redirect(new URL('/dashboard', nextUrl));
+            }
+
+        }
+
+    },
     providers: [
         Credentials({
             async authorize(credentials) {
@@ -38,5 +44,12 @@ export const { auth, signIn, signOut } = NextAuth({
                 return null;
             },
         }),
-    ]
-});
+    ],
+})
+
+
+
+
+
+
+

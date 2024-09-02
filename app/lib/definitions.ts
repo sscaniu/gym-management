@@ -7,6 +7,8 @@ export type UIUser = {
     name: string;
     email: string;
     password: string;
+    role: string;
+    guid: string;
 };
 
 export type UIClient = {
@@ -17,4 +19,12 @@ export type UIClient = {
     location: string;
     trainer: string | null;
     last_session: string;
+}
+
+export type UIMessage = {
+    id: string;
+
+
+
+
 }
