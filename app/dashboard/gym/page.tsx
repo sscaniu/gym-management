@@ -1,13 +1,13 @@
 "use client";
 
 import React, { FC } from "react";
-import Gym from "../components/containers/Dashboard/Gym";
-import Trainer from "../components/containers/Dashboard/Trainer";
-import Client from "../components/containers/Dashboard/Client";
-import Calendar from "../components/containers/Dashboard/Calendar";
-import Resources from "../components/containers/Dashboard/Resources";
+import Gym from "@/app/components/containers/Gym/Gym";
+import Trainer from "@/app/components/containers/Gym/Trainer";
+import Client from "@/app/components/containers/Gym/Client";
+import Calendar from "@/app/components/containers/Gym/Calendar";
+import Resources from "@/app/components/containers/Gym/Resources";
 
-const Dashboard: FC = () => {
+const GymDashboard: FC = () => {
   return (
     <div>
       <div className="bg-black pt-10 pb-12">
@@ -20,9 +20,9 @@ const Dashboard: FC = () => {
       <div className="w-full max-w-7xl mx-auto px-14 py-16">
         <div className="grid grid-cols-2 gap-11">
           <Gym />
+          <Calendar />
           <Trainer />
           <Client />
-          <Calendar />
           <Resources />
         </div>
       </div>
@@ -30,4 +30,4 @@ const Dashboard: FC = () => {
   );
 };
 
-export default Dashboard;
+export default GymDashboard;

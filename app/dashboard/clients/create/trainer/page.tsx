@@ -43,7 +43,7 @@ const options: Option[] = [
 
 const ClientTrainer = () => {
   const dispatch = useDispatch();
-  const client = useSelector((state: any) => state.client);
+  const client = useSelector((state: any) => state.client.client);
 
   const [selectedOption, setSelectedOption] = useState<any>();
 

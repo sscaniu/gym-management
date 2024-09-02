@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import WizardHeader from "@/app/components/shared/WizardHeader";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import WizardHeader from "@/app/components/shared/WizardHeader";
+import { create } from "@/app/store/features/trainer/trainerSlice";
 
 const ProfileReview = () => {
-  const trainer = useSelector((state: any) => state.trainer);
+  const dispatch = useDispatch();
+  const trainer = useSelector((state: any) => state.trainer.trainer);
+  const handleSave = () => {
+    dispatch(create(trainer));
+  };
 
   return (
     <div className="w-full max-w-7xl px-9 py-10 mx-auto">
@@ -16,6 +21,7 @@ const ProfileReview = () => {
           buttonRightLabel="Finish"
           hrefLeft="./locations"
           hrefRight="/"
+          onFinish={handleSave}
         />
         <div className="grid grid-cols-2 gap-x-4 gap-y-16">
           <div className="w-full max-w-[556px] bg-black shadow-sm rounded-sm p-6 pb-9">

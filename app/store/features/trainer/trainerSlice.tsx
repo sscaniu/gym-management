@@ -2,6 +2,11 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+interface State {
+  trainer: Trainer;
+  trainers: Trainer[];
+}
+
 interface Trainer {
   [key: string]: any;
   firstname: string;
@@ -16,17 +21,20 @@ interface Trainer {
   locations: object[] | null;
 }
 
-const initialState: Trainer = {
-  firstname: "",
-  lastname: "",
-  email: "",
-  phone: "",
-  address: "",
-  city: "",
-  state: "",
-  zipcode: "",
-  specialty: null,
-  locations: null,
+const initialState: State = {
+  trainer: {
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    specialty: null,
+    locations: null,
+  },
+  trainers: [],
 };
 
 export const trainerSlice = createSlice({
@@ -35,11 +43,26 @@ export const trainerSlice = createSlice({
   reducers: {
     change: (state, action) => {
       const { target, value } = action.payload;
-      state[target] = value;
+      state.trainer[target] = value;
+    },
+    create: (state, action) => {
+      state.trainers = [...state.trainers, { ...action.payload }];
+      state.trainer = {
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        specialty: null,
+        locations: null,
+      };
     },
   },
 });
 
-export const { change } = trainerSlice.actions;
+export const { change, create } = trainerSlice.actions;
 
 export default trainerSlice.reducer;
