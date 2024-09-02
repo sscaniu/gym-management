@@ -1,12 +1,9 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { useState } from "react";
 import { ButtonStyles } from "../components/shared/Buttons";
 import { rubik } from "../components/shared/font";
 import Card, { CardConfig } from "../components/shared/Card";
-import GetClients from "./datatemp";
-import { useSession } from "next-auth/react"
-import { SessionProvider } from "next-auth/react"
 
 
 const statuses = {
@@ -119,7 +116,6 @@ function classNames(...classes: any) {
 
 export default function Dashboard() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { data: session } = useSession();
 
   return (
     <>
@@ -146,17 +142,7 @@ export default function Dashboard() {
 
         </div>
 
-        <div>
 
-
-          <Suspense fallback={<div>Loading...</div>}>
-
-            <GetClients session={session} />
-
-          </Suspense>
-
-
-        </div>
       </article >
 
     </>
